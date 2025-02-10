@@ -1,0 +1,18 @@
+{
+    "provinces": [
+      { "id": "1", "province_name": "Khyber Pakhtunkhwa", "province_code": "KPK", "capital_city": "Peshawar", "no_division": 9 }
+    ],
+    "divisions": [
+      { "id": "1", "division_name": "Malakand", "division_code": "MLK", "province_id": "1", "capital_city": "Saidu Sharif", "no_of_districts": 9 }
+    ],
+    "districts": [
+      { "id": "1", "district_name": "Lower Dir", "district_code": "945", "division_id": "1", "capital_city": "Timergara" }
+    ],
+    "cities": [
+      { "id": "1", "city_name": "Timergara", "city_code": "tmg", "district_id": "1", "population": 12000000, "area": 1772.0, "climate_detail": "Humid", "no_of_villages": 37, "local_economy": "Industrial" },
+      { "id": "2", "city_name": "Chakdara", "city_code": "CHK", "district_id": "1", "population": 15000000, "area": 5913.0, "climate_detail": "Coastal", "no_of_villages": 35, "local_economy": "Agriculture" },
+      { "id": "3", "city_name": "Buner", "city_code": "CHK", "district_id": "1", "population": 15000000, "area": 5913.0, "climate_detail": "Coastal", "no_of_villages": 35, "local_economy": "Agriculture" },
+      { "id": "4", "city_name": "Khal", "city_code": "CHK", "district_id": "1", "population": 15000000, "area": 5913.0, "climate_detail": "Coastal", "no_of_villages": 35, "local_economy": "Agriculture" }
+    ]
+  }
+  
