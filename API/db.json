@@ -1,18 +1,242 @@
 {
-    "provinces": [
-      { "id": "1", "province_name": "Khyber Pakhtunkhwa", "province_code": "KPK", "capital_city": "Peshawar", "no_division": 9 }
-    ],
-    "divisions": [
-      { "id": "1", "division_name": "Malakand", "division_code": "MLK", "province_id": "1", "capital_city": "Saidu Sharif", "no_of_districts": 9 }
-    ],
-    "districts": [
-      { "id": "1", "district_name": "Lower Dir", "district_code": "945", "division_id": "1", "capital_city": "Timergara" }
-    ],
-    "cities": [
-      { "id": "1", "city_name": "Timergara", "city_code": "tmg", "district_id": "1", "population": 12000000, "area": 1772.0, "climate_detail": "Humid", "no_of_villages": 37, "local_economy": "Industrial" },
-      { "id": "2", "city_name": "Chakdara", "city_code": "CHK", "district_id": "1", "population": 15000000, "area": 5913.0, "climate_detail": "Coastal", "no_of_villages": 35, "local_economy": "Agriculture" },
-      { "id": "3", "city_name": "Buner", "city_code": "CHK", "district_id": "1", "population": 15000000, "area": 5913.0, "climate_detail": "Coastal", "no_of_villages": 35, "local_economy": "Agriculture" },
-      { "id": "4", "city_name": "Khal", "city_code": "CHK", "district_id": "1", "population": 15000000, "area": 5913.0, "climate_detail": "Coastal", "no_of_villages": 35, "local_economy": "Agriculture" }
-    ]
-  }
-  
+  "provinces": [
+    {
+      "province_id": 1,
+      "province_name": "Khyber Pakhtunkhwa",
+      "province_code": "KP",
+      "province_capital_city": "Peshawar",
+      "no_division_in_province": 7
+    }
+  ],
+  "divisions": [
+    {
+      "division_id": 1,
+      "division_name": "Malakand",
+      "division_code": "MKD",
+      "province_id": 1,
+      "division_capital_city": "Batkhela",
+      "no_of_districts": 3
+    }
+  ],
+  "districts": [
+    {
+      "district_id": 1,
+      "district_name": "Lower Dir",
+      "district_code": "LD",
+      "division_id": 1,
+      "district_capital_city": "Timergara"
+    }
+  ],
+  "cities": [
+    {
+      "city_id": 1,
+      "city_name": "Timergara",
+      "city_code": "TMG",
+      "district_id": 1,
+      "city_population": 500000,
+      "city_area": "20 km^2",
+      "climate_detail": "Moderate",
+      "no_of_villages_in_city": 50,
+      "local_economy": "Agriculture, Business",
+      "description":"Timergara is a town in the Lower Dir District of Khyber Pakhtunkhwa, Pakistan. It serves as the district's administrative and commercial center. Known for its vibrant local markets, Timergara is surrounded by scenic landscapes and offers a mix of cultural heritage and natural beauty. The town is also a gateway to nearby attractions like Jandol Valley and Kumrat Valley."
+    },
+    {
+      "city_id": 2,
+      "city_name": "Khaal",
+      "city_code": "KHL",
+      "district_id": 1,
+      "city_population": 300000,
+      "city_area": "15 km^2",
+      "climate_detail": "Moderate",
+      "no_of_villages_in_city": 30,
+      "local_economy": "Agriculture, Business",
+      "description":"Khaal is a small yet historically rich city in the Lower Dir district of Khyber Pakhtunkhwa, Pakistan. Nestled among scenic mountains and lush greenery, Khaal is known for its serene environment, agricultural significance, and close-knit community. The city has a developing local economy primarily based on farming, small businesses, and trade. It serves as a cultural hub with traditional Pashtun heritage, featuring historical sites, local markets, and vibrant community life. Khaal also offers basic educational and healthcare facilities, making it a growing yet peaceful city in the region."
+    }
+  ],
+  "villages": [
+    {
+      "village_id": 1,
+      "city_id": 1
+    }
+  ],
+  "village_profiles": [
+    {
+      "village_code": "VLG001",
+      "village_name": "Talash",
+      "village_id": 1
+    }
+  ],
+  "significant_people": [
+    {
+      "person_id": 1,
+      "name": "Shafiq Ur Rahman",
+      "village_id": 1,
+      "city_id": 1,
+      "biography": "A great leader",
+      "contribution": "Education development",
+      "area_of_influence": "Education",
+      "historical_period": "2000s",
+      "awards_or_recognition": "Best Teacher Award",
+      "related_events": "Education Conference 2023"
+    }
+  ],
+  "community_services": [
+    {
+      "community_id": 1,
+      "village_id": 1
+    }
+  ],
+  "education": [
+    {
+      "community_id": 1,
+      "school": "Govt High School",
+      "college": "Timergara College",
+      "universities": "University of Malakand",
+      "training_center": "Tech Academy"
+    }
+  ],
+  "healthcare_facilities": [
+    {
+      "community_id": 1,
+      "clinics": 5,
+      "hospitals": 2,
+      "pharmacies": 10,
+      "mobile_health_services": "Available"
+    }
+  ],
+  "market": [
+    {
+      "community_id": 1,
+      "details_local_market": "Daily Market",
+      "availability_essential_goods": "High"
+    }
+  ],
+  "transportations": [
+    {
+      "community_id": 1,
+      "buses": "Available",
+      "rickshaw": "Yes",
+      "bikes": "Common",
+      "suzuki": "Few",
+      "major_road": "Highway M1"
+    }
+  ],
+  "utilities": [
+    {
+      "community_id": 1,
+      "water_supply": "Regular",
+      "electricity": "Stable",
+      "gas_supply": "Limited",
+      "petrol_pump": 2,
+      "internet_services": "Fiber",
+      "network": "4G"
+    }
+  ],
+  "recreational_facilities": [
+    {
+      "community_id": 1,
+      "parks": 2,
+      "playground": 3,
+      "community_center": "Yes",
+      "sports_facilities": "Cricket, Football"
+    }
+  ],
+  "tourist_attractions": [
+    {
+      "tourist_attraction_id": 1,
+      "village_id": 1
+    }
+  ],
+  "natural_landmarks": [
+    {
+      "tourist_attractions_id": 1,
+      "rivers": "Swat River",
+      "lakes": "Mahodand Lake",
+      "mountains": "Koh-e-Malakand",
+      "forest": "Dir Forest"
+    }
+  ],
+  "cultural_historical_places": [
+    {
+      "tourist_attraction_id": 1,
+      "temples": "None",
+      "old_building": "Ancient Fort",
+      "monuments": "War Memorial",
+      "museums": "Local Museum"
+    }
+  ],
+  "emergency_contacts": [
+    {
+      "emergency_contact_id": 1,
+      "village_id": 1,
+      "government_contact_number": "1234567890"
+    }
+  ],
+  "police_stations": [
+    {
+      "emergency_contact_id": 1,
+      "contact_number": "0987654321",
+      "address": "Timergara Police Station",
+      "operating_hours_police_stations": "24/7"
+    }
+  ],
+  "additional_elements": [
+    {
+      "additional_id": 1,
+      "village_id": 1
+    }
+  ],
+  "population_detail": [
+    {
+      "population_code": "POP001",
+      "village_id": 1,
+      "city_id": 1,
+      "district_id": 1,
+      "division_id": 1
+    }
+  ],
+  "geographical_information": [
+    {
+      "geographical_information_code": "GEO001",
+      "village_id": 1,
+      "city_id": 1,
+      "district_id": 1,
+      "division_id": 1
+    }
+  ],
+  "historical_background": [
+    {
+      "village_id": 1,
+      "city_id": 1,
+      "district_id": 1,
+      "division_id": 1,
+      "founding_year": 1800,
+      "founders": "Tribal Leaders",
+      "historical_events": "Ancient Battles",
+      "cultural_significance": "Heritage Site",
+      "monuments_of_landmarks": "Old Mosque",
+      "ethnic_background": "Pashtun",
+      "famous_persons": "Historical Poet",
+      "historic_sites_nearby": "Dir Fort",
+      "development_over_time": "Gradual Urbanization"
+    }
+  ],
+  "economy": [
+    {
+      "village_id": 1,
+      "city_id": 1,
+      "district_id": 1,
+      "division_id": 1,
+      "economy_id": 1
+    }
+  ],
+  "cultural_information": [
+    {
+      "cultural_information_id": 1,
+      "village_id": 1,
+      "city_id": 1,
+      "district_id": 1,
+      "division_id": 1
+    }
+  ]
+}

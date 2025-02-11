@@ -85,6 +85,104 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
   },
+
+
+
+
+  // Guest Screen Style
+  guestcontainer: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+  headerImage: {
+    width: '100%',
+    height: 300,
+    resizeMode: 'cover',
+    overflow: 'hidden',
+    borderBottomLeftRadius: 15,
+    borderBottomRightRadius: 15,
+  },
+  aboutSection: {
+    padding: 15,
+  },
+  guettitle: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+  guestdescription: {
+    fontSize: 15,
+    color: '#666',
+    marginTop: 10,
+    marginBottom: 10
+  },
+  gridContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    gap: 10,
+  },
+  guestbutton: {
+    backgroundColor: '#E74C3C', // Red color like the design
+    width: 110,
+    height: 110,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 5,
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+  guestbuttonText: {
+    color: 'white',
+    fontSize: 12,
+    fontWeight: 'bold',
+    marginTop: 8,
+    textAlign: 'center',
+  },
+  touristAttraction: {
+    padding: 15,
+  },
+  touristItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 10,
+    backgroundColor: '#f8f8f8',
+    borderRadius: 10,
+    padding: 10,
+  },
+  touristImage: {
+    width: 80,
+    height: 80,
+    borderRadius: 10,
+  },
+  touristTextContainer: {
+    marginLeft: 10,
+  },
+  touristTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  touristLocation: {
+    fontSize: 14,
+    color: 'gray',
+  },
+  bottomNav: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingVertical: 10,
+    borderTopWidth: 1,
+    borderColor: '#ddd',
+    backgroundColor: '#fff',
+  },
+  navItem: {
+    alignItems: 'center',
+  },
+  icon: {
+    width: 48, // Adjust icon size based on your image
+    height: 48,
+    resizeMode: 'contain',
+  },
 });
 
 export default styles

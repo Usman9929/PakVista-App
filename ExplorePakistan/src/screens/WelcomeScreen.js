@@ -37,7 +37,7 @@ const WelcomeScreen = ({ navigation }) => {
       <StatusBar barStyle="default" />
 
       <Image
-        source={require('./background.jpg')} // Accessing the image
+        source={require('../assets/images/background.jpg')} // Accessing the image
         style={styles.image}
       />
       <View style={styles.textContainer}>
