@@ -4,7 +4,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import WelcomeScreen from './screens/WelcomeScreen';
 import LoginScreen from './screens/LoginScreen'
-import GuestScreen from './screens/GuestScreen'
+import RegionalInsightScreen from './screens/RegionalInsightScreen';
+import BottomTabs from './navigation/BottomTab';
 
 
 
@@ -13,10 +14,16 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator  screenOptions={{ headerShown: false }}>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Guest" component={GuestScreen} />
+        <Stack.Screen
+          name="RegionalInsight"
+          component={RegionalInsightScreen}
+          options={{ headerShown: false }}
+        />
+
+        <Stack.Screen name="Main" component={BottomTabs} />
       </Stack.Navigator>
     </NavigationContainer>
   );

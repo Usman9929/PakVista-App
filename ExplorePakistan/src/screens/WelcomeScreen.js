@@ -9,7 +9,7 @@ const WelcomeScreen = ({ navigation }) => {
 
   // Fetch city data from the API
   const getCityData = async () => {
-    const url = "http://192.168.100.7:3000/cities"; // Replace with your API URL
+    const url = "http://192.168.100.117:3000/cities"; // API URL
     try {
       let result = await fetch(url);
       result = await result.json();
@@ -28,7 +28,7 @@ const WelcomeScreen = ({ navigation }) => {
     if (selectedCity === "Select City") {
       Alert.alert("Select City", "Please select a city before proceeding as a guest.");
     } else {
-      navigation.navigate('Guest');
+      navigation.navigate('Main', { selectedCity });
     }
   };
 
