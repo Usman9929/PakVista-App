@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
 
 
 
-  // Guest Screen Style
+  // Regional Screen stle
   guestcontainer: {
     flex: 1,
     backgroundColor: '#fff',
@@ -151,6 +151,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
   },
+  lastcontainer:{
+    marginBottom:40
+  },
   touristImage: {
     width: 80,
     height: 80,
@@ -184,5 +187,10 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
 });
+
+
+
+
+
 
 export default styles

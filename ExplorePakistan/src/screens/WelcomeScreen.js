@@ -9,7 +9,7 @@ const WelcomeScreen = ({ navigation }) => {
 
   // Fetch city data from the API
   const getCityData = async () => {
-    const url = "http://192.168.100.117:3000/cities"; // API URL
+    const url = "http://192.168.43.98:3000/cities"; // API URL
     try {
       let result = await fetch(url);
       result = await result.json();

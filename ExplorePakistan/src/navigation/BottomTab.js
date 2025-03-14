@@ -19,48 +19,40 @@ const Tab = createBottomTabNavigator();
 const BottomTabs = () => {
   return (
     <Tab.Navigator
-      screenOptions={{
-        tabBarShowLabel: false,
+      screenOptions={({ route }) => ({
+        tabBarShowLabel: true,
         tabBarStyle: styles.tabBarStyle,
-      }}
+        tabBarLabelStyle: styles.tabBarLabel,  // ✅ Apply to all labels
+        tabBarActiveTintColor: '#e63946',  // ✅ Active label color
+        tabBarInactiveTintColor: 'gray',  // ✅ Inactive label color
+        tabBarIcon: ({ focused }) => {
+          let iconSource;
+          if (route.name === 'RegionalInsight') {
+            iconSource = RegionalIcon;
+          } else if (route.name === 'Explore') {
+            iconSource = ExploreIcon;
+          } else if (route.name === 'Notification') {
+            iconSource = NotificationIcon;
+          } else if (route.name === 'Profile') {
+            iconSource = ProfileIcon;
+          }
+          return (
+            <Image
+              source={iconSource}
+              style={[
+                styles.icon,
+                focused && styles.focusedIcon,
+              ]}
+            />
+          );
+        },
+        headerShown: false,  // Hide header for all screens
+      })}
     >
-      <Tab.Screen
-        name="RegionalInsight"  
-        component={RegionalInsightScreen}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <Image source={RegionalIcon} style={[styles.icon, focused && styles.focusedIcon]} />
-          ),
-          headerShown: false, 
-        }}
-      />
-      <Tab.Screen
-        name="Explore"
-        component={ExploreScreen}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <Image source={ExploreIcon} style={[styles.icon, focused && styles.focusedIcon]} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Notification"
-        component={NotificationScreen}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <Image source={NotificationIcon} style={[styles.icon, focused && styles.focusedIcon]} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Profile"
-        component={ProfileScreen}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <Image source={ProfileIcon} style={[styles.icon, focused && styles.focusedIcon]} />
-          ),
-        }}
-      />
+      <Tab.Screen name="RegionalInsight" component={RegionalInsightScreen} options={{ tabBarLabel: "Regional Insights" }} />
+      <Tab.Screen name="Explore" component={ExploreScreen} />
+      <Tab.Screen name="Notification" component={NotificationScreen} />
+      <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );
 };
@@ -77,14 +69,20 @@ const styles = StyleSheet.create({
     right: 0,
     elevation: 5,
   },
+  tabBarLabel: {
+    fontSize: 10,
+    fontWeight: 'bold',
+    marginTop:8
+  },
   icon: {
-    width: 30,
+    width: 30,  // ✅ Increased icon size for all tabs
     height: 30,
     tintColor: 'gray',
-    marginTop:20
+    resizeMode: 'contain',
+    marginTop:8
   },
   focusedIcon: {
-    tintColor: '#e63946',  // Change this color based on your theme
+    tintColor: '#e63946',  // ✅ Change icon color when focused
   },
 });
 

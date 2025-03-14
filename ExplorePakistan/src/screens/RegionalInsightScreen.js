@@ -66,12 +66,14 @@ const RegionalInsightScreen = () => {
         </View>
 
         {/* Tourist Item 2 */}
-        <View style={styles.touristItem}>
+        <View style = {styles.lastcontainer}>
+        <View style={[styles.touristItem]}>
           <Image source={require('../assets/images/timergaraImage_8.jpg')} style={styles.touristImage} />
           <View style={styles.touristTextContainer}>
             <Text style={styles.touristTitle}>Malakand (College)</Text>
             <Text style={styles.touristLocation}>Timergara Dir Lower (KPK)</Text>
           </View>
+        </View>
         </View>
       </View>
     </ScrollView>
