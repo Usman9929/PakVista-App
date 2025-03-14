@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { useNavigation } from '@react-navigation/native';
+
+
 
 const LoginScreen = () => {
+  const navigation = useNavigation();
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   return (
@@ -53,7 +55,7 @@ const LoginScreen = () => {
       {/* Signup Option */}
       <View style={styles.signupContainer}>
         <Text style={styles.signupText}>Don't have an account?</Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
           <Text style={styles.signupButton}> Signup</Text>
         </TouchableOpacity>
       </View>
@@ -217,5 +219,5 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
     tintColor: '#888', // Change color if needed
-  },  
+  },
 });
