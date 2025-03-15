@@ -3,16 +3,18 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Image, StyleSheet } from 'react-native';
 
 // Import Screens
-import RegionalInsightScreen from '../screens/RegionalInsightScreen';
 import ExploreScreen from '../screens/ExploreScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import ExploreVillageScreen from '../screens/ExploreVillageScreen';
+import RegionalStackNavigator from "./StackNavigator"; // Import the stack navigator
 
 // Import Custom Icons
 import RegionalIcon from '../assets/icons/insights.png';
 import ExploreIcon from '../assets/icons/explore1.png';
 import NotificationIcon from '../assets/icons/notification.png';
 import ProfileIcon from '../assets/icons/profile.png';
+
 
 const Tab = createBottomTabNavigator();
 
@@ -27,7 +29,7 @@ const BottomTabs = () => {
         tabBarInactiveTintColor: 'gray',  // ✅ Inactive label color
         tabBarIcon: ({ focused }) => {
           let iconSource;
-          if (route.name === 'RegionalInsight') {
+          if (route.name === 'Regional Insight') {
             iconSource = RegionalIcon;
           } else if (route.name === 'Explore') {
             iconSource = ExploreIcon;
@@ -49,7 +51,7 @@ const BottomTabs = () => {
         headerShown: false,  // Hide header for all screens
       })}
     >
-      <Tab.Screen name="RegionalInsight" component={RegionalInsightScreen} options={{ tabBarLabel: "Regional Insights" }} />
+       <Tab.Screen name="Regional Insight" component={RegionalStackNavigator} options={{ tabBarLabel: "Regional Insights" }} />
       <Tab.Screen name="Explore" component={ExploreScreen} />
       <Tab.Screen name="Notification" component={NotificationScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />

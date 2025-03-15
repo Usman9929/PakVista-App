@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StatusBar, Image, TouchableOpacity, Modal, Alert } from 'react-native';
+import { useNavigation } from '@react-navigation/native';  // Import navigation
 import styles from '../styles/globalStyles';
 
-const WelcomeScreen = ({ navigation }) => {
+const WelcomeScreen = () => {
+  const navigation = useNavigation();  // Use navigation
   const [modalVisible, setModalVisible] = useState(false);
   const [cities, setCities] = useState([]); // Store cities data
   const [selectedCity, setSelectedCity] = useState("Select City"); // Track selected city
+  const [selectedCityData, setSelectedCityData] = useState(null); // Store selected city details
 
   // Fetch city data from the API
   const getCityData = async () => {
@@ -23,14 +26,22 @@ const WelcomeScreen = ({ navigation }) => {
     getCityData(); // Fetch cities when the component mounts
   }, []);
 
+  // Handle city selection
+  const handleSelectCity = (city) => {
+    setSelectedCity(city.city_name); // Update selected city name
+    setSelectedCityData(city); // Store full city data
+    setModalVisible(false); // Close modal
+  };
+
   // Handle Guest button click
   const handleGuestClick = () => {
     if (selectedCity === "Select City") {
       Alert.alert("Select City", "Please select a city before proceeding as a guest.");
     } else {
-      navigation.navigate('Main', { selectedCity });
+      navigation.navigate('MainTabs', { screen: 'Regional Insight', params: { screen: 'RegionalInsight', params: { cityData: selectedCityData } } });
     }
   };
+
 
   return (
     <View style={styles.container}>
@@ -80,10 +91,7 @@ const WelcomeScreen = ({ navigation }) => {
               {cities.map((city) => (
                 <TouchableOpacity
                   key={city.id}
-                  onPress={() => {
-                    setSelectedCity(city.city_name); // Update button text
-                    setModalVisible(false); // Close modal
-                  }}
+                  onPress={() => handleSelectCity(city)}
                 >
                   <Text style={styles.cityOption}>{city.city_name}</Text>
                 </TouchableOpacity>

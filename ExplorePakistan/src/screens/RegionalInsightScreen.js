@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView, Animated } from 'react-native';
 import styles from '../styles/globalStyles';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 const headerImages = [
   require('../assets/images/timergaraImage_1.jpg'),
@@ -13,38 +14,34 @@ const headerImages = [
 ];
 
 const RegionalInsightScreen = () => {
-
+  const route = useRoute();
+  const { cityData } = route.params; // Get city details from navigation
+  const navigation = useNavigation();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-   // Change header image every 2 seconds
-   useEffect(() => {
+  // Auto-change header image every 3 seconds
+  useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % headerImages.length);
     }, 3000);
-
-    return () => clearInterval(interval); // Cleanup on unmount
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <ScrollView style={styles.guestcontainer}>
       {/* Header Image (Auto-Changing) */}
       <Image source={headerImages[currentImageIndex]} style={styles.headerImage} />
-     
+
 
       {/* About Section */}
       <View style={styles.aboutSection}>
-        <Text style={styles.guettitle}>About Timergara</Text>
-        <Text style={styles.guestdescription}>
-          Timergara is a town in the Lower Dir District of Khyber Pakhtunkhwa, Pakistan. It serves as the district’s
-          administrative and commercial center. Known for its vibrant local markets, Timergara is surrounded by scenic landscapes
-          and offers a mix of cultural heritage and natural beauty. The town is also a gateway to nearby attractions like Jandol Valley
-          and Kumrat Valley.
-        </Text>
+        <Text style={styles.guettitle}>{"About "}{cityData.city_name}</Text>
+        <Text style={styles.guestdescription}>{cityData.description}</Text>
       </View>
 
       {/* Grid Buttons */}
       <View style={styles.gridContainer}>
-        <GuestButton title="Explore Villages" icon={require('../assets/icons/explore.png')} />
+        <GuestButton title="Explore Villages" icon={require('../assets/icons/explore.png')} onPress={() => navigation.navigate('ExploreVillages')} />
         <GuestButton title="Popular Sites" icon={require('../assets/icons/popular_site.png')} />
         <GuestButton title="Region Events" icon={require('../assets/icons/reigon_event.png')} />
         <GuestButton title="Search" icon={require('../assets/icons/search.png')} />
@@ -66,14 +63,14 @@ const RegionalInsightScreen = () => {
         </View>
 
         {/* Tourist Item 2 */}
-        <View style = {styles.lastcontainer}>
-        <View style={[styles.touristItem]}>
-          <Image source={require('../assets/images/timergaraImage_8.jpg')} style={styles.touristImage} />
-          <View style={styles.touristTextContainer}>
-            <Text style={styles.touristTitle}>Malakand (College)</Text>
-            <Text style={styles.touristLocation}>Timergara Dir Lower (KPK)</Text>
+        <View style={styles.lastcontainer}>
+          <View style={[styles.touristItem]}>
+            <Image source={require('../assets/images/timergaraImage_8.jpg')} style={styles.touristImage} />
+            <View style={styles.touristTextContainer}>
+              <Text style={styles.touristTitle}>Malakand (College)</Text>
+              <Text style={styles.touristLocation}>Timergara Dir Lower (KPK)</Text>
+            </View>
           </View>
-        </View>
         </View>
       </View>
     </ScrollView>
@@ -81,14 +78,15 @@ const RegionalInsightScreen = () => {
 };
 
 // Button Component
-const GuestButton = ({ title, icon }) => {
+const GuestButton = ({ title, icon, onPress }) => {
   return (
-    <TouchableOpacity style={styles.guestbutton}>
+    <TouchableOpacity style={styles.guestbutton} onPress={onPress}>
       <Image source={icon} style={styles.icon} />
       <Text style={styles.guestbuttonText}>{title}</Text>
     </TouchableOpacity>
   );
 };
+
 
 // Bottom Navigation Item Component
 const NavItem = ({ title, icon }) => {
@@ -101,4 +99,3 @@ const NavItem = ({ title, icon }) => {
 };
 
 export default RegionalInsightScreen;
-
