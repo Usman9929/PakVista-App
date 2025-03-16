@@ -13,7 +13,13 @@ const villages = [
 const topVillages = [
   { id: "3", name: "Malakand (College)", location: "Timergara Dir Lower (KPK)", image: require('../assets/images/timergaraImage_3.jpg') },
   { id: "4", name: "Shahid Chowk", location: "Timergara Dir Lower (KPK)", image: require('../assets/images/timergaraImage_4.jpg') },
-  { id: "5", name: "Chota Komrat", location: "Timergara Dir Lower (KPK)", image: require('../assets/images/timergaraImage_5.jpg') },
+  { id: "5", name: "Khazana", location: "Timergara Dir Lower (KPK)", image: require('../assets/images/timergaraImage_5.jpg') },
+];
+
+const touristVillage = [
+  { id: "6", name: "Chota Komrat", location: "Timergara Dir Lower (KPK)", image: require('../assets/images/timergaraImage_3.jpg') },
+  { id: "7", name: "Sar Pato", location: "Timergara Dir Lower (KPK)", image: require('../assets/images/timergaraImage_4.jpg') },
+  { id: "8", name: "Goloshah", location: "Timergara Dir Lower (KPK)", image: require('../assets/images/timergaraImage_5.jpg') },
 ];
 
 
@@ -27,6 +33,25 @@ const VillageCard = ({ item }) => (
     </View>
   </TouchableOpacity>
 );
+const TouristVillageCard = ({ item }) => (
+  <TouchableOpacity style={styles.touristVillageCard}>
+    <Image 
+      source={typeof item.image === "string" ? { uri: item.image } : item.image} 
+      style={styles.touristVillageImage} 
+    />
+    <View style={styles.touristVillageInfo}>
+      <Text style={styles.touristVillageTitle}>{item.name}</Text>
+      <View style={styles.touristVillageLocationContainer}>
+        <Image 
+          source={require("../assets/icons/location.png")} 
+          style={styles.locationIcon} 
+        />
+        <Text style={styles.touristVillageLocation}>{item.location}</Text>
+      </View>
+    </View>
+  </TouchableOpacity>
+);
+
 
 const ExploreVillageScreen = () => {
   const navigation = useNavigation(); // Get navigation object
@@ -74,6 +99,13 @@ const ExploreVillageScreen = () => {
           showsHorizontalScrollIndicator={false}  // Hides the scroll bar
           contentContainerStyle1={{ paddingHorizontal: 10 }}  // Adjust spacing
         />
+
+        <Text style={styles.sectionTitle}>Tourist Attraction</Text>
+        <View style = {{marginBottom:60}}>
+        {touristVillage.map((item) => (
+          <TouristVillageCard key={item.id} item={item} />
+        ))}
+        </View>
       </View>
     </ScrollView>
   );
@@ -143,6 +175,7 @@ const styles = StyleSheet.create({
 
     // 🔹 REQUIRED FOR ANDROID (because shadow properties work only on iOS)
     elevation: 8,              // Android shadow effect
+    marginBottom: 20
   },
 
   villageImage: {
@@ -190,6 +223,49 @@ const styles = StyleSheet.create({
     marginTop: 2,          // Adjust spacing as needed
     alignSelf: "flex-start",
     marginLeft: 10
+  },
+  touristVillageCard: {
+    backgroundColor: "#fff",
+    borderRadius: 12,
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 3,
+    marginVertical: 8,
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 12,
+  },
+  touristVillageImage: {
+    width: 100,
+    height: 90,
+    borderRadius: 10,
+    marginRight: 12,
+  },
+  touristVillageInfo: {
+    flex: 1,
+  },
+  touristVillageTitle: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#333",
+  },
+  touristVillageLocationContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 4,
+  },
+  locationIcon: {
+    width: 16,
+    height: 16,
+    marginRight: 6,
+    tintColor: "#f04a4a", // Modern red color for location pin
+  },
+  touristVillageLocation: {
+    fontSize: 14,
+    color: "#777",
+    fontStyle: "italic",
   },
 });
 
