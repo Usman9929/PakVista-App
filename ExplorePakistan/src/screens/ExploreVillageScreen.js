@@ -1,26 +1,8 @@
-import React from "react";
-import { View, Text, Image, FlatList, TouchableOpacity, StyleSheet, ScrollView } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, Text, Image, FlatList, TouchableOpacity, StyleSheet, ScrollView, ActivityIndicator} from "react-native";
 import { useNavigation } from '@react-navigation/native';
+import { fetchVillages } from "../services/api";
 
-
-
-const villages = [
-  { id: "1", name: "Koherai Malakand", location: "Timergara Dir Lower (KPK)", image: require('../assets/images/timergaraImage_1.jpg') },
-  { id: "2", name: "Shingrai", location: "Timergara Dir Lower (KPK)", image: require('../assets/images/timergaraImage_2.jpg') },
-  { id: "3", name: "Tangai", location: "Timergara Dir Lower (KPK)", image: require('../assets/images/timergaraImage_6.jpg') },
-];
-
-const topVillages = [
-  { id: "3", name: "Malakand (College)", location: "Timergara Dir Lower (KPK)", image: require('../assets/images/timergaraImage_3.jpg') },
-  { id: "4", name: "Shahid Chowk", location: "Timergara Dir Lower (KPK)", image: require('../assets/images/timergaraImage_4.jpg') },
-  { id: "5", name: "Khazana", location: "Timergara Dir Lower (KPK)", image: require('../assets/images/timergaraImage_5.jpg') },
-];
-
-const touristVillage = [
-  { id: "6", name: "Chota Komrat", location: "Timergara Dir Lower (KPK)", image: require('../assets/images/timergaraImage_3.jpg') },
-  { id: "7", name: "Sar Pato", location: "Timergara Dir Lower (KPK)", image: require('../assets/images/timergaraImage_4.jpg') },
-  { id: "8", name: "Goloshah", location: "Timergara Dir Lower (KPK)", image: require('../assets/images/timergaraImage_5.jpg') },
-];
 
 
 const VillageCard = ({ item }) => (
@@ -35,16 +17,16 @@ const VillageCard = ({ item }) => (
 );
 const TouristVillageCard = ({ item }) => (
   <TouchableOpacity style={styles.touristVillageCard}>
-    <Image 
-      source={typeof item.image === "string" ? { uri: item.image } : item.image} 
-      style={styles.touristVillageImage} 
+    <Image
+      source={typeof item.image === "string" ? { uri: item.image } : item.image}
+      style={styles.touristVillageImage}
     />
     <View style={styles.touristVillageInfo}>
       <Text style={styles.touristVillageTitle}>{item.name}</Text>
       <View style={styles.touristVillageLocationContainer}>
-        <Image 
-          source={require("../assets/icons/location.png")} 
-          style={styles.locationIcon} 
+        <Image
+          source={require("../assets/icons/location.png")}
+          style={styles.locationIcon}
         />
         <Text style={styles.touristVillageLocation}>{item.location}</Text>
       </View>
@@ -55,7 +37,29 @@ const TouristVillageCard = ({ item }) => (
 
 const ExploreVillageScreen = () => {
   const navigation = useNavigation(); // Get navigation object
+  const [general_villages, setVillages] = useState([]);
+  const [topVillages, setTopVillages] = useState([]);  // State for top villages
+  const [touristVillages, setTouristVillages] = useState([]); // State for tourist villages
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const getVillages = async () => {
+      const {general_villages, topVillages, touristVillages } = await fetchVillages();
+      setVillages(general_villages);
+      setTopVillages(topVillages);
+      setTouristVillages(touristVillages);
+      setLoading(false);
+    };
+
+    getVillages();
+  }, []);
+
+  if (loading) {
+    return <ActivityIndicator size="large" color="#0000ff" />;
+  }
+
   return (
+
     <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
         <View style={styles.header}>
@@ -72,39 +76,40 @@ const ExploreVillageScreen = () => {
           </View>
         </View>
 
+
+        {/* General Villages */}
         <Text style={styles.sectionTitle}>Wonderful Timergara</Text>
         <Text style={styles.subTitle}>Let's Explore Together</Text>
-
-        {/* Horizontal Scrollable Villages */}
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.villageList}>
-          {villages.map((item) => (
-            <VillageCard key={item.id} item={item} />
+          {general_villages.map((item, index) => (
+            <VillageCard key={item.id || index} item={item} />
           ))}
         </ScrollView>
 
+
+
+        {/* Top Villages */}
         <View style={styles.topVillageHeader}>
           <Text style={styles.sectionTitle}>Top Village</Text>
           <TouchableOpacity>
             <Text style={styles.viewAll}>View All</Text>
           </TouchableOpacity>
         </View>
-
-        {/* Top Villages List (Same Design as Horizontal Villages) */}
-        <FlatList
+        <FlatList style = {{marginLeft:-12}}
           data={topVillages}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => <VillageCard item={item} />}
-          contentContainerStyle={styles.topVillageList}
-          horizontal={true}  // Enables horizontal scrolling
-          showsHorizontalScrollIndicator={false}  // Hides the scroll bar
-          contentContainerStyle1={{ paddingHorizontal: 10 }}  // Adjust spacing
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={{ paddingHorizontal: 10 }}
         />
 
+        {/* Tourist Villages */}
         <Text style={styles.sectionTitle}>Tourist Attraction</Text>
-        <View style = {{marginBottom:60}}>
-        {touristVillage.map((item) => (
-          <TouristVillageCard key={item.id} item={item} />
-        ))}
+        <View style={{ marginBottom: 60 }}>
+          {touristVillages.map((item) => (
+            <TouristVillageCard key={item.id} item={item} />
+          ))}
         </View>
       </View>
     </ScrollView>
@@ -163,6 +168,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF",
     borderRadius: 15,
     padding: 5,
+    marginLeft:5,
     marginRight: 12, // Ensure space between cards
     width: 260,// Set a fixed width for consistency
     height: 250,
