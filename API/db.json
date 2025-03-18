@@ -27,6 +27,7 @@
       "district_capital_city": "Timergara"
     }
   ],
+  
   "cities": [
     {
       "city_id": 1,
@@ -53,19 +54,32 @@
       "description":"Khaal is a small yet historically rich city in the Lower Dir district of Khyber Pakhtunkhwa, Pakistan. Nestled among scenic mountains and lush greenery, Khaal is known for its serene environment, agricultural significance, and close-knit community. The city has a developing local economy primarily based on farming, small businesses, and trade. It serves as a cultural hub with traditional Pashtun heritage, featuring historical sites, local markets, and vibrant community life. Khaal also offers basic educational and healthcare facilities, making it a growing yet peaceful city in the region."
     }
   ],
+  
   "villages": [
     {
       "village_id": 1,
       "city_id": 1
     }
   ],
-  "village_profiles": [
-    {
-      "village_code": "VLG001",
-      "village_name": "Talash",
-      "village_id": 1
-    }
-  ],
+  
+    "village_profiles": {
+      "general_villages": [
+        { "village_id":1,"id": 1, "village_code": "VLG001", "name": "Koherai Malakand", "location": "Timergara Dir Lower (KPK)", "image": "http://192.168.43.98:3000/images/timergaraImage_1.jpg"},
+        { "village_id":1, "id": 2, "name": "Shingrai", "location": "Timergara Dir Lower (KPK)", "image": "http://192.168.43.98:3000/images/timergaraImage_2.jpg" },
+        { "village_id":1, "id": 3, "name": "Tangai", "location": "Timergara Dir Lower (KPK)", "image": "http://192.168.43.98:3000/images/timergaraImage_6.jpg" }
+      ],
+      "topVillages": [
+        { "village_id":1, "id": 3, "name": "Malakand (College)", "location": "Timergara Dir Lower (KPK)", "image": "http://192.168.43.98:3000/images/timergaraImage_3.jpg" },
+        { "village_id":1, "id": 4, "name": "Shahid Chowk", "location": "Timergara Dir Lower (KPK)", "image": "http://192.168.43.98:3000/images/timergaraImage_4.jpg" },
+        { "village_id":1, "id": 5, "name": "Khazana", "location": "Timergara Dir Lower (KPK)", "image": "http://192.168.43.98:3000/images/timergaraImage_5.jpg" }
+      ],
+      "touristVillages": [
+        { "village_id":1, "id": 6, "name": "Chota Komrat", "location": "Timergara Dir Lower (KPK)", "image": "http://192.168.43.98:3000/images/timergaraImage_3.jpg" },
+        { "village_id":1, "id": 7, "name": "Sar Pato", "location": "Timergara Dir Lower (KPK)", "image": "http://192.168.43.98:3000/images/timergaraImage_4.jpg" },
+        { "village_id":1, "id": 8, "name": "Goloshah", "location": "Timergara Dir Lower (KPK)", "image": "http://192.168.43.98:3000/images/timergaraImage_5.jpg" }
+      ]
+    },
+  
   "significant_people": [
     {
       "person_id": 1,
