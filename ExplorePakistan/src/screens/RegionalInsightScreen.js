@@ -45,7 +45,7 @@ const RegionalInsightScreen = () => {
         <GuestButton title="Popular Sites" icon={require('../assets/icons/popular_site.png')} onPress={() => navigation.navigate('PopularSites')} />
         <GuestButton title="Region Events" icon={require('../assets/icons/reigon_event.png')} onPress={() => navigation.navigate('RegionEvents')} />
         <GuestButton title="Search" icon={require('../assets/icons/search.png')} />
-        <GuestButton title="Emergency Contacts" icon={require('../assets/icons/emergency.png')} />
+        <GuestButton title="Emergency Contacts" icon={require('../assets/icons/emergency.png')} onPress={() => navigation.navigate('EmergencyContact')}/>
         <GuestButton title="Login Sign-Up" icon={require('../assets/icons/login.png')} />
       </View>
 
