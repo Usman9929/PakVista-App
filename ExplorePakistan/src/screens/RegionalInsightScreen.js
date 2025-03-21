@@ -42,7 +42,7 @@ const RegionalInsightScreen = () => {
       {/* Grid Buttons */}
       <View style={styles.gridContainer}>
         <GuestButton title="Explore Villages" icon={require('../assets/icons/explore.png')} onPress={() => navigation.navigate('ExploreVillageScreen')} />
-        <GuestButton title="Popular Sites" icon={require('../assets/icons/popular_site.png')} />
+        <GuestButton title="Popular Sites" icon={require('../assets/icons/popular_site.png')} onPress={() => navigation.navigate('PopularSites')} />
         <GuestButton title="Region Events" icon={require('../assets/icons/reigon_event.png')} />
         <GuestButton title="Search" icon={require('../assets/icons/search.png')} />
         <GuestButton title="Emergency Contacts" icon={require('../assets/icons/emergency.png')} />

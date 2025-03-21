@@ -31,7 +31,7 @@
         "general_villages": [
         {
             "village_id": 101,
-            "city_id": 1,
+            "cityId": 1,
             "city":"Timergara",
             "location": "Timergara Dir Lower (KPK)",
             "image": "http://192.168.43.98:3000/images/timergaraImage_1.jpg",

@@ -82,13 +82,11 @@ const ExploreVillageScreen = () => {
         <Text style={styles.subTitle}>Let's Explore Together</Text>
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.villageList}>
           {general_villages.map((item) => (
-            <VillageCard key={item.id} item={item} />
+            <VillageCard key={item.id?.toString() || Math.random().toString()} item={item} />
           ))}
         </ScrollView>
 
 
-
-        {/* Top Villages */}
         {/* Top Villages */}
         {topVillages && topVillages.length > 0 ? (
           <>
@@ -101,8 +99,8 @@ const ExploreVillageScreen = () => {
             <FlatList
               style={{ marginLeft: -12 }}
               data={topVillages}
-              keyExtractor={(item) => item?.id?.toString() || Math.random().toString()} // Ensure valid key
-              renderItem={({ item }) => <VillageCard item={item} />}
+              keyExtractor={(item) => item?.id?.toString() || Math.random().toString()}
+              renderItem={({ item }) => <VillageCard key={item.id?.toString()} item={item} />}
               horizontal={true}
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={{ paddingHorizontal: 10 }}
@@ -117,7 +115,7 @@ const ExploreVillageScreen = () => {
         <Text style={styles.sectionTitle}>Tourist Attraction</Text>
         <View style={{ marginBottom: 60 }}>
           {touristVillages.map((item) => (
-            <TouristVillageCard key={item.id} item={item} />
+            <TouristVillageCard key={item.id?.toString() || Math.random().toString()} item={item} />
           ))}
         </View>
       </View>

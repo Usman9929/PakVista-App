@@ -7,8 +7,10 @@ import LoginScreen from './screens/LoginScreen'
 import RegionalInsightScreen from './screens/RegionalInsightScreen';
 import BottomTabs from './navigation/BottomTab';
 import SignupScreen from './screens/Signup';
+import PopularSites from './screens/PopularSites';
 
 import ExploreVillageScreen from './screens/ExploreVillageScreen';
+
 
 const Stack = createStackNavigator();
 
@@ -20,6 +22,7 @@ const App = () => {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Signup" component={SignupScreen} />
         <Stack.Screen name="ExploreVillageScreen" component={ExploreVillageScreen} />
+        <Stack.Screen name="PopularSites" component={PopularSites} />
         <Stack.Screen
           name="RegionalInsight"
           component={RegionalInsightScreen}
