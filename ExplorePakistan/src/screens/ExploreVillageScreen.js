@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Image, FlatList, TouchableOpacity, StyleSheet, ScrollView, ActivityIndicator} from "react-native";
+import { View, Text, Image, FlatList, TouchableOpacity, StyleSheet, ScrollView, ActivityIndicator } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { fetchVillages } from "../services/api";
 
@@ -44,7 +44,7 @@ const ExploreVillageScreen = () => {
 
   useEffect(() => {
     const getVillages = async () => {
-      const {general_villages, topVillages, touristVillages } = await fetchVillages();
+      const { general_villages, topVillages, touristVillages } = await fetchVillages();
       setVillages(general_villages);
       setTopVillages(topVillages);
       setTouristVillages(touristVillages);
@@ -81,28 +81,37 @@ const ExploreVillageScreen = () => {
         <Text style={styles.sectionTitle}>Wonderful Timergara</Text>
         <Text style={styles.subTitle}>Let's Explore Together</Text>
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.villageList}>
-          {general_villages.map((item, index) => (
-            <VillageCard key={item.id || index} item={item} />
+          {general_villages.map((item) => (
+            <VillageCard key={item.id} item={item} />
           ))}
         </ScrollView>
 
 
 
         {/* Top Villages */}
-        <View style={styles.topVillageHeader}>
-          <Text style={styles.sectionTitle}>Top Village</Text>
-          <TouchableOpacity>
-            <Text style={styles.viewAll}>View All</Text>
-          </TouchableOpacity>
-        </View>
-        <FlatList style = {{marginLeft:-12}}
-          data={topVillages}
-          keyExtractor={(item) => item.id.toString()}
-          renderItem={({ item }) => <VillageCard item={item} />}
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={{ paddingHorizontal: 10 }}
-        />
+        {/* Top Villages */}
+        {topVillages && topVillages.length > 0 ? (
+          <>
+            <View style={styles.topVillageHeader}>
+              <Text style={styles.sectionTitle}>Top Village</Text>
+              <TouchableOpacity>
+                <Text style={styles.viewAll}>View All</Text>
+              </TouchableOpacity>
+            </View>
+            <FlatList
+              style={{ marginLeft: -12 }}
+              data={topVillages}
+              keyExtractor={(item) => item?.id?.toString() || Math.random().toString()} // Ensure valid key
+              renderItem={({ item }) => <VillageCard item={item} />}
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={{ paddingHorizontal: 10 }}
+            />
+          </>
+        ) : (
+          <Text style={styles.noDataText}>No villages available</Text>
+        )}
+
 
         {/* Tourist Villages */}
         <Text style={styles.sectionTitle}>Tourist Attraction</Text>
@@ -168,7 +177,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF",
     borderRadius: 15,
     padding: 5,
-    marginLeft:5,
+    marginLeft: 5,
     marginRight: 12, // Ensure space between cards
     width: 260,// Set a fixed width for consistency
     height: 250,

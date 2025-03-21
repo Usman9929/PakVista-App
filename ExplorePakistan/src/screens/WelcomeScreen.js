@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StatusBar, Image, TouchableOpacity, Modal, Alert } from 'react-native';
+import { View, Text, StatusBar, Image, TouchableOpacity, Modal, Alert, ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';  // Import navigation
 import styles from '../styles/globalStyles';
 
@@ -9,6 +9,7 @@ const WelcomeScreen = () => {
   const [cities, setCities] = useState([]); // Store cities data
   const [selectedCity, setSelectedCity] = useState("Select City"); // Track selected city
   const [selectedCityData, setSelectedCityData] = useState(null); // Store selected city details
+  const [loading, setLoading] = useState(true)
 
   // Fetch city data from the API
   const getCityData = async () => {
@@ -16,6 +17,7 @@ const WelcomeScreen = () => {
     try {
       let result = await fetch(url);
       result = await result.json();
+      console.log("Fetched city data:", result); // Debugging
       setCities(result); // Set cities data to state
     } catch (error) {
       console.error("Error fetching city data:", error);
@@ -24,7 +26,12 @@ const WelcomeScreen = () => {
 
   useEffect(() => {
     getCityData(); // Fetch cities when the component mounts
+    setLoading(false);
   }, []);
+
+  if (loading) {
+    return <ActivityIndicator size="large" color="#0000ff"  />;
+  }
 
   // Handle city selection
   const handleSelectCity = (city) => {
@@ -88,9 +95,9 @@ const WelcomeScreen = () => {
               <Text style={styles.title}>Select Your City</Text>
 
               {/* Map through cities array and display dynamically */}
-              {cities.map((city) => (
+              {cities.map((city,index) => (
                 <TouchableOpacity
-                  key={city.id}
+                  key={city.id || index}
                   onPress={() => handleSelectCity(city)}
                 >
                   <Text style={styles.cityOption}>{city.city_name}</Text>

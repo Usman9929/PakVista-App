@@ -6,14 +6,15 @@ import { Image, StyleSheet } from 'react-native';
 import ExploreScreen from '../screens/ExploreScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 import ProfileScreen from '../screens/ProfileScreen';
-import ExploreVillageScreen from '../screens/ExploreVillageScreen';
 import RegionalStackNavigator from "./StackNavigator"; // Import the stack navigator
+
 
 // Import Custom Icons
 import RegionalIcon from '../assets/icons/insights.png';
 import ExploreIcon from '../assets/icons/explore1.png';
 import NotificationIcon from '../assets/icons/notification.png';
 import ProfileIcon from '../assets/icons/profile.png';
+
 
 
 const Tab = createBottomTabNavigator();
@@ -51,7 +52,7 @@ const BottomTabs = () => {
         headerShown: false,  // Hide header for all screens
       })}
     >
-       <Tab.Screen name="Regional Insight" component={RegionalStackNavigator} options={{ tabBarLabel: "Regional Insights" }} />
+      <Tab.Screen name="Regional Insight" component={RegionalStackNavigator} options={{ tabBarLabel: "Regional Insights" }} />
       <Tab.Screen name="Explore" component={ExploreScreen} />
       <Tab.Screen name="Notification" component={NotificationScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
