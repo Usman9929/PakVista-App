@@ -11,6 +11,7 @@ import PopularSites from './screens/PopularSites';
 import ExploreVillageScreen from './screens/ExploreVillageScreen';
 import RegionEvents from './screens/RegionEvents';
 import EmergencyContact from './screens/EmergencyContact';
+import SearchScreen from './screens/SearchScreen';
 
 
 
@@ -27,6 +28,7 @@ const App = () => {
         <Stack.Screen name="PopularSites" component={PopularSites} />
         <Stack.Screen name="RegionEvents" component={RegionEvents} />
         <Stack.Screen name="EmergencyContact" component={EmergencyContact} />
+        <Stack.Screen name="SearchScreen" component={SearchScreen} />
         <Stack.Screen
           name="RegionalInsight"
           component={RegionalInsightScreen}

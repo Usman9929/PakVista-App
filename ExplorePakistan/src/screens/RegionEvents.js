@@ -5,14 +5,14 @@ const RegionEvents = () => {
     return (
         <ScrollView style={styles.PopularSitesContainer}>
             <Image
-                source={require('../assets/images/region_events.jpg')}
+                source={require('../assets/images/regional_background.jpg')}
                 style={styles.headerImage}
             />
             {/* Grid Buttons */}
             <View style={styles.gridContainer}>
                 <RegionEventsButton title="Religious Festival" icon={require('../assets/icons/religious_festivals.png')} />
                 <RegionEventsButton title="Cultural and Seasonal Festival " icon={require('../assets/icons/cultural_and_seasonal_festival.png')} />
-                <RegionEventsButton title="Regional Events Ethnic Festivals" icon={require('../assets/icons/national_observances.png')} />
+                <RegionEventsButton title="Regional Events Ethnic Festivals" icon={require('../assets/icons/regional_events_ethnic_festivals.png')} />
                 <RegionEventsButton title="Folk and Traditional Celebrations" icon={require('../assets/icons/Folk_and_traditional_celebrations.png')} />
                 <RegionEventsButton title="National Observances" icon={require('../assets/icons/national_observances.png')} />
                 <RegionEventsButton title="Internationally Inspired Events" icon={require('../assets/icons/internationally_nspired_events.png')} />

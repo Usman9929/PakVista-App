@@ -4,6 +4,8 @@ import RegionalInsightScreen from "../screens/RegionalInsightScreen"; // Import 
 import ExploreVillageScreen from "../screens/ExploreVillageScreen";
 import PopularSites from "../screens/PopularSites";
 import RegionEvents from "../screens/RegionEvents";
+import EmergencyContact from "../screens/EmergencyContact";
+import SearchScreen from "../screens/SearchScreen";
 
 
 const Stack = createNativeStackNavigator();
@@ -15,6 +17,9 @@ const RegionalStackNavigator = () => {
       <Stack.Screen name="ExploreVillageScreen" component={ExploreVillageScreen} />
       <Stack.Screen name="PopularSites" component={PopularSites} />
       <Stack.Screen name="RegionEvents" component={RegionEvents} />
+      <Stack.Screen name="EmergencyContact" component={EmergencyContact} />
+      <Stack.Screen name="SearchScreen" component={SearchScreen} />
+      
     </Stack.Navigator>
   );
 };

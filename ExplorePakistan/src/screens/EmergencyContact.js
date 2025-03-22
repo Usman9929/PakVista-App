@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ImageBackground, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, ImageBackground, StyleSheet, FlatList, TouchableOpacity, ScrollView } from 'react-native';
 
 const emergencyContacts = [
     {
@@ -49,6 +49,7 @@ const EmergencyContact = () => {
 
 
     return (
+        <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
             {/* Header Image */}
             <ImageBackground
@@ -64,16 +65,18 @@ const EmergencyContact = () => {
                     renderItem={renderItem}
                     keyExtractor={(item, index) => index.toString()}
                     contentContainerStyle={styles.listContainer}
+                    nestedScrollEnabled={true} // Add this line
                 />
             </View>
         </View>
+        </ScrollView>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F8F8F8'
+        backgroundColor: '#F8F8F8',
     },
     headerImage: {
         width: '100%',
@@ -82,9 +85,9 @@ const styles = StyleSheet.create({
     },
     cardWrapper: {
         marginBottom: 15,
-        borderRadius: 15,
-        shadowColor: '#000',
-        shadowOpacity: 0.2,
+        borderRadius: 60,
+        shadowColor: 'red',
+        shadowOpacity: 0.4,
         shadowRadius: 6,
         elevation: 6, // Android shadow
         shadowOffset: { width: 0, height: 4 },
