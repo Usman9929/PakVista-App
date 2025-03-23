@@ -1,5 +1,4 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import WelcomeScreen from './screens/WelcomeScreen';
@@ -12,6 +11,9 @@ import ExploreVillageScreen from './screens/ExploreVillageScreen';
 import RegionEvents from './screens/RegionEvents';
 import EmergencyContact from './screens/EmergencyContact';
 import SearchScreen from './screens/SearchScreen';
+import VillageDetail from './screens/VillageDetail';
+import ReligousFestivalScreen from './screens/Region_Events_Screens/ReligousFestivalScreen';
+import CulturalandSeasonalFestival from './screens/Region_Events_Screens/CulturalandSeasonalFestival';
 
 
 
@@ -29,6 +31,9 @@ const App = () => {
         <Stack.Screen name="RegionEvents" component={RegionEvents} />
         <Stack.Screen name="EmergencyContact" component={EmergencyContact} />
         <Stack.Screen name="SearchScreen" component={SearchScreen} />
+        <Stack.Screen name="VillageDetail" component={VillageDetail} />
+        <Stack.Screen name="ReligousFestivalScreen" component={ReligousFestivalScreen} />
+        <Stack.Screen name="CulturalandSeasonalFestival" component={CulturalandSeasonalFestival} />
         <Stack.Screen
           name="RegionalInsight"
           component={RegionalInsightScreen}
