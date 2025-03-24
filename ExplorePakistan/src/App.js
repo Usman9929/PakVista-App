@@ -14,7 +14,7 @@ import SearchScreen from './screens/SearchScreen';
 import VillageDetail from './screens/VillageDetail';
 import ReligousFestivalScreen from './screens/Region_Events_Screens/ReligousFestivalScreen';
 import CulturalandSeasonalFestival from './screens/Region_Events_Screens/CulturalandSeasonalFestival';
-
+import RegionalEventsEthnicFestivals from './screens/Region_Events_Screens/RegionalEventsEthnicFestivals';
 
 
 const Stack = createStackNavigator();
@@ -34,6 +34,7 @@ const App = () => {
         <Stack.Screen name="VillageDetail" component={VillageDetail} />
         <Stack.Screen name="ReligousFestivalScreen" component={ReligousFestivalScreen} />
         <Stack.Screen name="CulturalandSeasonalFestival" component={CulturalandSeasonalFestival} />
+        <Stack.Screen name="RegionalEventsEthnicFestivals" component={RegionalEventsEthnicFestivals} />
         <Stack.Screen
           name="RegionalInsight"
           component={RegionalInsightScreen}

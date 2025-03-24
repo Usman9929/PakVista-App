@@ -2,26 +2,26 @@ import React from 'react';
 import { View, Text, ImageBackground, StyleSheet, FlatList, TouchableOpacity, ScrollView } from 'react-native';
 import styles from './Region_Events_Screens_Style';
 
-const Cultural_and_Seasonal_Festival = [
+const Regional_Events_Ethnic_Festivals = [
     {
-        title: 'Basant (Kite Flying Festival) :',
+        title: 'Sindh Cultural Day :',
         details: [
-            { label: 'Overview ', value: 'Basant marks the arrival of spring and is primarily celebrated in Punjab, particularly in Lahore. This festival is synonymous with kite flying competitions, where the sky is dotted with colorful kites. It is accompanied by music, dance, and traditional food.' },
-            { label: 'Activities ', value: ' Families and friends gather on rooftops to fly kites, while others enjoy festive foods like samosas and jalebis. Night celebrations often include lighting lanterns and fireworks.' },
-            { label: 'Significance ', value: ' Basant is not just a celebration of spring but also a cultural emblem of Punjab is heritage. Though its large-scale celebration has faced restrictions due to safety concerns, it remains an iconic part of Pakistan’s cultural identity.' }
+            { label: 'Overview ', value: 'This day celebrates the rich cultural heritage of Sindh. It is prominently recognized for showcasing the Ajrak (block-printed shawls) and Sindhi topi (traditional hat) as symbols of Sindhi identity.' },
+            { label: 'Activities ', value: " \n \t \t Cultural processions and gatherings.\n \t \t Traditional Sindhi music performances.\n \t \t Ajrak and topi distribution among participants. "},
+            { label: 'Significance ', value: ' It promotes Sindhi heritage and fosters unity among Sindhis across the province and beyond.' }
         ]
     },
     {
-        title: 'Shandur Polo Festival :',
+        title: 'Lok Virsa Mela (Islamabad) :',
         details: [
-            { label: 'Overview ', value: ' Held at Shandur Pass in Gilgit-Baltistan, this festival takes place on the world’s highest polo ground, located at an altitude of 12,000 feet.' },
-            { label: 'Activities ', value: 'The highlight is the polo matches between teams from Chitral and Gilgit, played in their traditional freestyle format. The event also features cultural performances, local music, camping, and trekking for visitors.' },
-            { label: 'Significance ', value: ' The festival celebrates the local tradition of polo, while also promoting tourism and cultural exchange in the region.' }
+            { label: 'Overview ', value: ' Held at the Lok Virsa Museum, this festival celebrates Pakistan is folk traditions, crafts, and culture.' },
+            { label: 'Activities ', value: '\n \t \t Live folk music and dance performances. \n \t \t Exhibition of regional crafts and handicrafts. \n \t \t Cultural pavilions representing all provinces and territories.' },
+            { label: 'Significance ', value: ' It provides a platform for artisans and folk artists to showcase their talent while preserving the diverse cultural heritage of Pakistan.' }
         ]
     }
 ];
 
-const CulturalandSeasonalFestival = () => {
+const RegionalEventsEthnicFestivals = () => {
     const renderItem = ({ item }) => (
         <View style={styles.cardWrapper}>
             <View style={styles.card}>
@@ -51,7 +51,7 @@ const CulturalandSeasonalFestival = () => {
             <View style={styles.content}>
                 <Text style={styles.sectionTitle}>Cultural and Seasonal Festials</Text>
                 <FlatList
-                    data={Cultural_and_Seasonal_Festival}
+                    data={Regional_Events_Ethnic_Festivals}
                     renderItem={renderItem}
                     keyExtractor={(item, index) => index.toString()}
                     contentContainerStyle={styles.listContainer}
@@ -64,4 +64,4 @@ const CulturalandSeasonalFestival = () => {
 };
 
 
-export default CulturalandSeasonalFestival;
+export default RegionalEventsEthnicFestivals;

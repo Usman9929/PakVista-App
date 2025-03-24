@@ -14,7 +14,7 @@ const RegionEvents = () => {
             <View style={styles.gridContainer}>
                 <RegionEventsButton title="Religious Festival" icon={require('../assets/icons/religious_festivals.png')} onPress={() => navigation.navigate('ReligousFestivalScreen')} />
                 <RegionEventsButton title="Cultural and Seasonal Festival " icon={require('../assets/icons/cultural_and_seasonal_festival.png')} onPress={() => navigation.navigate('CulturalandSeasonalFestival')}/>
-                <RegionEventsButton title="Regional Events Ethnic Festivals" icon={require('../assets/icons/regional_events_ethnic_festivals.png')} />
+                <RegionEventsButton title="Regional Events Ethnic Festivals" icon={require('../assets/icons/regional_events_ethnic_festivals.png')} onPress={() => navigation.navigate('RegionalEventsEthnicFestivals')} />
                 <RegionEventsButton title="Folk and Traditional Celebrations" icon={require('../assets/icons/Folk_and_traditional_celebrations.png')} />
                 <RegionEventsButton title="National Observances" icon={require('../assets/icons/national_observances.png')} />
                 <RegionEventsButton title="Internationally Inspired Events" icon={require('../assets/icons/internationally_nspired_events.png')} />
