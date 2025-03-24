@@ -19,44 +19,38 @@ const National_Observances= [
     }
 ];
 
-const NationalObservances = () => {
-    const renderItem = ({ item }) => (
-        <View style={styles.cardWrapper}>
-            <View style={styles.card}>
-                <Text style={styles.cardTitle}>{item.title}</Text>
-                {item.details.map((detail, index) => (
-                    <Text key={index} style={styles.cardText}>
-                        <Text style={styles.bold}>{detail.label}:</Text> {detail.value}
-                    </Text>
-                ))}
-                <TouchableOpacity style={styles.addButton}>
-                    <Text style={styles.addButtonText}>Add</Text>
-                </TouchableOpacity>
-            </View>
-        </View>
-    );
-
-
+const  NationalObservances = () => {
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
-        <View style={styles.container}>
-            {/* Header Image */}
-            <ImageBackground source={require('../.././assets/images/timergaraImage_1.jpg')}
-                style={styles.headerImage}
-            />
-
-            {/* Emergency Contacts Section */}
-            <View style={styles.content}>
-                <Text style={styles.sectionTitle}>National Observances</Text>
-                <FlatList
-                    data={National_Observances}
-                    renderItem={renderItem}
-                    keyExtractor={(item, index) => index.toString()}
-                    contentContainerStyle={styles.listContainer}
-                    nestedScrollEnabled={true} // Add this line
+            <View style={styles.container}>
+                {/* Header Image */}
+                <ImageBackground source={require('../.././assets/images/timergaraImage_1.jpg')}
+                    style={styles.headerImage}
                 />
+
+                {/* Emergency Contacts Section */}
+                <View style={styles.content}>
+                    <Text style={styles.sectionTitle}>National Observances</Text>
+                    
+                    <View style = {{marginBottom:60}}>
+                    {National_Observances.map((item, index) => (
+                        <View key={index} style={styles.cardWrapper}>
+                            <View style={styles.card}>
+                                <Text style={styles.cardTitle}>{item.title}</Text>
+                                {item.details.map((detail, i) => (
+                                    <Text key={i} style={styles.cardText}>
+                                        <Text style={styles.bold}>{detail.label}:</Text> {detail.value}
+                                    </Text>
+                                ))}
+                                <TouchableOpacity style={styles.addButton}>
+                                    <Text style={styles.addButtonText}>Add</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    ))}
+                    </View>
+                </View>
             </View>
-        </View>
         </ScrollView>
     );
 };

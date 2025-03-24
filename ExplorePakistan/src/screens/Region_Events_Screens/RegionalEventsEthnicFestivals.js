@@ -21,47 +21,40 @@ const Regional_Events_Ethnic_Festivals = [
     }
 ];
 
-const RegionalEventsEthnicFestivals = () => {
-    const renderItem = ({ item }) => (
-        <View style={styles.cardWrapper}>
-            <View style={styles.card}>
-                <Text style={styles.cardTitle}>{item.title}</Text>
-                {item.details.map((detail, index) => (
-                    <Text key={index} style={styles.cardText}>
-                        <Text style={styles.bold}>{detail.label}:</Text> {detail.value}
-                    </Text>
-                ))}
-                <TouchableOpacity style={styles.addButton}>
-                    <Text style={styles.addButtonText}>Add</Text>
-                </TouchableOpacity>
-            </View>
-        </View>
-    );
-
-
+const  RegionalEventsEthnicFestivals = () => {
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
-        <View style={styles.container}>
-            {/* Header Image */}
-            <ImageBackground source={require('../.././assets/images/timergaraImage_1.jpg')}
-                style={styles.headerImage}
-            />
-
-            {/* Emergency Contacts Section */}
-            <View style={styles.content}>
-                <Text style={styles.sectionTitle}>Regional Events Ethnic Ferstivals</Text>
-                <FlatList
-                    data={Regional_Events_Ethnic_Festivals}
-                    renderItem={renderItem}
-                    keyExtractor={(item, index) => index.toString()}
-                    contentContainerStyle={styles.listContainer}
-                    nestedScrollEnabled={true} // Add this line
+            <View style={styles.container}>
+                {/* Header Image */}
+                <ImageBackground source={require('../.././assets/images/timergaraImage_1.jpg')}
+                    style={styles.headerImage}
                 />
+
+                {/* Emergency Contacts Section */}
+                <View style={styles.content}>
+                    <Text style={styles.sectionTitle}>Regional Events Ethnic Festivals</Text>
+                    
+                    <View style = {{marginBottom:60}}>
+                    {Regional_Events_Ethnic_Festivals.map((item, index) => (
+                        <View key={index} style={styles.cardWrapper}>
+                            <View style={styles.card}>
+                                <Text style={styles.cardTitle}>{item.title}</Text>
+                                {item.details.map((detail, i) => (
+                                    <Text key={i} style={styles.cardText}>
+                                        <Text style={styles.bold}>{detail.label}:</Text> {detail.value}
+                                    </Text>
+                                ))}
+                                <TouchableOpacity style={styles.addButton}>
+                                    <Text style={styles.addButtonText}>Add</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    ))}
+                    </View>
+                </View>
             </View>
-        </View>
         </ScrollView>
     );
 };
-
 
 export default RegionalEventsEthnicFestivals;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ImageBackground, StyleSheet, FlatList, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, ImageBackground, ScrollView, TouchableOpacity } from 'react-native';
 import styles from './Region_Events_Screens_Style';
 
 const Cultural_and_Seasonal_Festival = [
@@ -22,46 +22,39 @@ const Cultural_and_Seasonal_Festival = [
 ];
 
 const CulturalandSeasonalFestival = () => {
-    const renderItem = ({ item }) => (
-        <View style={styles.cardWrapper}>
-            <View style={styles.card}>
-                <Text style={styles.cardTitle}>{item.title}</Text>
-                {item.details.map((detail, index) => (
-                    <Text key={index} style={styles.cardText}>
-                        <Text style={styles.bold}>{detail.label}:</Text> {detail.value}
-                    </Text>
-                ))}
-                <TouchableOpacity style={styles.addButton}>
-                    <Text style={styles.addButtonText}>Add</Text>
-                </TouchableOpacity>
-            </View>
-        </View>
-    );
-
-
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
-        <View style={styles.container}>
-            {/* Header Image */}
-            <ImageBackground source={require('../.././assets/images/timergaraImage_1.jpg')}
-                style={styles.headerImage}
-            />
-
-            {/* Emergency Contacts Section */}
-            <View style={styles.content}>
-                <Text style={styles.sectionTitle}>Cultural and Seasonal Festials</Text>
-                <FlatList
-                    data={Cultural_and_Seasonal_Festival}
-                    renderItem={renderItem}
-                    keyExtractor={(item, index) => index.toString()}
-                    contentContainerStyle={styles.listContainer}
-                    nestedScrollEnabled={true} // Add this line
+            <View style={styles.container}>
+                {/* Header Image */}
+                <ImageBackground source={require('../.././assets/images/timergaraImage_1.jpg')}
+                    style={styles.headerImage}
                 />
+
+                {/* Emergency Contacts Section */}
+                <View style={styles.content}>
+                    <Text style={styles.sectionTitle}>Cultural and Seasonal Festivals</Text>
+                    
+                    <View style = {{marginBottom:60}}>
+                    {Cultural_and_Seasonal_Festival.map((item, index) => (
+                        <View key={index} style={styles.cardWrapper}>
+                            <View style={styles.card}>
+                                <Text style={styles.cardTitle}>{item.title}</Text>
+                                {item.details.map((detail, i) => (
+                                    <Text key={i} style={styles.cardText}>
+                                        <Text style={styles.bold}>{detail.label}:</Text> {detail.value}
+                                    </Text>
+                                ))}
+                                <TouchableOpacity style={styles.addButton}>
+                                    <Text style={styles.addButtonText}>Add</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    ))}
+                    </View>
+                </View>
             </View>
-        </View>
         </ScrollView>
     );
 };
-
 
 export default CulturalandSeasonalFestival;

@@ -28,44 +28,38 @@ const Internationallly_Inspired_Events = [
 ];
 
 
-const InternationalllyInspiredEvents = () => {
-    const renderItem = ({ item }) => (
-        <View style={styles.cardWrapper}>
-            <View style={styles.card}>
-                <Text style={styles.cardTitle}>{item.title}</Text>
-                {item.details.map((detail, index) => (
-                    <Text key={index} style={styles.cardText}>
-                        <Text style={styles.bold}>{detail.label}:</Text> {detail.value}
-                    </Text>
-                ))}
-                <TouchableOpacity style={styles.addButton}>
-                    <Text style={styles.addButtonText}>Add</Text>
-                </TouchableOpacity>
-            </View>
-        </View>
-    );
-
-
+const  InternationalllyInspiredEvents = () => {
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
-        <View style={styles.container}>
-            {/* Header Image */}
-            <ImageBackground source={require('../.././assets/images/timergaraImage_1.jpg')}
-                style={styles.headerImage}
-            />
-
-            {/* Emergency Contacts Section */}
-            <View style={styles.content}>
-                <Text style={styles.sectionTitle}>Internationallly Inspired Events</Text>
-                <FlatList
-                    data={Internationallly_Inspired_Events}
-                    renderItem={renderItem}
-                    keyExtractor={(item, index) => index.toString()}
-                    contentContainerStyle={styles.listContainer}
-                    nestedScrollEnabled={true} // Add this line
+            <View style={styles.container}>
+                {/* Header Image */}
+                <ImageBackground source={require('../.././assets/images/timergaraImage_1.jpg')}
+                    style={styles.headerImage}
                 />
+
+                {/* Emergency Contacts Section */}
+                <View style={styles.content}>
+                    <Text style={styles.sectionTitle}>Internationallly Inspired Events</Text>
+                    
+                    <View style = {{marginBottom:60}}>
+                    {Internationallly_Inspired_Events.map((item, index) => (
+                        <View key={index} style={styles.cardWrapper}>
+                            <View style={styles.card}>
+                                <Text style={styles.cardTitle}>{item.title}</Text>
+                                {item.details.map((detail, i) => (
+                                    <Text key={i} style={styles.cardText}>
+                                        <Text style={styles.bold}>{detail.label}:</Text> {detail.value}
+                                    </Text>
+                                ))}
+                                <TouchableOpacity style={styles.addButton}>
+                                    <Text style={styles.addButtonText}>Add</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    ))}
+                    </View>
+                </View>
             </View>
-        </View>
         </ScrollView>
     );
 };
