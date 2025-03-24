@@ -17,8 +17,8 @@ const RegionEvents = () => {
                 <RegionEventsButton title="Regional Events Ethnic Festivals" icon={require('../assets/icons/regional_events_ethnic_festivals.png')} onPress={() => navigation.navigate('RegionalEventsEthnicFestivals')} />
                 <RegionEventsButton title="Folk and Traditional Celebrations" icon={require('../assets/icons/Folk_and_traditional_celebrations.png')} onPress={() => navigation.navigate('FolkandTraditionalCelebration')} />
                 <RegionEventsButton title="National Observances" icon={require('../assets/icons/national_observances.png')} onPress={() => navigation.navigate('NationalObservances')} />
-                <RegionEventsButton title="Internationally Inspired Events" icon={require('../assets/icons/internationally_nspired_events.png')} />
-                <RegionEventsButton title="Adventure and Sports Events" icon={require('../assets/icons/adventure_and_ports_events.png')} />
+                <RegionEventsButton title="Internationally Inspired Events" icon={require('../assets/icons/internationally_nspired_events.png')} onPress={() => navigation.navigate('InternationalllyInspiredEvents')} />
+                <RegionEventsButton title="Adventure and Sports Events" icon={require('../assets/icons/adventure_and_ports_events.png')} onPress={() => navigation.navigate('AdventureAndSportsEvents')} />
             </View>
         </ScrollView>
     );

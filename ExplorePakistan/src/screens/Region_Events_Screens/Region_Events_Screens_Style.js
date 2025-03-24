@@ -29,11 +29,12 @@ const styles = StyleSheet.create({
         marginLeft: 15
     },
     sectionTitle: {
-        fontSize: 25,
+        fontSize: 20,
         fontWeight: 'bold',
         textAlign: 'center',
         marginBottom: 30,
-        alignSelf:"flex-start"
+        alignSelf:"flex-start",
+        marginTop:10
     },
     listContainer: {
         paddingBottom: 80

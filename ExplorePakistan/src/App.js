@@ -17,6 +17,9 @@ import CulturalandSeasonalFestival from './screens/Region_Events_Screens/Cultura
 import RegionalEventsEthnicFestivals from './screens/Region_Events_Screens/RegionalEventsEthnicFestivals';
 import FolkandTraditionalCelebration from './screens/Region_Events_Screens/FolkandTraditionalCelebration';
 import NationalObservances from './screens/Region_Events_Screens/NationalObservances';
+import InternationalllyInspiredEvents from './screens/Region_Events_Screens/InternationalllyInspiredEvents';
+import AdventureAndSportsEvents from './screens/Region_Events_Screens/AdventureAndSportsEvents';
+
 
 
 
@@ -40,6 +43,8 @@ const App = () => {
         <Stack.Screen name="RegionalEventsEthnicFestivals" component={RegionalEventsEthnicFestivals} />
         <Stack.Screen name="FolkandTraditionalCelebration" component={FolkandTraditionalCelebration} />
         <Stack.Screen name="NationalObservances" component={NationalObservances} />
+        <Stack.Screen name="InternationalllyInspiredEvents" component={InternationalllyInspiredEvents} />
+        <Stack.Screen name="AdventureAndSportsEvents" component={AdventureAndSportsEvents} />
         <Stack.Screen
           name="RegionalInsight"
           component={RegionalInsightScreen}
