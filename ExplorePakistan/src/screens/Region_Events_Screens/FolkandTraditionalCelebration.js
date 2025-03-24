@@ -2,26 +2,26 @@ import React from 'react';
 import { View, Text, ImageBackground, StyleSheet, FlatList, TouchableOpacity, ScrollView } from 'react-native';
 import styles from './Region_Events_Screens_Style';
 
-const Regional_Events_Ethnic_Festivals = [
+const Folk_and_Traditional_Celebration = [
     {
-        title: 'Sindh Cultural Day :',
+        title: 'Horse and Cattle shows :',
         details: [
-            { label: 'Overview ', value: 'This day celebrates the rich cultural heritage of Sindh. It is prominently recognized for showcasing the Ajrak (block-printed shawls) and Sindhi topi (traditional hat) as symbols of Sindhi identity.' },
-            { label: 'Activities ', value: " \n \t \t Cultural processions and gatherings.\n \t \t Traditional Sindhi music performances.\n \t \t Ajrak and topi distribution among participants. "},
-            { label: 'Significance ', value: ' It promotes Sindhi heritage and fosters unity among Sindhis across the province and beyond.' }
+            { label: 'Region ', value: 'Primarily Punjab, including cities like Lahore and Sahiwal.' },
+            { label: 'Description ', value: " These events showcase the livestock culture and rural traditions of Pakistan. Farmers bring their best breeds of horses, camels, and cattle for exhibitions and competitions. Activities include horse dancing, cattle races, and tent pegging, accompanied by traditional music and food stalls. "},
+            { label: 'Significance ', value: '  These shows highlight the agricultural backbone of Pakistan and celebrate rural life, attracting both locals and tourists. ' }
         ]
     },
     {
-        title: 'Lok Virsa Mela (Islamabad) :',
+        title: 'Cholistan Jeep Rally :',
         details: [
-            { label: 'Overview ', value: ' Held at the Lok Virsa Museum, this festival celebrates Pakistan is folk traditions, crafts, and culture.' },
-            { label: 'Activities ', value: '\n \t ✓   Live folk music and dance performances. \n \t ✓  Exhibition of regional crafts and handicrafts. \n \t ✓  Cultural pavilions representing all provinces and territories.' },
-            { label: 'Significance ', value: ' It provides a platform for artisans and folk artists to showcase their talent while preserving the diverse cultural heritage of Pakistan.' }
+            { label: 'Region ', value: ' Cholistan Desert, Punjab.' },
+            { label: 'Description ', value: ' A thrilling desert jeep rally held annually, drawing local and international drivers to navigate challenging desert terrains. The event also includes cultural activities such as traditional dances, handicrafts exhibitions, and desert camping.' },
+            { label: 'Significance ', value: ' This event promotes adventure tourism in Pakistan while preserving the cultural heritage of the Cholistan Desert.' }
         ]
     }
 ];
 
-const RegionalEventsEthnicFestivals = () => {
+const FolkandTraditionalCelebration = () => {
     const renderItem = ({ item }) => (
         <View style={styles.cardWrapper}>
             <View style={styles.card}>
@@ -49,9 +49,9 @@ const RegionalEventsEthnicFestivals = () => {
 
             {/* Emergency Contacts Section */}
             <View style={styles.content}>
-                <Text style={styles.sectionTitle}>Regional Events Ethnic Ferstivals</Text>
+                <Text style={styles.sectionTitle}>Folk and Traditional Celebrations</Text>
                 <FlatList
-                    data={Regional_Events_Ethnic_Festivals}
+                    data={Folk_and_Traditional_Celebration}
                     renderItem={renderItem}
                     keyExtractor={(item, index) => index.toString()}
                     contentContainerStyle={styles.listContainer}
@@ -64,4 +64,4 @@ const RegionalEventsEthnicFestivals = () => {
 };
 
 
-export default RegionalEventsEthnicFestivals;
+export default FolkandTraditionalCelebration;

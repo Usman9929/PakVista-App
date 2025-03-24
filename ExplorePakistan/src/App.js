@@ -15,6 +15,9 @@ import VillageDetail from './screens/VillageDetail';
 import ReligousFestivalScreen from './screens/Region_Events_Screens/ReligousFestivalScreen';
 import CulturalandSeasonalFestival from './screens/Region_Events_Screens/CulturalandSeasonalFestival';
 import RegionalEventsEthnicFestivals from './screens/Region_Events_Screens/RegionalEventsEthnicFestivals';
+import FolkandTraditionalCelebration from './screens/Region_Events_Screens/FolkandTraditionalCelebration';
+import NationalObservances from './screens/Region_Events_Screens/NationalObservances';
+
 
 
 const Stack = createStackNavigator();
@@ -35,6 +38,8 @@ const App = () => {
         <Stack.Screen name="ReligousFestivalScreen" component={ReligousFestivalScreen} />
         <Stack.Screen name="CulturalandSeasonalFestival" component={CulturalandSeasonalFestival} />
         <Stack.Screen name="RegionalEventsEthnicFestivals" component={RegionalEventsEthnicFestivals} />
+        <Stack.Screen name="FolkandTraditionalCelebration" component={FolkandTraditionalCelebration} />
+        <Stack.Screen name="NationalObservances" component={NationalObservances} />
         <Stack.Screen
           name="RegionalInsight"
           component={RegionalInsightScreen}
