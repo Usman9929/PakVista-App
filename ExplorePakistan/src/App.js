@@ -6,7 +6,7 @@ import LoginScreen from './screens/LoginScreen'
 import RegionalInsightScreen from './screens/RegionalInsightScreen';
 import BottomTabs from './navigation/BottomTab';
 import SignupScreen from './screens/Signup';
-import PopularSites from './screens/PopularSites';
+import PopularSites from './screens/Popular_sites/PopularSites';
 import ExploreVillageScreen from './screens/ExploreVillageScreen';
 import RegionEvents from './screens/RegionEvents';
 import EmergencyContact from './screens/EmergencyContact';
@@ -19,7 +19,11 @@ import FolkandTraditionalCelebration from './screens/Region_Events_Screens/Folka
 import NationalObservances from './screens/Region_Events_Screens/NationalObservances';
 import InternationalllyInspiredEvents from './screens/Region_Events_Screens/InternationalllyInspiredEvents';
 import AdventureAndSportsEvents from './screens/Region_Events_Screens/AdventureAndSportsEvents';
-
+import CulturalInformation from './screens/Popular_sites/CulturalInformation';
+import Economy from './screens/Popular_sites/Economy';
+import GeographicalInfo from './screens/Popular_sites/GeographicalInfo';
+import HistoricalBackground from './screens/Popular_sites/HistoricalBackground';
+import PopulationDetail from './screens/Popular_sites/PopulationDetail';
 
 
 
@@ -45,6 +49,11 @@ const App = () => {
         <Stack.Screen name="NationalObservances" component={NationalObservances} />
         <Stack.Screen name="InternationalllyInspiredEvents" component={InternationalllyInspiredEvents} />
         <Stack.Screen name="AdventureAndSportsEvents" component={AdventureAndSportsEvents} />
+        <Stack.Screen name="CulturalInformation" component={CulturalInformation} />
+        <Stack.Screen name="Economy" component={Economy} />
+        <Stack.Screen name="GeographicalInfo" component={GeographicalInfo} />
+        <Stack.Screen name="HistoricalBackground" component={HistoricalBackground} />
+        <Stack.Screen name="PopulationDetail" component={PopulationDetail} />
         <Stack.Screen
           name="RegionalInsight"
           component={RegionalInsightScreen}

@@ -10,6 +10,7 @@ const RegionEvents = () => {
                 source={require('../assets/images/regional_background.jpg')}
                 style={styles.headerImage}
             />
+            <Text style={{fontSize:25, fontWeight:"bold", marginLeft:13, marginBottom:15, marginTop:-10}}>Region Events</Text>
             {/* Grid Buttons */}
             <View style={styles.gridContainer}>
                 <RegionEventsButton title="Religious Festival" icon={require('../assets/icons/religious_festivals.png')} onPress={() => navigation.navigate('ReligousFestivalScreen')} />

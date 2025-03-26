@@ -1,26 +1,34 @@
 import React, { useState } from "react";
 import { View, Text, ImageBackground, FlatList, Image, TouchableOpacity, ScrollView, StyleSheet } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 
-const categories = ["All", "Population Detail", "Geographical Info", "Economy", "Historical Background", "Cultural Information"];
+const categories = [
+    { name: "Population Detail", screen: "PopulationDetail" },
+    { name: "Geographical Info", screen: "GeographicalInfo" },
+    { name: "Economy", screen: "Economy" },
+    { name: "Historical Background", screen: "HistoricalBackground" },
+    { name: "Cultural Information", screen: "CulturalInformation" }
+];
 
 const popularSites = [
-    { id: "1", name: "Koherai Malakand", location: "Timergara Dir Lower (KPK)", image: require("../assets/images/timergaraImage_1.jpg") },
-    { id: "2", name: "Shingrai", location: "Timergara Dir Lower", image: require("../assets/images/timergaraImage_2.jpg") },
+    { id: "1", name: "Koherai Malakand", location: "Timergara Dir Lower (KPK)", image: require("../.././assets/images/timergaraImage_1.jpg") },
+    { id: "2", name: "Shingrai", location: "Timergara Dir Lower", image: require("../.././assets/images/timergaraImage_2.jpg") },
 ];
 
 const topSites = [
-    { id: "1", name: "Malakand (College)", location: "Timergara Dir Lower (KPK)", image: require("../assets/images/timergaraImage_3.jpg") },
-    { id: "2", name: "Shahid Chowk", location: "Timergara Dir Lower (KPK)", image: require("../assets/images/timergaraImage_4.jpg") },
+    { id: "1", name: "Malakand (College)", location: "Timergara Dir Lower (KPK)", image: require("../.././assets/images/timergaraImage_3.jpg") },
+    { id: "2", name: "Shahid Chowk", location: "Timergara Dir Lower (KPK)", image: require("../.././assets/images/timergaraImage_4.jpg") },
 ];
 
 const PopularSites = () => {
+    const navigation = useNavigation(); // Get navigation object
     const [selectedCategory, setSelectedCategory] = useState("All");
 
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
             <View style={styles.container}>
                 {/* Header Section */}
-                <ImageBackground source={require("../assets/images/timergaraImage_5.jpg")} style={styles.headerImage}>
+                <ImageBackground source={require("../.././assets/images/timergaraImage_5.jpg")} style={styles.headerImage}>
                     <Text style={styles.headerText}>Wonderful Timergara</Text>
                     <Text style={styles.subHeaderText}>Let's Explore Together !!</Text>
                 </ImageBackground>
@@ -28,9 +36,12 @@ const PopularSites = () => {
                 {/* Category Tabs */}
                 <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.categoriesContainer}>
                     {categories.map((category, index) => (
-                        <TouchableOpacity key={index} onPress={() => setSelectedCategory(category)}>
-                            <Text style={[styles.categoryText, selectedCategory === category && styles.selectedCategory]}>
-                                {category}
+                        <TouchableOpacity
+                            key={index}
+                            onPress={() => navigation.navigate(category.screen)}
+                        >
+                            <Text style={[styles.categoryText, selectedCategory === category.name && styles.selectedCategory]}>
+                                {category.name}
                             </Text>
                         </TouchableOpacity>
                     ))}
@@ -47,7 +58,7 @@ const PopularSites = () => {
                             <Image source={item.image} style={styles.siteImage} />
                             <Text style={styles.siteTitle}>{item.name}</Text>
                             <View style={styles.locationContainer}>
-                                <Image source={require("../assets/icons/location.png")} style={styles.locationIcon} />
+                                <Image source={require("../.././assets/icons/location.png")} style={styles.locationIcon} />
                                 <Text style={styles.siteLocation}>{item.location}</Text>
                             </View>
                         </View>
@@ -56,7 +67,7 @@ const PopularSites = () => {
 
                 {/* Top Sites */}
                 <Text style={styles.sectionTitle}>Top Sites !!</Text>
-                <FlatList style = {{marginBottom:70}}
+                <FlatList style={{ marginBottom: 70 }}
                     data={topSites}
                     keyExtractor={(item) => item.id}
                     scrollEnabled={false}  // Disable FlatList scrolling
@@ -66,7 +77,7 @@ const PopularSites = () => {
                             <View>
                                 <Text style={styles.topSiteTitle}>{item.name}</Text>
                                 <View style={styles.locationContainer}>
-                                    <Image source={require("../assets/icons/location.png")} style={styles.locationIcon} />
+                                    <Image source={require("../.././assets/icons/location.png")} style={styles.locationIcon} />
                                     <Text style={styles.topSiteLocation}>{item.location}</Text>
                                 </View>
                             </View>
@@ -93,17 +104,17 @@ const styles = StyleSheet.create({
         fontSize: 30,
         fontWeight: "bold",
         color: "white",
-        alignSelf:"flex-start",
-        marginLeft:15,
-        marginTop:60
+        alignSelf: "flex-start",
+        marginLeft: 15,
+        marginTop: 60
     },
     subHeaderText: {
         fontSize: 20,
-        fontWeight:"bold",
+        fontWeight: "bold",
         color: "white",
-        alignSelf:"flex-start",
-        marginLeft:15,
-        marginTop:10
+        alignSelf: "flex-start",
+        marginLeft: 15,
+        marginTop: 10
     },
     categoriesContainer: {
         paddingHorizontal: 15,
@@ -137,7 +148,7 @@ const styles = StyleSheet.create({
         shadowRadius: 10,
         elevation: 8,
         marginBottom: 20,
-        marginTop:20
+        marginTop: 20
     },
     siteImage: {
         width: "100%",
