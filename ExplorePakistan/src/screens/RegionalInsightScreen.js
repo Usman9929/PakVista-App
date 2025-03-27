@@ -42,7 +42,7 @@ const RegionalInsightScreen = () => {
       {/* Grid Buttons */}
       <View style={styles.gridContainer}>
         <GuestButton title="Explore Villages" icon={require('../assets/icons/explore.png')} onPress={() => navigation.navigate('ExploreVillageScreen')} />
-        <GuestButton title="Popular Sites" icon={require('../assets/icons/popular_site.png')} onPress={() => navigation.navigate('PopularSites')} />
+        <GuestButton title="Explore City" icon={require('../assets/icons/popular_site.png')} onPress={() => navigation.navigate('ExploreCity')} />
         <GuestButton title="Region Events" icon={require('../assets/icons/reigon_event.png')} onPress={() => navigation.navigate('RegionEvents')} />
         <GuestButton title="Search" icon={require('../assets/icons/search.png')} onPress={() => navigation.navigate('SearchScreen')}/>
         <GuestButton title="Emergency Contacts" icon={require('../assets/icons/emergency.png')} onPress={() => navigation.navigate('EmergencyContact')}/>
@@ -87,15 +87,5 @@ const GuestButton = ({ title, icon, onPress }) => {
   );
 };
 
-
-// Bottom Navigation Item Component
-const NavItem = ({ title, icon }) => {
-  return (
-    <View style={styles.navItem}>
-      <Image source={icon} style={styles.icon} />
-      <Text>{title}</Text>
-    </View>
-  );
-};
 
 export default RegionalInsightScreen;

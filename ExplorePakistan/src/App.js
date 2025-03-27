@@ -2,11 +2,10 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import WelcomeScreen from './screens/WelcomeScreen';
-import LoginScreen from './screens/LoginScreen'
+import LoginScreen from './screens/LoginScreen';
 import RegionalInsightScreen from './screens/RegionalInsightScreen';
 import BottomTabs from './navigation/BottomTab';
 import SignupScreen from './screens/Signup';
-import PopularSites from './screens/Popular_sites/PopularSites';
 import ExploreVillageScreen from './screens/ExploreVillageScreen';
 import RegionEvents from './screens/RegionEvents';
 import EmergencyContact from './screens/EmergencyContact';
@@ -19,13 +18,8 @@ import FolkandTraditionalCelebration from './screens/Region_Events_Screens/Folka
 import NationalObservances from './screens/Region_Events_Screens/NationalObservances';
 import InternationalllyInspiredEvents from './screens/Region_Events_Screens/InternationalllyInspiredEvents';
 import AdventureAndSportsEvents from './screens/Region_Events_Screens/AdventureAndSportsEvents';
-import CulturalInformation from './screens/Popular_sites/CulturalInformation';
-import Economy from './screens/Popular_sites/Economy';
-import GeographicalInfo from './screens/Popular_sites/GeographicalInfo';
-import HistoricalBackground from './screens/Popular_sites/HistoricalBackground';
-import PopulationDetail from './screens/Popular_sites/PopulationDetail';
-
-
+import TopTabNavigator from './screens/Popular_sites/TopTabNavigator';
+import PopularSites from './screens/Popular_sites/ExploreCity';
 
 const Stack = createStackNavigator();
 
@@ -37,7 +31,6 @@ const App = () => {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Signup" component={SignupScreen} />
         <Stack.Screen name="ExploreVillageScreen" component={ExploreVillageScreen} />
-        <Stack.Screen name="PopularSites" component={PopularSites} />
         <Stack.Screen name="RegionEvents" component={RegionEvents} />
         <Stack.Screen name="EmergencyContact" component={EmergencyContact} />
         <Stack.Screen name="SearchScreen" component={SearchScreen} />
@@ -49,11 +42,8 @@ const App = () => {
         <Stack.Screen name="NationalObservances" component={NationalObservances} />
         <Stack.Screen name="InternationalllyInspiredEvents" component={InternationalllyInspiredEvents} />
         <Stack.Screen name="AdventureAndSportsEvents" component={AdventureAndSportsEvents} />
-        <Stack.Screen name="CulturalInformation" component={CulturalInformation} />
-        <Stack.Screen name="Economy" component={Economy} />
-        <Stack.Screen name="GeographicalInfo" component={GeographicalInfo} />
-        <Stack.Screen name="HistoricalBackground" component={HistoricalBackground} />
-        <Stack.Screen name="PopulationDetail" component={PopulationDetail} />
+        <Stack.Screen name="ExploreCity" component={TopTabNavigator} />
+
         <Stack.Screen
           name="RegionalInsight"
           component={RegionalInsightScreen}
@@ -64,7 +54,5 @@ const App = () => {
     </NavigationContainer>
   );
 };
-
-
 
 export default App;

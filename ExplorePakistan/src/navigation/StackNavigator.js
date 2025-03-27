@@ -2,7 +2,7 @@ import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import RegionalInsightScreen from "../screens/RegionalInsightScreen"; // Import your screen
 import ExploreVillageScreen from "../screens/ExploreVillageScreen";
-import PopularSites from "../screens/Popular_sites/PopularSites";
+import PopularSites from "../screens/Popular_sites/ExploreCity";
 import RegionEvents from "../screens/RegionEvents";
 import EmergencyContact from "../screens/EmergencyContact";
 import SearchScreen from "../screens/SearchScreen";
@@ -13,7 +13,6 @@ import InternationalllyInspiredEvents from "../screens/Region_Events_Screens/Int
 import NationalObservances from "../screens/Region_Events_Screens/NationalObservances";
 import RegionalEventsEthnicFestivals from "../screens/Region_Events_Screens/RegionalEventsEthnicFestivals";
 import AdventureAndSportsEvents from "../screens/Region_Events_Screens/AdventureAndSportsEvents";
-AdventureAndSportsEvents
 
 
 
