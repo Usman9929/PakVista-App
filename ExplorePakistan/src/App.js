@@ -18,8 +18,8 @@ import FolkandTraditionalCelebration from './screens/Region_Events_Screens/Folka
 import NationalObservances from './screens/Region_Events_Screens/NationalObservances';
 import InternationalllyInspiredEvents from './screens/Region_Events_Screens/InternationalllyInspiredEvents';
 import AdventureAndSportsEvents from './screens/Region_Events_Screens/AdventureAndSportsEvents';
-import TopTabNavigator from './screens/Popular_sites/TopTabNavigator';
-import PopularSites from './screens/Popular_sites/ExploreCity';
+import TopTabNavigator from './screens/Explore_City/TopTabNavigator';
+
 
 const Stack = createStackNavigator();
 

@@ -2,7 +2,7 @@ import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import RegionalInsightScreen from "../screens/RegionalInsightScreen"; // Import your screen
 import ExploreVillageScreen from "../screens/ExploreVillageScreen";
-import PopularSites from "../screens/Popular_sites/ExploreCity";
+import PopularSites from "../screens/Explore_City/ExploreCity";
 import RegionEvents from "../screens/RegionEvents";
 import EmergencyContact from "../screens/EmergencyContact";
 import SearchScreen from "../screens/SearchScreen";
