@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     },
     headerImage: {
         width: "100%",
-        height: 280,
+        height: 230,
         resizeMode: "cover",
     },
     overlay: {

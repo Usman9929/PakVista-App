@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
         resizeMode: 'cover'
     },
     cardWrapper: {
-        marginBottom: 15,
+        marginBottom: 12,
         borderRadius: 60,
         shadowColor: 'red',
         shadowOpacity: 0.4,
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         textAlign: 'center',
-        marginBottom: 30,
+        marginBottom: 10,
         alignSelf:"flex-start",
         marginTop:20
     },
