@@ -3,23 +3,8 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { useNavigation } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/Ionicons";
-
-// Dummy screens for tabs
-const AboutScreen = () => (
-  <View style={styles.tabContent}>
-    <Text style={styles.sectionTitle}>Description</Text>
-    <Text style={styles.description}>
-      Koherai in the Malakand region near Timergara, Khyber Pakhtunkhwa, is a scenic mountainous area known for its lush greenery, terraced fields, and breathtaking views.
-    </Text>
-  </View>
-);
-
-const SignificantPeopleScreen = () => (
-  <View style={styles.tabContent}>
-    <Text style={styles.sectionTitle}>Notable People</Text>
-    <Text>Details about significant people in this village.</Text>
-  </View>
-);
+import About from "./Village Detail Screen/About";
+import SignificantPeaple from "./Village Detail Screen/SignificantPeaple";
 
 const PhotosScreen = () => (
   <View style={styles.tabContent}>
@@ -65,15 +50,16 @@ const VillageDetail = ({ route }) => {
       {/* Tab Navigator */}
       <Tab.Navigator
         screenOptions={{
-          tabBarLabelStyle: { fontSize: 14, fontWeight: "bold" },
-          tabBarIndicatorStyle: { backgroundColor: "#3498db" },
-          tabBarStyle: { backgroundColor: "white" },
+          tabBarLabelStyle: { fontSize: 14, fontWeight: "bold", },
+          tabBarIndicatorStyle: { backgroundColor: "red", height: 3, width: 150, marginLeft:10},
+          tabBarStyle: { backgroundColor: "white", },
+          tabBarScrollEnabled: true, // Enables horizontal scrolling
         }}
       >
-        <Tab.Screen name="About" component={AboutScreen} />
-        <Tab.Screen name="Significant People" component={SignificantPeopleScreen} />
+        <Tab.Screen name="About" component={About} />
+        <Tab.Screen name="Significant People" component={SignificantPeaple} />
         <Tab.Screen name="Photos" component={PhotosScreen} />
-        <Tab.Screen name="Community" component={CommunityScreen} />
+        <Tab.Screen name="Community Services" component={CommunityScreen} />
       </Tab.Navigator>
     </View>
   );

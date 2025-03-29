@@ -19,7 +19,8 @@ import NationalObservances from './screens/Region_Events_Screens/NationalObserva
 import InternationalllyInspiredEvents from './screens/Region_Events_Screens/InternationalllyInspiredEvents';
 import AdventureAndSportsEvents from './screens/Region_Events_Screens/AdventureAndSportsEvents';
 import TopTabNavigator from './screens/Explore_City/TopTabNavigator';
-import PopulationDetail from './screens/Explore_City/PopulationDetail';
+import About from './screens/Village Detail Screen/About';
+import SignificantPeaple from './screens/Village Detail Screen/SignificantPeaple';
 
 
 
@@ -44,8 +45,9 @@ const App = () => {
         <Stack.Screen name="NationalObservances" component={NationalObservances} />
         <Stack.Screen name="InternationalllyInspiredEvents" component={InternationalllyInspiredEvents} />
         <Stack.Screen name="AdventureAndSportsEvents" component={AdventureAndSportsEvents} />
+        <Stack.Screen name="About" component={About} />
+        <Stack.Screen name="SignificantPeaple" component={SignificantPeaple} />
         <Stack.Screen name="ExploreCity" component={TopTabNavigator} />
-        <Stack.Screen name="PopulationDetail" component={TopTabNavigator} />
 
         <Stack.Screen
           name="RegionalInsight"
