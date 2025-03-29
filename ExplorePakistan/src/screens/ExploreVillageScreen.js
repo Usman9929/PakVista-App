@@ -5,8 +5,11 @@ import { fetchVillages } from "../services/api";
 
 
 
-const VillageCard = ({ item }) => (
-  <TouchableOpacity style={styles.villageCard}>
+const VillageCard = ({ item, navigation }) => (
+  <TouchableOpacity 
+  style={styles.villageCard}
+  onPress={() => navigation.navigate('VillageDetail', { village: item })}
+  >
     <Image source={typeof item.image === "string" ? { uri: item.image } : item.image} style={styles.villageImage} />
     <Text style={styles.villageTitle}>{item.name}</Text>
     <View style={styles.locationContainer}>
@@ -82,7 +85,7 @@ const ExploreVillageScreen = () => {
         <Text style={styles.subTitle}>Let's Explore Together</Text>
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.villageList}>
           {general_villages.map((item) => (
-            <VillageCard key={item.id?.toString() || Math.random().toString()} item={item} />
+            <VillageCard key={item.id?.toString() || Math.random().toString()} item={item} navigation={navigation} />
           ))}
         </ScrollView>
 

@@ -48,15 +48,15 @@ const TopTabNavigator = () => {
                     tabBarStyle: {
                         backgroundColor: "#fff",
                         elevation: 5, // Shadow effect (Android)
-                        shadowColor: "#000", // Shadow color (iOS)
+                        shadowColor: "#000", 
                         shadowOffset: { width: 0, height: 4 },
                         shadowOpacity: 0.2,
                         shadowRadius: 4,
                         borderTopLeftRadius: 20,
                         borderTopRightRadius: 20,
-                        height: 60, // Increased height for better spacing
-                        overflow: "hidden", // Ensures border-radius is applied
-                        paddingHorizontal: 10, // Better padding
+                        height: 60, 
+                        overflow: "hidden", 
+                        paddingHorizontal: 10, 
                     },
                 }}
             >

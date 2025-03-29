@@ -13,6 +13,11 @@ import InternationalllyInspiredEvents from "../screens/Region_Events_Screens/Int
 import NationalObservances from "../screens/Region_Events_Screens/NationalObservances";
 import RegionalEventsEthnicFestivals from "../screens/Region_Events_Screens/RegionalEventsEthnicFestivals";
 import AdventureAndSportsEvents from "../screens/Region_Events_Screens/AdventureAndSportsEvents";
+import PopulationDetail from "../screens/Explore_City/PopulationDetail";
+import CulturalInformation from "../screens/Explore_City/CulturalInformation";
+import Economy from "../screens/Explore_City/ExploreCity";
+import GeographicalInfo from "../screens/Explore_City/GeographicalInfo";
+import HistoricalBackground from "../screens/Explore_City/HistoricalBackground";
 
 
 
@@ -35,6 +40,11 @@ const RegionalStackNavigator = () => {
       <Stack.Screen name="NationalObservances" component={NationalObservances} />
       <Stack.Screen name="RegionalEventsEthnicFestivals" component={RegionalEventsEthnicFestivals} />
       <Stack.Screen name="AdventureAndSportsEvents" component={AdventureAndSportsEvents} />
+      <Stack.Screen name="PopulationDetail" component={PopulationDetail} />
+      <Stack.Screen name="CulturalInformation" component={CulturalInformation} />
+      <Stack.Screen name="Economy" component={Economy} />
+      <Stack.Screen name="GeographicalInfo" component={GeographicalInfo} />
+      <Stack.Screen name="HistoricalBackground" component={HistoricalBackground} />
       
     </Stack.Navigator>
   );
