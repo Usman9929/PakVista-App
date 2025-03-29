@@ -21,6 +21,16 @@ import AdventureAndSportsEvents from './screens/Region_Events_Screens/AdventureA
 import TopTabNavigator from './screens/Explore_City/TopTabNavigator';
 import About from './screens/Village Detail Screen/About';
 import SignificantPeaple from './screens/Village Detail Screen/SignificantPeaple';
+import Photo from './screens/Village Detail Screen/Photo';
+import AdditionalElement from './screens/Village Detail Screen/AdditionalElement';
+import CommunityServices from './screens/Village Detail Screen/CommunityServices';
+import CulturalInformation from './screens/Village Detail Screen/CulturalInfo';
+import Economy from './screens/Village Detail Screen/Economy';
+import VillageEmergencyContact from './screens/Village Detail Screen/VillageEmergencyContact';
+import GeographicalInfo from './screens/Village Detail Screen/GeographicalInfo';
+import HistoricalBackground from './screens/Village Detail Screen/HistoricalBackground';
+import PopulationDetail from './screens/Village Detail Screen/PopulationDetail';
+import TouristAttraction from './screens/Village Detail Screen/TouristAttraction';
 
 
 
@@ -47,6 +57,16 @@ const App = () => {
         <Stack.Screen name="AdventureAndSportsEvents" component={AdventureAndSportsEvents} />
         <Stack.Screen name="About" component={About} />
         <Stack.Screen name="SignificantPeaple" component={SignificantPeaple} />
+        <Stack.Screen name="Photo" component={Photo} />
+        <Stack.Screen name="Economy" component={Economy} />
+        <Stack.Screen name="AdditionalElement" component={AdditionalElement} />
+        <Stack.Screen name="CommunityServices" component={CommunityServices} />
+        <Stack.Screen name="CulturalInformation" component={CulturalInformation} />
+        <Stack.Screen name="VillageEmergencyContact" component={VillageEmergencyContact} />
+        <Stack.Screen name="GeographicalInfo" component={GeographicalInfo} />
+        <Stack.Screen name="HistoricalBackground" component={HistoricalBackground} />
+        <Stack.Screen name=" PopulationDetail" component={ PopulationDetail} />
+        <Stack.Screen name="TouristAttraction" component={TouristAttraction} />
         <Stack.Screen name="ExploreCity" component={TopTabNavigator} />
 
         <Stack.Screen

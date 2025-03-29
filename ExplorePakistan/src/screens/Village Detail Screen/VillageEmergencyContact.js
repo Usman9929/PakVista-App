@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const EmergencyContact = () => {
+const VillageEmergencyContact = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Emergency Contact</Text>
@@ -22,4 +22,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default EmergencyContact;
+export default VillageEmergencyContact;
