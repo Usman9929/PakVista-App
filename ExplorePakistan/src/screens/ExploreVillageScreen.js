@@ -18,8 +18,11 @@ const VillageCard = ({ item, navigation }) => (
     </View>
   </TouchableOpacity>
 );
-const TouristVillageCard = ({ item }) => (
-  <TouchableOpacity style={styles.touristVillageCard}>
+const TouristVillageCard = ({ item, navigation }) => (
+  <TouchableOpacity
+   style={styles.touristVillageCard}
+    onPress={() => navigation.navigate('VillageDetail', { village: item })}
+    >
     <Image
       source={typeof item.image === "string" ? { uri: item.image } : item.image}
       style={styles.touristVillageImage}
@@ -103,7 +106,7 @@ const ExploreVillageScreen = () => {
               style={{ marginLeft: -12 }}
               data={topVillages}
               keyExtractor={(item) => item?.id?.toString() || Math.random().toString()}
-              renderItem={({ item }) => <VillageCard key={item.id?.toString()} item={item} />}
+              renderItem={({ item }) => <VillageCard key={item.id?.toString()} item={item} navigation={navigation}/>}
               horizontal={true}
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={{ paddingHorizontal: 10 }}
@@ -118,7 +121,7 @@ const ExploreVillageScreen = () => {
         <Text style={styles.sectionTitle}>Tourist Attraction</Text>
         <View style={{ marginBottom: 60 }}>
           {touristVillages.map((item) => (
-            <TouristVillageCard key={item.id?.toString() || Math.random().toString()} item={item} />
+            <TouristVillageCard key={item.id?.toString() || Math.random().toString()} item={item} navigation={navigation} />
           ))}
         </View>
       </View>

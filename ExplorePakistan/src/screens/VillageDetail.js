@@ -31,16 +31,15 @@ const VillageDetail = ({ route }) => {
 
       {/* Back Button */}
       <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-        <Icon name="arrow-back" size={24} color="white" />
+      <Image source={require("../assets/icons/left.png")} style={{ width: 20, height: 20 }} />
       </TouchableOpacity>
 
       {/* Village Info */}
       <View style={styles.villageInfo}>
         <Text style={styles.villageName}>{village.name}</Text>
         <View style={styles.locationContainer}>
-          <Icon name="location-outline" size={16} color="red" />
+           <Image source={require("../assets/icons/location.png")} style={{ width: 16, height: 16 }} />
           <Text style={styles.villageLocation}>{village.location}</Text>
-          <Icon name="star" size={16} color="orange" style={styles.favoriteIcon} />
         </View>
       </View>
 
@@ -75,10 +74,10 @@ export default VillageDetail;
 // Styles
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#f8f8f8" },
-  villageImage: { width: "100%", height: 250, borderBottomLeftRadius: 30, borderBottomRightRadius: 30 },
-  backButton: { position: "absolute", top: 40, left: 20, backgroundColor: "rgba(0,0,0,0.5)", padding: 10, borderRadius: 20 },
+  villageImage: { width: "100%", height: 280,},
+  backButton: { position: "absolute", top: 20, left: 13, backgroundColor: "rgba(0,0,0,0.5)", padding: 10, borderRadius: 20 },
   villageInfo: { padding: 15, backgroundColor: "white", borderTopLeftRadius: 30, borderTopRightRadius: 30, marginTop: -30 },
-  villageName: { fontSize: 20, fontWeight: "bold", color: "#333" },
+  villageName: { fontSize: 20, fontWeight: "bold", color: "#333",marginLeft:20 },
   locationContainer: { flexDirection: "row", alignItems: "center", marginTop: 5 },
   villageLocation: { fontSize: 14, color: "gray", marginLeft: 5 },
   favoriteIcon: { marginLeft: 5 },

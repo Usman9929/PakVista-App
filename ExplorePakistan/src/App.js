@@ -65,7 +65,7 @@ const App = () => {
         <Stack.Screen name="VillageEmergencyContact" component={VillageEmergencyContact} />
         <Stack.Screen name="GeographicalInfo" component={GeographicalInfo} />
         <Stack.Screen name="HistoricalBackground" component={HistoricalBackground} />
-        <Stack.Screen name=" PopulationDetail" component={ PopulationDetail} />
+        <Stack.Screen name="PopulationDetail" component={ PopulationDetail} />
         <Stack.Screen name="TouristAttraction" component={TouristAttraction} />
         <Stack.Screen name="ExploreCity" component={TopTabNavigator} />
 
