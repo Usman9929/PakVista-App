@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
         marginBottom: 5
     },
     cardText: {
-        fontSize: 16,
+        fontSize: 14,
         marginBottom: 3
     },
     bold: {
