@@ -47,9 +47,11 @@ const VillageDetail = ({ route }) => {
       <Tab.Navigator
         screenOptions={{
           tabBarLabelStyle: { fontSize: 13, fontWeight: "bold", },
-          tabBarIndicatorStyle: { backgroundColor: "red", height: 3, width: 150, marginLeft:10},
+          tabBarPressColor: "transparent", // Prevents unwanted highlight effects
+          tabBarIndicatorStyle: { backgroundColor: "red", height: 2},
           tabBarStyle: { backgroundColor: "white", },
           tabBarScrollEnabled: true, // Enables horizontal scrolling
+          lazy: true,
         }}
       >
         <Tab.Screen name="About" component={About} />

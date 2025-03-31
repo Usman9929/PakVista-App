@@ -3,30 +3,47 @@ import { View, Text, ImageBackground, StyleSheet, FlatList, TouchableOpacity, Sc
 import styles from './VillageDetailScreenStyle';
 
 const Historical_Background = [
-  "Khazana is a locality in the Lower Dir District of Khyber Pakhtunkhwa, Pakistan, situated near the district headquarters, Timergara. The area is known for its picturesque landscapes, including views of the Panjkora River and surrounding valleys. The Khazana Bypass Bridge, which spans the Panjkora River, serves as a significant infrastructure feature in the region."
+  {
+    title: 'Local Festival',
+    details: [
+      {label:"Founding Year", value: "1850"},
+      {label:"Founders", value: "Local Pashtun tribes, primarily from the Yousafzai and Mandanr clans"},
+      {label:"Historical Events", value: "Played a role in the resistance against British rule in the early 20th century; significant development post-1947 with road and infrastructure improvements."},
+      {label:"Cultural Significance", value: "Known for traditional Pashto music, poetry, and strong community ties; hosts annual cultural festivals."},
+      {label:"Monuments or Landmarks", value: "An old mosque built in the early 1900s, ancient gravesites of local tribal leaders."},
+      {label:"Ethnic Background", value: "Predominantly Pashtun, with sub-clans like Yousafzai, Mandanr, and Mohmand."},
+      {label:"Famous Persons", value: "Local poets and scholars, including religious leaders who contributed to the region’s cultural heritage."},
+      {label:"Historic Sites Nearby", value: "Malakand Fort, Buddhist archaeological sites in Lower Dir, and the Timergara historical cemetery."},
+      {label:"Development Over Time", value: "Originally an agricultural settlement, it has grown into a small town with schools, markets, and modern facilities, while still retaining its cultural heritage."}
+    ]
+  },
 ];
 
 const HistoricalBackground = () => {
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
-      <View style={styles.container}>
+      <View style={styles.content}>
+        <Text style={styles.sectionTitle}>Historical Background</Text>
 
-        {/* Emergency Contacts Section */}
-        <View style={styles.content}>
-          <Text style={styles.sectionTitle}>Historical Background</Text>
-
-          <View style={{ marginBottom: 60 }}>
-            {Historical_Background.map((detail, i) => (
-              <View key={i} style={styles.cardWrapper}>
-                <View style={styles.card}>
-                  <Text style={styles.cardText}>{detail}</Text>
-                </View>
+        <View style={{ marginBottom: 60 }}>
+          {Historical_Background.map((item, index) => (
+            <View key={index} style={styles.cardWrapper}>
+              <View style={styles.card}>
+                <Text style={styles.cardTitle}>{item.title}</Text>
+                {item.details.map((detail, i) => (
+                  <Text key={i} style={styles.cardText}>
+                    <Text style={styles.bold}>{detail.label}:</Text> {detail.value}
+                  </Text>
+                ))}
+                <TouchableOpacity style={styles.addButton}>
+                  <Text style={styles.addButtonText}>Add</Text>
+                </TouchableOpacity>
               </View>
-            ))}
-          </View>
+            </View>
+          ))}
         </View>
       </View>
-    </ScrollView>
+    </ScrollView >
   );
 };
 
