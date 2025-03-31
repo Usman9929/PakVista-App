@@ -22,9 +22,9 @@ const Geographical_Info = [
   {
     title: 'Climate Detail',
     details: [
-      {label:"Average Temperature", value: "25°C annually"},
-      {label:"Rainfall", value: "900-1100 mm per year"},
-      {label:"Seasonal Variations", value: "Hot summers (up to 40°C), mild winters (5-20°C), moderate rainfall in monsoon (July-August)"}
+      { label: "Average Temperature", value: "25°C annually" },
+      { label: "Rainfall", value: "900-1100 mm per year" },
+      { label: "Seasonal Variations", value: "Hot summers (up to 40°C), mild winters (5-20°C), moderate rainfall in monsoon (July-August)" }
     ]
   },
 ];
