@@ -1,62 +1,49 @@
 import React from 'react';
-import { View, Text, ImageBackground, StyleSheet, FlatList, TouchableOpacity, ScrollView } from 'react-native';
-import styles from './VillageDetailScreenStyle';
+import { View, Text, Image, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
 
-const Significant_Peaple = [
-  {
-    title: 'Population Children',
-    details: [
-      { label: "total", value: 3200 },
-      { label: "age_range", value: "0-14 years" },
-      { label: "percentage_of_total_population", value: "30%" }
-    ]
-  },
-  {
-    title: 'Population Adult',
-    details: [
-      { label: "Total", value: 1300 },
-      { label: "Age Range", value: "60+ years" },
-      { label: "Percentage of Total Population", value: "12%" }
-    ]
-  },
-  {
-    title: 'Gender Ratio Rate',
-    details: [
-      {label:"Male", value: 5500},
-      {label:"Female", value: 5200},
-      {label:"Male To Female Ratio", value: "1.06:1"}
-    ]
-  },
+const people = [
+  { id: 1, name: 'Usman', role: 'Education Pioneer', image: require('../.././assets/images/timergaraImage_1.jpg') },
+  { id: 2, name: 'Ziyab', role: 'Environmental Activist', image: require('../.././assets/images/timergaraImage_1.jpg') },
+  { id: 3, name: 'Uzair', role: 'Master Craftsman, Traditional Pottery', image: require('../.././assets/images/timergaraImage_1.jpg') },
+  { id: 4, name: 'Dr. Asma Parveen', role: 'Rural Healthcare Pioneer', image: require('../.././assets/images/timergaraImage_1.jpg') },
 ];
 
-const SignificantPeaple = () => {
+const SignificantPeople = () => {
   return (
-    <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
-      <View style={styles.content}>
-        <Text style={styles.sectionTitle}>Significant Peaple</Text>
-
-        <View style={{ marginBottom: 60 }}>
-          {Significant_Peaple.map((item, index) => (
-            <View key={index} style={styles.cardWrapper}>
-              <View style={styles.card}>
-                <Text style={styles.cardTitle}>{item.title}</Text>
-                {item.details.map((detail, i) => (
-                  <Text key={i} style={styles.cardText}>
-                    <Text style={styles.bold}>{detail.label}:</Text> {detail.value}
-                  </Text>
-                ))}
-                <TouchableOpacity style={styles.addButton}>
-                  <Text style={styles.addButtonText}>Add</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-          ))}
-        </View>
-      </View>
-    </ScrollView >
+    <View style={styles.container}>
+      <Text style={styles.sectionTitle}>Significant People</Text>
+      <TouchableOpacity style={styles.addButton}>
+        <Text style={styles.addButtonText}>Add New</Text>
+      </TouchableOpacity>
+      
+      {/* Display People in Grid Layout */}
+      <FlatList
+        data={people}
+        keyExtractor={item => item.id.toString()}
+        numColumns={2} // Two columns like in the reference image
+        columnWrapperStyle={styles.row}
+        renderItem={({ item }) => (
+          <View style={styles.personCard}>
+            <Image source={item.image} style={styles.personImage} />
+            <Text style={styles.personName}>{item.name}</Text>
+            <Text style={styles.personRole}>{item.role}</Text>
+          </View>
+        )}
+      />
+    </View>
   );
 };
 
+const styles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: '#fff', padding: 15 },
+  sectionTitle: { fontSize: 18, fontWeight: 'bold', marginBottom: 10, textAlign:"center" },
+  addButton: { position: 'absolute', right: 12, top: 15, backgroundColor: '#E53935', padding: 10, borderRadius: 15 },
+  addButtonText: { color: '#fff', fontSize: 12, fontWeight:"bold"},
+  row: { justifyContent: 'space-between', marginBottom: 15 },
+  personCard: { alignItems: 'center', width: '48%', padding: 10, borderRadius: 15, marginTop:15 },
+  personImage: { width: 70, height: 70, borderRadius: 40 },
+  personName: { fontSize: 14, fontWeight: 'bold', marginTop: 5, textAlign: 'center' },
+  personRole: { fontSize: 12, color: '#666', textAlign: 'center' },
+});
 
-
-export default SignificantPeaple;
+export default SignificantPeople;
