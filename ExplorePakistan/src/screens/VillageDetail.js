@@ -2,7 +2,6 @@ import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { useNavigation } from "@react-navigation/native";
-import Icon from "react-native-vector-icons/Ionicons";
 import About from "./Village Detail Screen/About";
 import SignificantPeaple from "./Village Detail Screen/SignificantPeaple";
 import AdditionalElement from "./Village Detail Screen/AdditionalElement";

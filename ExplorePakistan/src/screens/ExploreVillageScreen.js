@@ -6,9 +6,9 @@ import { fetchVillages } from "../services/api";
 
 
 const VillageCard = ({ item, navigation }) => (
-  <TouchableOpacity 
-  style={styles.villageCard}
-  onPress={() => navigation.navigate('VillageDetail', { village: item })}
+  <TouchableOpacity
+    style={styles.villageCard}
+    onPress={() => navigation.navigate('VillageDetail', { village: item })}
   >
     <Image source={typeof item.image === "string" ? { uri: item.image } : item.image} style={styles.villageImage} />
     <Text style={styles.villageTitle}>{item.name}</Text>
@@ -20,9 +20,9 @@ const VillageCard = ({ item, navigation }) => (
 );
 const TouristVillageCard = ({ item, navigation }) => (
   <TouchableOpacity
-   style={styles.touristVillageCard}
+    style={styles.touristVillageCard}
     onPress={() => navigation.navigate('VillageDetail', { village: item })}
-    >
+  >
     <Image
       source={typeof item.image === "string" ? { uri: item.image } : item.image}
       style={styles.touristVillageImage}
@@ -106,7 +106,7 @@ const ExploreVillageScreen = () => {
               style={{ marginLeft: -12 }}
               data={topVillages}
               keyExtractor={(item) => item?.id?.toString() || Math.random().toString()}
-              renderItem={({ item }) => <VillageCard key={item.id?.toString()} item={item} navigation={navigation}/>}
+              renderItem={({ item }) => <VillageCard key={item.id?.toString()} item={item} navigation={navigation} />}
               horizontal={true}
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={{ paddingHorizontal: 10 }}
