@@ -31,7 +31,7 @@ import GeographicalInfo from './screens/Village Detail Screen/GeographicalInfo';
 import HistoricalBackground from './screens/Village Detail Screen/HistoricalBackground';
 import PopulationDetail from './screens/Village Detail Screen/PopulationDetail';
 import TouristAttraction from './screens/Village Detail Screen/TouristAttraction';
-
+import ProfileDetail from './screens/Village Detail Screen/ProfileDetail';
 
 
 const Stack = createStackNavigator();
@@ -56,7 +56,6 @@ const App = () => {
         <Stack.Screen name="InternationalllyInspiredEvents" component={InternationalllyInspiredEvents} />
         <Stack.Screen name="AdventureAndSportsEvents" component={AdventureAndSportsEvents} />
         <Stack.Screen name="About" component={About} />
-        <Stack.Screen name="SignificantPeaple" component={SignificantPeaple} />
         <Stack.Screen name="Photo" component={Photo} />
         <Stack.Screen name="Economy" component={Economy} />
         <Stack.Screen name="AdditionalElement" component={AdditionalElement} />
@@ -65,8 +64,10 @@ const App = () => {
         <Stack.Screen name="VillageEmergencyContact" component={VillageEmergencyContact} />
         <Stack.Screen name="GeographicalInfo" component={GeographicalInfo} />
         <Stack.Screen name="HistoricalBackground" component={HistoricalBackground} />
-        <Stack.Screen name="PopulationDetail" component={ PopulationDetail} />
+        <Stack.Screen name="PopulationDetail" component={PopulationDetail} />
         <Stack.Screen name="TouristAttraction" component={TouristAttraction} />
+        <Stack.Screen name="SignificantPeaple" component={SignificantPeaple} options={{ title: 'Significant People' }} />
+        <Stack.Screen name="ProfileDetail" component={ProfileDetail} options={{ title: 'Profile Details' }} />
         <Stack.Screen name="ExploreCity" component={TopTabNavigator} />
 
         <Stack.Screen
