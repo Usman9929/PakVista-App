@@ -18,10 +18,7 @@ const ProfileScreen = () => {
     <View style={styles.container}>
       {/* Profile Header */}
       <View style={styles.profileHeader}>
-        <Image
-          source={require('../assets/images/profile_1.jpg')}
-          style={styles.profileImage}
-        />
+        <Image source={require('../assets/images/profile_1.jpg')} style={styles.profileImage} />
         <View style={styles.profileTextContainer}>
           <Text style={styles.profileName}>Ziyab Shahzada</Text>
           <Text style={styles.profileUsername}>ziyab_8929</Text>
@@ -34,77 +31,38 @@ const ProfileScreen = () => {
 
       {/* Preferences Section */}
       <ScrollView style={styles.preferencesContainer}>
-
         {/* Personalized Data & Preferences */}
-        <TouchableOpacity
-          style={styles.preferenceItem}
-          onPress={() => toggleSection('savedVillages')}
-        >
+        <TouchableOpacity style={styles.preferenceItem} onPress={() => toggleSection('savedVillages')}>
           <View style={styles.preferenceLeft}>
-            <Image
-              source={require('../assets/icons/controller.png')}
-              style={styles.preferenceIcon}
-            />
+            <Image source={require('../assets/icons/controller.png')} style={styles.preferenceIcon} />
             <Text style={styles.sectionTitle}>Personalized Data & Preferences</Text>
           </View>
-          <Image
-            source={require('../assets/icons/right-arrow.png')}
-            style={[
-              styles.arrowIcon,
-              expandedSections.savedVillages && styles.arrowIconExpanded
-            ]}
-          />
+          <Image source={require('../assets/icons/right-arrow.png')} style={[styles.arrowIcon, expandedSections.savedVillages && styles.arrowIconExpanded]} />
         </TouchableOpacity>
+
         {expandedSections.savedVillages && (
-          <View style={styles.expandedContent}>
-            <Text>Saved Villages</Text>
-          </View>
-        )}
-        {expandedSections.savedVillages && (
-          <View style={styles.expandedContent}>
-            <Text>Recent Activities</Text>
-          </View>
-        )}
-        {expandedSections.savedVillages && (
-          <View style={styles.expandedContent}>
-            <Text>Notification</Text>
-          </View>
+          <>
+            <PreferenceItem title="Saved Villages" icon={require('../assets/icons/saved.png')} />
+            <PreferenceItem title="Recent Activities" icon={require('../assets/icons/recent.png')} />
+            <PreferenceItem title="Notification" icon={require('../assets/icons/notification.png')} />
+          </>
         )}
 
         {/* User Action */}
-        <TouchableOpacity
-          style={styles.preferenceItem}
-          onPress={() => toggleSection('recentActivities')}
-        >
+        <TouchableOpacity style={styles.preferenceItem} onPress={() => toggleSection('recentActivities')}>
           <View style={styles.preferenceLeft}>
-            <Image
-              source={require('../assets/icons/user.png')}
-              style={styles.preferenceIcon}
-            />
+            <Image source={require('../assets/icons/user.png')} style={styles.preferenceIcon} />
             <Text style={styles.sectionTitle}>User Action</Text>
           </View>
-          <Image
-            source={require('../assets/icons/right-arrow.png')}
-            style={[
-              styles.arrowIcon,
-              expandedSections.recentActivities && styles.arrowIconExpanded
-            ]}
-          />
+          <Image source={require('../assets/icons/right-arrow.png')} style={[styles.arrowIcon, expandedSections.recentActivities && styles.arrowIconExpanded]} />
         </TouchableOpacity>
+
         {expandedSections.recentActivities && (
-          <View style={styles.expandedContent}>
-            <Text>Edit Profile</Text>
-          </View>
-        )}
-        {expandedSections.recentActivities && (
-          <View style={styles.expandedContent}>
-            <Text>My Requests</Text>
-          </View>
-        )}
-        {expandedSections.recentActivities && (
-          <View style={styles.expandedContent}>
-            <Text>Emergency Contact</Text>
-          </View>
+          <>
+            <PreferenceItem title="Edit Profile" icon={require('../assets/icons/edit.png')} />
+            <PreferenceItem title="My Requests" icon={require('../assets/icons/request.png')} />
+            <PreferenceItem title="Emergency Contact" icon={require('../assets/icons/emergency.png')} />
+          </>
         )}
 
         <PreferenceItem title="Setting" icon={require('../assets/icons/settings.png')} />
@@ -120,10 +78,7 @@ const PreferenceItem = ({ title, icon }) => (
       <Image source={icon} style={styles.preferenceIcon} />
       <Text style={styles.preferenceText}>{title}</Text>
     </View>
-    <Image
-      source={require('../assets/icons/right-arrow.png')}
-      style={styles.arrowIcon}
-    />
+    <Image source={require('../assets/icons/right-arrow.png')} style={styles.arrowIcon} />
   </TouchableOpacity>
 );
 
@@ -192,7 +147,7 @@ const styles = StyleSheet.create({
   preferenceText: {
     fontSize: 16,
     color: '#333',
-    marginLeft: 10,
+    marginLeft: 20,
   },
   preferenceIcon: {
     width: 24,
@@ -207,20 +162,6 @@ const styles = StyleSheet.create({
   },
   arrowIconExpanded: {
     transform: [{ rotate: '90deg' }],
-  },
-  expandedContent: {
-    padding: 15,
-    backgroundColor: 'white',
-    borderBottomWidth: 1,
-    borderBottomColor: '#eee',
-    marginBottom: 13,
-    borderRadius: 12,
-    elevation: 3,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
-    marginLeft: 10,
   },
 });
 
