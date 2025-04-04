@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, ImageBackground, StyleSheet, FlatList, TouchableOpacity, ScrollView } from 'react-native';
 import styles from './VillageDetailScreenStyle';
+import { useNavigation } from '@react-navigation/native';
 
 const Community_Services = [
   {
@@ -52,15 +53,43 @@ const Community_Services = [
   {
     title: 'Recreational Facilities:',
     details: [
-      {label:"Parks", value: "1 small park"},
-      {label:"Playground", value: "Football and cricket ground"},
-      {label:"Community Center", value: "Multipurpose hall for events"},
-      {label:"Sports Facilities", value: "Local cricket and football clubs"}
+      { label: "Parks", value: "1 small park" },
+      { label: "Playground", value: "Football and cricket ground" },
+      { label: "Community Center", value: "Multipurpose hall for events" },
+      { label: "Sports Facilities", value: "Local cricket and football clubs" }
     ]
   }
 ];
 
+
+
 const CommunityServices = () => {
+  const navigation = useNavigation();
+
+  const handleAddPress = (serviceTitle) => {
+    switch (serviceTitle) {
+      case 'Education:':
+        navigation.navigate('EducationAddButton');
+        break;
+      case 'Health Care Facilities:':
+        navigation.navigate('HealthCare');
+        break;
+      case 'Market:':
+        navigation.navigate('Market');
+        break;
+      case 'Transportations:':
+        navigation.navigate('Transportation');
+        break;
+      case 'Utilities:':
+        navigation.navigate('Utilities');
+        break;
+      case 'Recreational Facilities:':
+        navigation.navigate('Recreational');
+        break;
+      default:
+        console.warn('No screen defined for this service');
+    }
+  };
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
       <View style={styles.content}>
@@ -76,7 +105,7 @@ const CommunityServices = () => {
                     <Text style={styles.bold}>{detail.label}:</Text> {detail.value}
                   </Text>
                 ))}
-                <TouchableOpacity style={styles.addButton}>
+                <TouchableOpacity style={styles.addButton}  onPress={() => handleAddPress(item.title)}>
                   <Text style={styles.addButtonText}>Add</Text>
                 </TouchableOpacity>
               </View>

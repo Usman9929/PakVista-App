@@ -32,6 +32,12 @@ import HistoricalBackground from './screens/Village Detail Screen/HistoricalBack
 import PopulationDetail from './screens/Village Detail Screen/PopulationDetail';
 import TouristAttraction from './screens/Village Detail Screen/TouristAttraction';
 import ProfileDetail from './screens/Village Detail Screen/ProfileDetail';
+import EducationAddButton from './screens/Village Detail Screen/Updation Screen/Community_Services_Screen/EducationAddButton';
+import HealthCare from './screens/Village Detail Screen/Updation Screen/Community_Services_Screen/healthcare';
+import Market from './screens/Village Detail Screen/Updation Screen/Community_Services_Screen/market';
+import Recreational from './screens/Village Detail Screen/Updation Screen/Community_Services_Screen/recreational';
+import Transportation from './screens/Village Detail Screen/Updation Screen/Community_Services_Screen/transportation';
+import Utilities from './screens/Village Detail Screen/Updation Screen/Community_Services_Screen/utilities';
 
 
 const Stack = createStackNavigator();
@@ -69,6 +75,12 @@ const App = () => {
         <Stack.Screen name="SignificantPeaple" component={SignificantPeaple} options={{ title: 'Significant People' }} />
         <Stack.Screen name="ProfileDetail" component={ProfileDetail} options={{ title: 'Profile Details' }} />
         <Stack.Screen name="ExploreCity" component={TopTabNavigator} />
+        <Stack.Screen name="EducationAddButton" component={EducationAddButton} />
+        <Stack.Screen name="HealthCare" component={HealthCare} />
+        <Stack.Screen name="Market" component={Market} />
+        <Stack.Screen name="Recreational" component={Recreational} />
+        <Stack.Screen name="Transportation" component={Transportation} />
+        <Stack.Screen name="Utilities" component={Utilities} />
 
         <Stack.Screen
           name="RegionalInsight"

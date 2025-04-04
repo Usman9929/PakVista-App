@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 
-const Transportation = () => {
+const Education = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Educational Services</Text>
@@ -88,4 +88,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Transportation;
+export default Education;
