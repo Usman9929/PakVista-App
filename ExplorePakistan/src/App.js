@@ -33,11 +33,11 @@ import PopulationDetail from './screens/Village Detail Screen/PopulationDetail';
 import TouristAttraction from './screens/Village Detail Screen/TouristAttraction';
 import ProfileDetail from './screens/Village Detail Screen/ProfileDetail';
 import EducationAddButton from './screens/Village Detail Screen/Updation Screen/Community_Services_Screen/EducationAddButton';
-import HealthCare from './screens/Village Detail Screen/Updation Screen/Community_Services_Screen/healthcare';
-import Market from './screens/Village Detail Screen/Updation Screen/Community_Services_Screen/market';
-import Recreational from './screens/Village Detail Screen/Updation Screen/Community_Services_Screen/recreational';
-import Transportation from './screens/Village Detail Screen/Updation Screen/Community_Services_Screen/transportation';
-import Utilities from './screens/Village Detail Screen/Updation Screen/Community_Services_Screen/utilities';
+import Recreational from './screens/Village Detail Screen/Updation Screen/Community_Services_Screen/Recreational';
+import Transportation from './screens/Village Detail Screen/Updation Screen/Community_Services_Screen/Transportation';
+import Utilities from './screens/Village Detail Screen/Updation Screen/Community_Services_Screen/Utilities';
+import HealthCare from './screens/Village Detail Screen/Updation Screen/Community_Services_Screen/HealthCare';
+import Market from './screens/Village Detail Screen/Updation Screen/Community_Services_Screen/Market';
 
 
 const Stack = createStackNavigator();
