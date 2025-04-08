@@ -41,6 +41,10 @@ import Market from './screens/Village Detail Screen/Updation Screen/Community_Se
 import CulturalandHistorical from './screens/Village Detail Screen/Updation Screen/Tourist Attraction Screen/cultural_and_historical';
 import localEvents from './screens/Village Detail Screen/Updation Screen/Tourist Attraction Screen/localEvents';
 import NaturalLandmark from './screens/Village Detail Screen/Updation Screen/Tourist Attraction Screen/NaturalLandmark';
+import FireStation from './screens/Village Detail Screen/Updation Screen/Emergency_conatact.js/FireStation';
+import medicalEmergency from './screens/Village Detail Screen/Updation Screen/Emergency_conatact.js/medicalEmergency';
+import policeStation from './screens/Village Detail Screen/Updation Screen/Emergency_conatact.js/policeStation';
+
 
 
 const Stack = createStackNavigator();
@@ -87,6 +91,10 @@ const App = () => {
         <Stack.Screen name="CulturalandHistorical" component={CulturalandHistorical} />
         <Stack.Screen name="localEvents" component={localEvents} />
         <Stack.Screen name="NaturalLandmark" component={NaturalLandmark} />
+        <Stack.Screen name="FireStation" component={FireStation} />
+        <Stack.Screen name="medicalEmergency" component={medicalEmergency} />
+        <Stack.Screen name="policeStation" component={policeStation} />
+
 
         <Stack.Screen
           name="RegionalInsight"

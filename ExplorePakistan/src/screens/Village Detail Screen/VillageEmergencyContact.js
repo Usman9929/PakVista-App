@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, ImageBackground, StyleSheet, FlatList, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import styles from './VillageDetailScreenStyle';
+import { useNavigation } from '@react-navigation/native';
 
 const Village_Emergency_Contact = [
   {
@@ -27,12 +28,30 @@ const Village_Emergency_Contact = [
       {label:"Blood Bank", value: "Available in District Hospital"},
       {label:"Disaster Management", value: "Rescue 1122 team"},
       {label:"Contact For Handling Flood", value: "Flood Control Authority - 0800-12345"},
-      {lable:"Contact For Earthquake", value: "Disaster Response Team - 0800-67890"}
+      {label:"Contact For Earthquake", value: "Disaster Response Team - 0800-67890"}
     ]
   },
 ];
 
 const VillageEmergencyContact = () => {
+    const navigation = useNavigation();
+  
+    const handleAddPress = (serviceTitle) => {
+      switch (serviceTitle) {
+        case 'Police Station':
+          navigation.navigate('policeStation');
+          break;
+        case 'Fire Station':
+          navigation.navigate('FireStation');
+          break;
+        case 'Medical Emergency':
+          navigation.navigate('medicalEmergency');
+          break;
+        default:
+          console.warn('No screen defined for this service:', serviceTitle);
+      }
+    };
+    
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
       <View style={styles.content}>
@@ -48,7 +67,7 @@ const VillageEmergencyContact = () => {
                     <Text style={styles.bold}>{detail.label}:</Text> {detail.value}
                   </Text>
                 ))}
-                <TouchableOpacity style={styles.addButton}>
+                <TouchableOpacity style={styles.addButton} onPress={() => handleAddPress(item.title)}> 
                   <Text style={styles.addButtonText}>Add</Text>
                 </TouchableOpacity>
               </View>
