@@ -1,15 +1,16 @@
 import React from 'react';
-import { View, Text, ImageBackground, StyleSheet, FlatList, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import styles from './VillageDetailScreenStyle';
+import { useNavigation } from '@react-navigation/native';
 
 const Tourist_Attraction = [
   {
     title: 'Natural Land Mark',
     details: [
-      { label: "rivers", value: "Nearby Swat River" },
-      { label: "lakes", value: "No major lakes" },
-      { label: "mountains", value: "Surrounded by small hills" },
-      { label: "forest", value: "Scattered pine and oak forests" }
+      { label: "Rivers", value: "Nearby Swat River" },
+      { label: "Lakes", value: "No major lakes" },
+      { label: "Mountains", value: "Surrounded by small hills" },
+      { label: "Forest", value: "Scattered pine and oak forests" }
     ]
   },
   {
@@ -24,14 +25,32 @@ const Tourist_Attraction = [
   {
     title: 'Local Events:',
     details: [
-      {label:"Festivals", value: "Annual spring festival"},
-      {label:"Exhibitions", value: "Handicrafts and local food fairs"},
-      {label:"Cultural Performance", value: "Traditional Pashto music and dance"}
+      { label: "Festivals", value: "Annual spring festival" },
+      { label: "Exhibitions", value: "Handicrafts and local food fairs" },
+      { label: "Cultural Performance", value: "Traditional Pashto music and dance" }
     ]
   },
 ];
 
 const TouristAttraction = () => {
+  const navigation = useNavigation();
+
+  const handleAddPress = (serviceTitle) => {
+    switch (serviceTitle) {
+      case 'Natural Land Mark':
+        navigation.navigate('NaturalLandmark');
+        break;
+      case 'Cultural And Historical Places:':
+        navigation.navigate('CulturalandHistorical');
+        break;
+      case 'Local Events:':
+        navigation.navigate('localEvents');
+        break;
+      default:
+        console.warn('No screen defined for this service');
+    }
+  };
+
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
       <View style={styles.content}>
@@ -47,7 +66,10 @@ const TouristAttraction = () => {
                     <Text style={styles.bold}>{detail.label}:</Text> {detail.value}
                   </Text>
                 ))}
-                <TouchableOpacity style={styles.addButton}>
+                <TouchableOpacity 
+                  style={styles.addButton} 
+                  onPress={() => handleAddPress(item.title)}
+                >
                   <Text style={styles.addButtonText}>Add</Text>
                 </TouchableOpacity>
               </View>
@@ -55,10 +77,8 @@ const TouristAttraction = () => {
           ))}
         </View>
       </View>
-    </ScrollView >
+    </ScrollView>
   );
 };
-
-
 
 export default TouristAttraction;

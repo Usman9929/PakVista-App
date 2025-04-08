@@ -38,6 +38,9 @@ import Transportation from './screens/Village Detail Screen/Updation Screen/Comm
 import Utilities from './screens/Village Detail Screen/Updation Screen/Community_Services_Screen/Utilities';
 import HealthCare from './screens/Village Detail Screen/Updation Screen/Community_Services_Screen/HealthCare';
 import Market from './screens/Village Detail Screen/Updation Screen/Community_Services_Screen/Market';
+import CulturalandHistorical from './screens/Village Detail Screen/Updation Screen/Tourist Attraction Screen/cultural_and_historical';
+import localEvents from './screens/Village Detail Screen/Updation Screen/Tourist Attraction Screen/localEvents';
+import NaturalLandmark from './screens/Village Detail Screen/Updation Screen/Tourist Attraction Screen/NaturalLandmark';
 
 
 const Stack = createStackNavigator();
@@ -81,6 +84,9 @@ const App = () => {
         <Stack.Screen name="Recreational" component={Recreational} />
         <Stack.Screen name="Transportation" component={Transportation} />
         <Stack.Screen name="Utilities" component={Utilities} />
+        <Stack.Screen name="CulturalandHistorical" component={CulturalandHistorical} />
+        <Stack.Screen name="localEvents" component={localEvents} />
+        <Stack.Screen name="NaturalLandmark" component={NaturalLandmark} />
 
         <Stack.Screen
           name="RegionalInsight"
