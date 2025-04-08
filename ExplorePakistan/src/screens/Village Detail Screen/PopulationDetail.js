@@ -1,14 +1,20 @@
 import React from 'react';
-import { View, Text, ImageBackground, StyleSheet, FlatList, TouchableOpacity, ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ScrollView
+} from 'react-native';
 import styles from './VillageDetailScreenStyle';
+import { useNavigation } from '@react-navigation/native';
 
 const Population_Detail = [
   {
     title: 'Population Children',
     details: [
-      { label: "total", value: 3200 },
-      { label: "age_range", value: "0-14 years" },
-      { label: "percentage_of_total_population", value: "30%" }
+      { label: "Total", value: 3200 },
+      { label: "Age Range", value: "0-14 years" },
+      { label: "Percentage of Total Population", value: "30%" }
     ]
   },
   {
@@ -22,14 +28,32 @@ const Population_Detail = [
   {
     title: 'Gender Ratio Rate',
     details: [
-      {label:"Male", value: 5500},
-      {label:"Female", value: 5200},
-      {label:"Male To Female Ratio", value: "1.06:1"}
+      { label: "Male", value: 5500 },
+      { label: "Female", value: 5200 },
+      { label: "Male To Female Ratio", value: "1.06:1" }
     ]
   },
 ];
 
 const PopulationDetail = () => {
+  const navigation = useNavigation();
+
+  const handleAddPress = (serviceTitle) => {
+    switch (serviceTitle) {
+      case 'Population Children':
+        navigation.navigate('PoplutaionChildren');
+        break;
+      case 'Population Adult':
+        navigation.navigate('PopulationAdult');
+        break;
+      case 'Gender Ratio Rate':
+        navigation.navigate('GenderRatioRate');
+        break;
+      default:
+        console.warn('No screen defined for this service');
+    }
+  };
+
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
       <View style={styles.content}>
@@ -45,7 +69,10 @@ const PopulationDetail = () => {
                     <Text style={styles.bold}>{detail.label}:</Text> {detail.value}
                   </Text>
                 ))}
-                <TouchableOpacity style={styles.addButton}>
+                <TouchableOpacity
+                  style={styles.addButton}
+                  onPress={() => handleAddPress(item.title)}
+                >
                   <Text style={styles.addButtonText}>Add</Text>
                 </TouchableOpacity>
               </View>
@@ -53,10 +80,8 @@ const PopulationDetail = () => {
           ))}
         </View>
       </View>
-    </ScrollView >
+    </ScrollView>
   );
 };
-
-
 
 export default PopulationDetail;

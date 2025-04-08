@@ -44,6 +44,10 @@ import NaturalLandmark from './screens/Village Detail Screen/Updation Screen/Tou
 import FireStation from './screens/Village Detail Screen/Updation Screen/Emergency_conatact.js/FireStation';
 import medicalEmergency from './screens/Village Detail Screen/Updation Screen/Emergency_conatact.js/medicalEmergency';
 import policeStation from './screens/Village Detail Screen/Updation Screen/Emergency_conatact.js/policeStation';
+import PopulationAdult from './screens/Village Detail Screen/Updation Screen/population_Detail/PopulationAdult';
+import PoplutaionChildren from './screens/Village Detail Screen/Updation Screen/population_Detail/PoplutaionChildren';
+import GenderRatioRate from './screens/Village Detail Screen/Updation Screen/population_Detail/GenderRatioRate';
+
 
 
 
@@ -94,6 +98,10 @@ const App = () => {
         <Stack.Screen name="FireStation" component={FireStation} />
         <Stack.Screen name="medicalEmergency" component={medicalEmergency} />
         <Stack.Screen name="policeStation" component={policeStation} />
+        <Stack.Screen name="GenderRatioRate" component={GenderRatioRate} />
+        <Stack.Screen name="PopulationAdult" component={PopulationAdult } />
+        <Stack.Screen name="PoplutaionChildren" component={PoplutaionChildren} />
+        
 
 
         <Stack.Screen

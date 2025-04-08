@@ -12,18 +12,18 @@ import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import styles from '../Community_Services_Screen/Community_Services_Screen_style';
 
-const GenderRatioRate = () => {
+const PopulationAdult = () => {
     const navigation = useNavigation();
 
-    const [malePopulation, setMalePopulation] = useState('');
-    const [femalePopulation, setFemalePopulation] = useState('');
-    const [maleToFemaleRatio, setMaleToFemaleRatio] = useState('');
+    const [totalPopulation, setTotalPopulation] = useState('');
+    const [ageRange, setAgeRange] = useState('');
+    const [percentageOfPopulation, setPercentageOfPopulation] = useState('');
 
     const handleSubmit = () => {
         if (
-            !malePopulation.trim() &&
-            !femalePopulation.trim() &&
-            !maleToFemaleRatio.trim()
+            !totalPopulation.trim() &&
+            !ageRange.trim() &&
+            !percentageOfPopulation.trim()
         ) {
             Alert.alert("Validation Error", "Please fill at least one field to submit.");
             return;
@@ -42,35 +42,35 @@ const GenderRatioRate = () => {
             />
 
             <View style={styles.formContainer}>
-                <Text style={styles.header}>Gender Ratio Rate</Text>
+                <Text style={styles.header}>Population Adult</Text>
 
-                <Text style={styles.label}>Male Population:</Text>
+                <Text style={styles.label}>Total Adult Population:</Text>
                 <TextInput
                     style={styles.input}
-                    placeholder="Enter total male population"
+                    placeholder="Enter total number of adults in the area"
                     placeholderTextColor="#888"
-                    value={malePopulation}
-                    onChangeText={setMalePopulation}
+                    value={totalPopulation}
+                    onChangeText={setTotalPopulation}
                     keyboardType="numeric"
                 />
 
-                <Text style={styles.label}>Female Population:</Text>
+                <Text style={styles.label}>Age Range:</Text>
                 <TextInput
                     style={styles.input}
-                    placeholder="Enter total female population"
+                    placeholder="Enter the age range (e.g., 60+ years)"
                     placeholderTextColor="#888"
-                    value={femalePopulation}
-                    onChangeText={setFemalePopulation}
-                    keyboardType="numeric"
+                    value={ageRange}
+                    onChangeText={setAgeRange}
                 />
 
-                <Text style={styles.label}>Male to Female Ratio:</Text>
+                <Text style={styles.label}>Percentage of Total Population:</Text>
                 <TextInput
                     style={styles.input}
-                    placeholder="Enter male to female ratio (e.g., 1:1)"
+                    placeholder="Enter the percentage of adults in the population"
                     placeholderTextColor="#888"
-                    value={maleToFemaleRatio}
-                    onChangeText={setMaleToFemaleRatio}
+                    value={percentageOfPopulation}
+                    onChangeText={setPercentageOfPopulation}
+                    keyboardType="numeric"
                 />
 
                 <TouchableOpacity style={styles.button} onPress={handleSubmit}>
@@ -83,4 +83,4 @@ const GenderRatioRate = () => {
     );
 };
 
-export default GenderRatioRate;
+export default PopulationAdult;
