@@ -54,6 +54,9 @@ import LocalFestival from './screens/Village Detail Screen/Updation Screen/Histo
 import Farming from './screens/Village Detail Screen/Updation Screen/Economy/farming';
 import HandiCrafts from './screens/Village Detail Screen/Updation Screen/Economy/HandiCrafts';
 import Industries from './screens/Village Detail Screen/Updation Screen/Economy/industries';
+import LanguageSpoken from './screens/Village Detail Screen/Updation Screen/Cultural Information/languageSpoken';
+import Cultural_LocalFestival from './screens/Village Detail Screen/Updation Screen/Cultural Information/Cultural_LocalFestival';
+import Traditions from './screens/Village Detail Screen/Updation Screen/Cultural Information/traditions';
 
 
 const Stack = createStackNavigator();
@@ -113,6 +116,9 @@ const App = () => {
         <Stack.Screen name="Farming" component={Farming}/>
         <Stack.Screen name="HandiCrafts" component={HandiCrafts}/>
         <Stack.Screen name="Industries" component={Industries}/>
+        <Stack.Screen name="Cultural_LocalFestival" component={Cultural_LocalFestival}/>
+        <Stack.Screen name="Traditions" component={Traditions}/>
+        <Stack.Screen name="LanguagSpoken" component={LanguageSpoken}/>
 
         <Stack.Screen
           name="RegionalInsight"

@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, ImageBackground, StyleSheet, FlatList, TouchableOpacity, ScrollView } from 'react-native';
 import styles from './VillageDetailScreenStyle';
+import { useNavigation } from '@react-navigation/native';
 
 const Cultural_Info = [
   {
@@ -31,6 +32,23 @@ const Cultural_Info = [
 ];
 
 const CulturalInfo = () => {
+  const navigation = useNavigation();
+  
+    const handleAddPress = (serviceTitle) => {
+      switch (serviceTitle) {
+        case 'Local Festival':
+          navigation.navigate('Cultural_LocalFestival');
+          break;
+        case 'Traditions':
+          navigation.navigate('Traditions');
+          break;
+        case 'Language Spoken':
+          navigation.navigate('LanguagSpoken');
+          break;
+        default:
+          console.warn('No screen defined for this service');
+      }
+    };
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
       <View style={styles.content}>
@@ -46,7 +64,10 @@ const CulturalInfo = () => {
                     <Text style={styles.bold}>{detail.label}:</Text> {detail.value}
                   </Text>
                 ))}
-                <TouchableOpacity style={styles.addButton}>
+                <TouchableOpacity 
+                style={styles.addButton}
+                onPress={() => handleAddPress(item.title)}
+                >
                   <Text style={styles.addButtonText}>Add</Text>
                 </TouchableOpacity>
               </View>
@@ -57,7 +78,6 @@ const CulturalInfo = () => {
     </ScrollView >
   );
 };
-
 
 
 export default CulturalInfo;

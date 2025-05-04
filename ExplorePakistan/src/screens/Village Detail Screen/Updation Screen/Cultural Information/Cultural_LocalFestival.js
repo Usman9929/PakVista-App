@@ -47,7 +47,7 @@ const LocalFestival = () => {
                 <Text style={styles.label}>Spring Festival</Text>
                 <TextInput
                     style={styles.input}
-                    placeholder="Describe how the Spring Festival is celebrated here"
+                    placeholder="Describe how the Spring Festival is celebrated"
                     placeholderTextColor="#888"
                     value={springFestival}
                     onChangeText={setSpringFestival}
@@ -62,10 +62,10 @@ const LocalFestival = () => {
                     onChangeText={setHarvestFestival}
                 />
 
-                <Text style={styles.label}>Eid Celebration</Text>
+                <Text style={styles.label}>Eid Celebration(s)</Text>
                 <TextInput
                     style={styles.input}
-                    placeholder="Describe local customs during Eid (Eid-ul-Fitr/Eid-ul-Adha)"
+                    placeholder="Describe customs during Eid-ul-Fitr/Eid-ul-Adha"
                     placeholderTextColor="#888"
                     value={eidCelebration}
                     onChangeText={setEidCelebration}
