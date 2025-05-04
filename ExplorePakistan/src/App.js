@@ -50,11 +50,7 @@ import GenderRatioRate from './screens/Village Detail Screen/Updation Screen/pop
 import ClimateDetail from './screens/Village Detail Screen/Updation Screen/Geographical Information/ClimateDetail';
 import GeoArea from './screens/Village Detail Screen/Updation Screen/Geographical Information/GeoArea';
 import LocalInformation from './screens/Village Detail Screen/Updation Screen/Geographical Information/LocalInformation';
-
-
-
-
-
+import LocalFestival from './screens/Village Detail Screen/Updation Screen/Historical Background/localFestival';
 
 
 const Stack = createStackNavigator();
@@ -110,8 +106,7 @@ const App = () => {
         <Stack.Screen name="ClimateDetail" component={ClimateDetail}/>
         <Stack.Screen name="GeoArea" component={GeoArea}/>
         <Stack.Screen name="LocalInformation" component={LocalInformation}/>
-
-
+        <Stack.Screen name="LocalFestival" component={LocalFestival}/>
 
         <Stack.Screen
           name="RegionalInsight"
