@@ -51,6 +51,9 @@ import ClimateDetail from './screens/Village Detail Screen/Updation Screen/Geogr
 import GeoArea from './screens/Village Detail Screen/Updation Screen/Geographical Information/GeoArea';
 import LocalInformation from './screens/Village Detail Screen/Updation Screen/Geographical Information/LocalInformation';
 import LocalFestival from './screens/Village Detail Screen/Updation Screen/Historical Background/localFestival';
+import Farming from './screens/Village Detail Screen/Updation Screen/Economy/farming';
+import HandiCrafts from './screens/Village Detail Screen/Updation Screen/Economy/HandiCrafts';
+import Industries from './screens/Village Detail Screen/Updation Screen/Economy/industries';
 
 
 const Stack = createStackNavigator();
@@ -107,6 +110,9 @@ const App = () => {
         <Stack.Screen name="GeoArea" component={GeoArea}/>
         <Stack.Screen name="LocalInformation" component={LocalInformation}/>
         <Stack.Screen name="LocalFestival" component={LocalFestival}/>
+        <Stack.Screen name="Farming" component={Farming}/>
+        <Stack.Screen name="HandiCrafts" component={HandiCrafts}/>
+        <Stack.Screen name="Industries" component={Industries}/>
 
         <Stack.Screen
           name="RegionalInsight"

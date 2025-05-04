@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, ImageBackground, StyleSheet, FlatList, TouchableOpacity, ScrollView } from 'react-native';
 import styles from './VillageDetailScreenStyle';
+import { useNavigation } from '@react-navigation/native';
 
 const economy = [
   {
@@ -31,7 +32,25 @@ const economy = [
   },
 ];
 
-const GeographicalInfo = () => {
+const Economy = () => {
+  const navigation = useNavigation();
+  
+    const handleAddPress = (serviceTitle) => {
+      switch (serviceTitle) {
+        case 'Farming':
+          navigation.navigate('Farming');
+          break;
+        case 'HandiCrafts':
+          navigation.navigate('HandiCrafts');
+          break;
+        case 'Industries':
+          navigation.navigate('Industries');
+          break;
+        default:
+          console.warn('No screen defined for this service');
+      }
+    };
+
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
       <View style={styles.content}>
@@ -47,7 +66,10 @@ const GeographicalInfo = () => {
                     <Text style={styles.bold}>{detail.label}:</Text> {detail.value}
                   </Text>
                 ))}
-                <TouchableOpacity style={styles.addButton}>
+                <TouchableOpacity
+                 style={styles.addButton}
+                 onPress={() => handleAddPress(item.title)}
+                 >
                   <Text style={styles.addButtonText}>Add</Text>
                 </TouchableOpacity>
               </View>
@@ -61,4 +83,4 @@ const GeographicalInfo = () => {
 
 
 
-export default GeographicalInfo;
+export default Economy;
