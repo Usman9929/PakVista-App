@@ -1,5 +1,11 @@
 import React from 'react';
-import { View, Text, ImageBackground, StyleSheet, FlatList, TouchableOpacity, ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity
+} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import styles from './VillageDetailScreenStyle';
 
 const Geographical_Info = [
@@ -30,6 +36,24 @@ const Geographical_Info = [
 ];
 
 const GeographicalInfo = () => {
+  const navigation = useNavigation();
+
+  const handleAddPress = (serviceTitle) => {
+    switch (serviceTitle) {
+      case 'Climate Detail':
+        navigation.navigate('ClimateDetail');
+        break;
+      case 'Geo Area':
+        navigation.navigate('GeoArea');
+        break;
+      case 'Local Information':
+        navigation.navigate('LocalInformation');
+        break;
+      default:
+        console.warn('No screen defined for this service');
+    }
+  };
+
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
       <View style={styles.content}>
@@ -45,7 +69,10 @@ const GeographicalInfo = () => {
                     <Text style={styles.bold}>{detail.label}:</Text> {detail.value}
                   </Text>
                 ))}
-                <TouchableOpacity style={styles.addButton}>
+                <TouchableOpacity
+                  style={styles.addButton}
+                  onPress={() => handleAddPress(item.title)}
+                >
                   <Text style={styles.addButtonText}>Add</Text>
                 </TouchableOpacity>
               </View>
@@ -53,10 +80,8 @@ const GeographicalInfo = () => {
           ))}
         </View>
       </View>
-    </ScrollView >
+    </ScrollView>
   );
 };
-
-
 
 export default GeographicalInfo;

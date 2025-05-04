@@ -47,6 +47,12 @@ import policeStation from './screens/Village Detail Screen/Updation Screen/Emerg
 import PopulationAdult from './screens/Village Detail Screen/Updation Screen/population_Detail/PopulationAdult';
 import PoplutaionChildren from './screens/Village Detail Screen/Updation Screen/population_Detail/PoplutaionChildren';
 import GenderRatioRate from './screens/Village Detail Screen/Updation Screen/population_Detail/GenderRatioRate';
+import ClimateDetail from './screens/Village Detail Screen/Updation Screen/Geographical Information/ClimateDetail';
+import GeoArea from './screens/Village Detail Screen/Updation Screen/Geographical Information/GeoArea';
+import LocalInformation from './screens/Village Detail Screen/Updation Screen/Geographical Information/LocalInformation';
+
+
+
 
 
 
@@ -96,12 +102,15 @@ const App = () => {
         <Stack.Screen name="localEvents" component={localEvents} />
         <Stack.Screen name="NaturalLandmark" component={NaturalLandmark} />
         <Stack.Screen name="FireStation" component={FireStation} />
-        <Stack.Screen name="medicalEmergency" component={medicalEmergency} />
-        <Stack.Screen name="policeStation" component={policeStation} />
+        <Stack.Screen name="MedicalEmergency" component={medicalEmergency} />
+        <Stack.Screen name="PoliceStation" component={policeStation} />
         <Stack.Screen name="GenderRatioRate" component={GenderRatioRate} />
         <Stack.Screen name="PopulationAdult" component={PopulationAdult } />
-        <Stack.Screen name="PoplutaionChildren" component={PoplutaionChildren} />
-        
+        <Stack.Screen name="PoplutaionChildren" component={PoplutaionChildren}/>
+        <Stack.Screen name="ClimateDetail" component={ClimateDetail}/>
+        <Stack.Screen name="GeoArea" component={GeoArea}/>
+        <Stack.Screen name="LocalInformation" component={LocalInformation}/>
+
 
 
         <Stack.Screen
