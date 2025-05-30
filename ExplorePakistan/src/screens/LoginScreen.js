@@ -1,58 +1,94 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import {
+  View, Text, TextInput, TouchableOpacity,
+  StyleSheet, Image
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-
-
 
 const LoginScreen = () => {
   const navigation = useNavigation();
+  const [identifier, setIdentifier] = useState('');
+  const [password, setPassword] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleLogin = async () => {
+    setError('');
+
+    if (!identifier || !password) {
+      setError('Please enter your username or email and password.');
+      return;
+    }
+
+    try {
+      // Fetch all users from the server
+      const response = await fetch(`http://192.168.43.98:3000/users`);
+      const users = await response.json();
+
+      // Check for a user where identifier matches username or email, and password matches
+      const user = users.find(
+        (u) =>
+          (u.username === identifier || u.email === identifier) &&
+          u.password === password
+      );
+
+      if (user) {
+        // Login successful
+        navigation.navigate('ExploreScreen');
+      } else {
+        setError('Incorrect username/email or password.');
+      }
+    } catch (err) {
+      setError('Unable to connect to the server.');
+      console.error(err);
+    }
+  };
+
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Login</Text>
       <Text style={styles.subtitle}>Welcome back!</Text>
 
-      {/* Username Input */}
       <View style={styles.inputContainer}>
         <TextInput
           placeholder="Enter Your Username / Email"
           placeholderTextColor="#888"
           style={styles.input}
+          value={identifier}
+          onChangeText={setIdentifier}
         />
       </View>
 
-      {/* Password Input */}
       <View style={styles.inputContainer}>
         <TextInput
           placeholder="Enter Your Password"
           placeholderTextColor="#888"
-          secureTextEntry={!passwordVisible}  // Toggle password visibility
+          secureTextEntry={!passwordVisible}
           style={styles.input}
+          value={password}
+          onChangeText={setPassword}
         />
         <TouchableOpacity onPress={() => setPasswordVisible(!passwordVisible)} style={styles.eyeIcon}>
           <Image
             source={passwordVisible
-              ? require('../assets/icons/eye_open.png')   // Show open eye icon when visible
-              : require('../assets/icons/eye_close.png') // Show closed eye icon when hidden
-            }
+              ? require('../assets/icons/eye_open.png')
+              : require('../assets/icons/eye_close.png')}
             style={styles.eyeImage}
           />
         </TouchableOpacity>
       </View>
 
+      {error !== '' && <Text style={styles.errorText}>{error}</Text>}
 
-      {/* Forgot Password */}
       <TouchableOpacity>
         <Text style={styles.forgotPassword}>Forgot Password?</Text>
       </TouchableOpacity>
 
-      {/* Login Button */}
-      <TouchableOpacity style={styles.loginButton}>
+      <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
         <Text style={styles.loginButtonText}>Login</Text>
       </TouchableOpacity>
 
-      {/* Signup Option */}
       <View style={styles.signupContainer}>
         <Text style={styles.signupText}>Don't have an account?</Text>
         <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
@@ -60,28 +96,19 @@ const LoginScreen = () => {
         </TouchableOpacity>
       </View>
 
-      {/* Divider */}
       <View style={styles.dividerContainer}>
         <View style={styles.divider} />
         <Text style={styles.orText}>Or</Text>
         <View style={styles.divider} />
       </View>
 
-      {/* Facebook Login Button */}
       <TouchableOpacity style={styles.facebookButton}>
-        <Image
-          source={require('../assets/icons/facebook.png')} // Use a local Facebook icon image
-          style={styles.socialIcon}
-        />
+        <Image source={require('../assets/icons/facebook.png')} style={styles.socialIcon} />
         <Text style={styles.socialButtonText}>Login with Facebook</Text>
       </TouchableOpacity>
 
-      {/* Google Login Button */}
       <TouchableOpacity style={styles.googleButton}>
-        <Image
-          source={require('../assets/icons/google.png')} // Use a local Google icon image
-          style={styles.socialIcon}
-        />
+        <Image source={require('../assets/icons/google.png')} style={styles.socialIcon} />
         <Text style={styles.googleButtonText}>Login with Google</Text>
       </TouchableOpacity>
     </View>
@@ -204,20 +231,26 @@ const styles = StyleSheet.create({
   socialButtonText: {
     color: 'white',
     fontSize: 16,
-    marginRight: 50
+    marginRight: 50,
   },
   googleButtonText: {
     fontSize: 16,
     color: 'black',
-    marginRight: 65
+    marginRight: 65,
   },
   eyeIcon: {
     position: 'absolute',
-    right: 15, // Moves icon to the right side of input
+    right: 15,
   },
   eyeImage: {
     width: 24,
     height: 24,
-    tintColor: '#888', // Change color if needed
+    tintColor: '#888',
+  },
+  errorText: {
+    color: 'red',
+    fontSize: 14,
+    marginTop: 5,
+    alignSelf: 'flex-start',
   },
 });

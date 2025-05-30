@@ -12,7 +12,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import styles from '../Community_Services_Screen/Community_Services_Screen_style';
 
-const LocalFestival = () => {
+const Cultural_LocalFestival = () => {
     const navigation = useNavigation();
 
     const [springFestival, setSpringFestival] = useState('');
@@ -81,4 +81,4 @@ const LocalFestival = () => {
     );
 };
 
-export default LocalFestival;
+export default Cultural_LocalFestival;

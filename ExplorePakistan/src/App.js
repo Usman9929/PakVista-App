@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import WelcomeScreen from './screens/WelcomeScreen';
 import LoginScreen from './screens/LoginScreen';
 import RegionalInsightScreen from './screens/RegionalInsightScreen';
+import ExploreScreen from './screens/ExploreScreen';
 import BottomTabs from './navigation/BottomTab';
 import SignupScreen from './screens/Signup';
 import ExploreVillageScreen from './screens/ExploreVillageScreen';
@@ -53,10 +54,10 @@ import LocalInformation from './screens/Village Detail Screen/Updation Screen/Ge
 import LocalFestival from './screens/Village Detail Screen/Updation Screen/Historical Background/localFestival';
 import Farming from './screens/Village Detail Screen/Updation Screen/Economy/farming';
 import HandiCrafts from './screens/Village Detail Screen/Updation Screen/Economy/HandiCrafts';
-import Industries from './screens/Village Detail Screen/Updation Screen/Economy/industries';
-import LanguageSpoken from './screens/Village Detail Screen/Updation Screen/Cultural Information/languageSpoken';
+import Industries from './screens/Village Detail Screen/Updation Screen/Economy/Industries';
+import LanguageSpoken from './screens/Village Detail Screen/Updation Screen/Cultural Information/LanguageSpoken';
 import Cultural_LocalFestival from './screens/Village Detail Screen/Updation Screen/Cultural Information/Cultural_LocalFestival';
-import Traditions from './screens/Village Detail Screen/Updation Screen/Cultural Information/traditions';
+import Traditions from './screens/Village Detail Screen/Updation Screen/Cultural Information/Traditions';
 
 
 const Stack = createStackNavigator();
@@ -68,6 +69,7 @@ const App = () => {
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Signup" component={SignupScreen} />
+        <Stack.Screen name="ExploreScreen" component={ExploreScreen} />
         <Stack.Screen name="ExploreVillageScreen" component={ExploreVillageScreen} />
         <Stack.Screen name="RegionEvents" component={RegionEvents} />
         <Stack.Screen name="EmergencyContact" component={EmergencyContact} />
@@ -119,7 +121,6 @@ const App = () => {
         <Stack.Screen name="Cultural_LocalFestival" component={Cultural_LocalFestival}/>
         <Stack.Screen name="Traditions" component={Traditions}/>
         <Stack.Screen name="LanguagSpoken" component={LanguageSpoken}/>
-
         <Stack.Screen
           name="RegionalInsight"
           component={RegionalInsightScreen}

@@ -12,24 +12,24 @@ import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import styles from '../Community_Services_Screen/Community_Services_Screen_style';
 
-const LocalFestival = () => {
+const LanguageSpoken = () => {
     const navigation = useNavigation();
 
-    const [springFestival, setSpringFestival] = useState('');
-    const [harvestFestival, setHarvestFestival] = useState('');
-    const [eidCelebration, setEidCelebration] = useState('');
+    const [primaryLanguage, setPrimaryLanguage] = useState('');
+    const [secondaryLanguage, setSecondaryLanguage] = useState('');
+    const [additionalLanguage, setAdditionalLanguage] = useState('');
 
     const handleSubmit = () => {
         if (
-            !springFestival.trim() &&
-            !harvestFestival.trim() &&
-            !eidCelebration.trim()
+            !primaryLanguage.trim() &&
+            !secondaryLanguage.trim() &&
+            !additionalLanguage.trim()
         ) {
             Alert.alert("Validation Error", "Please fill at least one field to submit.");
             return;
         }
 
-        Alert.alert("Success", "Festival data submitted successfully!", [
+        Alert.alert("Success", "Language data submitted successfully!", [
             { text: "OK", onPress: () => navigation.goBack() }
         ]);
     };
@@ -42,33 +42,33 @@ const LocalFestival = () => {
             />
 
             <View style={styles.formContainer}>
-                <Text style={styles.header}>Local Festival</Text>
+                <Text style={styles.header}>Language Spoken</Text>
 
-                <Text style={styles.label}>Spring Festival</Text>
+                <Text style={styles.label}>Primary Language</Text>
                 <TextInput
                     style={styles.input}
-                    placeholder="Describe how the Spring Festival is celebrated here"
+                    placeholder="Enter the primary language spoken in the area"
                     placeholderTextColor="#888"
-                    value={springFestival}
-                    onChangeText={setSpringFestival}
+                    value={primaryLanguage}
+                    onChangeText={setPrimaryLanguage}
                 />
 
-                <Text style={styles.label}>Harvest Festival</Text>
+                <Text style={styles.label}>Secondary Language</Text>
                 <TextInput
                     style={styles.input}
-                    placeholder="Details about traditional harvest celebrations"
+                    placeholder="Enter any secondary language commonly used"
                     placeholderTextColor="#888"
-                    value={harvestFestival}
-                    onChangeText={setHarvestFestival}
+                    value={secondaryLanguage}
+                    onChangeText={setSecondaryLanguage}
                 />
 
-                <Text style={styles.label}>Eid Celebration</Text>
+                <Text style={styles.label}>Additional Language(s)</Text>
                 <TextInput
                     style={styles.input}
-                    placeholder="Describe local customs during Eid (Eid-ul-Fitr/Eid-ul-Adha)"
+                    placeholder="Enter other languages spoken, if any"
                     placeholderTextColor="#888"
-                    value={eidCelebration}
-                    onChangeText={setEidCelebration}
+                    value={additionalLanguage}
+                    onChangeText={setAdditionalLanguage}
                 />
 
                 <TouchableOpacity style={styles.button} onPress={handleSubmit}>
@@ -81,4 +81,4 @@ const LocalFestival = () => {
     );
 };
 
-export default LocalFestival;
+export default LanguageSpoken;

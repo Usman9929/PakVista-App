@@ -1,47 +1,145 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet, Image } from 'react-native';
+import {
+  View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet, Alert
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
 
 const SignupScreen = () => {
   const navigation = useNavigation();
-  
-  // States for Input Fields
+
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [userId, setUserId] = useState('');
+  const [province, setProvince] = useState('');
+  const [division, setDivision] = useState('');
+  const [district, setDistrict] = useState('');
+  const [city, setCity] = useState('');
+  const [village, setVillage] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [errors, setErrors] = useState({});
+
+  const isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
+  const isValidPassword = (password) =>
+    password.length >= 8 && /\d/.test(password) && /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+  const checkExistingUser = async () => {
+    const response = await axios.get('http://192.168.43.98:3000/users');
+    return response.data.find(user =>
+      user.username === username || user.email === email
+    );
+  };
+
+  const handleSignup = async () => {
+    let tempErrors = {};
+
+    if (!firstName) tempErrors.firstName = 'Required';
+    if (!lastName) tempErrors.lastName = 'Required';
+    if (!username) tempErrors.username = 'Required';
+    if (!email) tempErrors.email = 'Required';
+    else if (!isValidEmail(email)) tempErrors.email = 'Invalid email format';
+    if (!password) tempErrors.password = 'Required';
+    else if (!isValidPassword(password)) tempErrors.password = 'Weak password';
+    if (!userId) tempErrors.userId = 'Required';
+    if (!province) tempErrors.province = 'Required';
+    if (!division) tempErrors.division = 'Required';
+    if (!district) tempErrors.district = 'Required';
+    if (!city) tempErrors.city = 'Required';
+    if (!village) tempErrors.village = 'Required';
+
+    const existingUser = await checkExistingUser();
+    if (existingUser) {
+      if (existingUser.username === username) tempErrors.username = 'Username already exists';
+      if (existingUser.email === email) tempErrors.email = 'Email already registered';
+    }
+
+    setErrors(tempErrors);
+    if (Object.keys(tempErrors).length > 0) return;
+
+    try {
+      const newUser = {
+        firstName, lastName, username, email, password,
+        userId, province, division, district, city, village
+      };
+
+      await axios.post('http://192.168.43.98:3000/users', newUser);
+
+      Alert.alert(
+        "Success",
+        "Your account has been created successfully!",
+        [{ text: "OK", onPress: () => navigation.navigate("Login") }]
+      );
+    } catch (error) {
+      console.error('Signup error:', error);
+      Alert.alert("Error", "Something went wrong. Please try again.");
+    }
+  };
+
+  const renderInput = (label, value, setValue, key, placeholder, keyboardType = "default", secure = false) => (
+    <>
+      <Text style={styles.label}>
+        {label}<Text style={styles.required}> *</Text>
+      </Text>
+      <TextInput
+        style={[
+          styles.input,
+          errors[key] && { borderColor: 'red' }
+        ]}
+        placeholder={placeholder}
+        value={value}
+        onChangeText={(text) => {
+          setValue(text);
+          setErrors(prev => ({ ...prev, [key]: null }));
+        }}
+        keyboardType={keyboardType}
+        secureTextEntry={secure}
+      />
+      {errors[key] && <Text style={styles.errorText}>{errors[key]}</Text>}
+    </>
+  );
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>Signup</Text>
 
-      {/* First Section */}
-      <TextInput style={styles.input} placeholder="First Name" />
-      <TextInput style={styles.input} placeholder="Last Name" />
-      <TextInput style={styles.input} placeholder="Username" />
-      <TextInput style={styles.input} placeholder="Email" keyboardType="email-address" />
+      {renderInput("First Name", firstName, setFirstName, "firstName", "First Name")}
+      {renderInput("Last Name", lastName, setLastName, "lastName", "Last Name")}
+      {renderInput("Username", username, setUsername, "username", "Username")}
+      {renderInput("Email", email, setEmail, "email", "Email", "email-address")}
 
-      {/* Password Input with Visibility Toggle */}
-      <View style={styles.passwordContainer}>
+      <Text style={styles.label}>Password<Text style={styles.required}> *</Text></Text>
+      <View style={[
+        styles.passwordContainer,
+        errors.password && { borderColor: 'red' }
+      ]}>
         <TextInput
           style={styles.passwordInput}
           placeholder="Enter Your Password"
-          secureTextEntry={!passwordVisible} 
+          secureTextEntry={!passwordVisible}
           value={password}
-          onChangeText={setPassword}
+          onChangeText={(text) => {
+            setPassword(text);
+            setErrors(prev => ({ ...prev, password: null }));
+          }}
         />
         <TouchableOpacity onPress={() => setPasswordVisible(!passwordVisible)}>
           <Text style={styles.eyeIcon}>{passwordVisible ? '👁️' : '👁️‍🗨️'}</Text>
         </TouchableOpacity>
       </View>
+      {errors.password && <Text style={styles.errorText}>{errors.password}</Text>}
+      <Text style={styles.passwordNote}>* Must be 8+ characters, include a number and special character (! @ # $ %) etc.</Text>
 
-      {/* Second Section */}
-      <TextInput style={styles.input} placeholder="User ID" />
-      <TextInput style={styles.input} placeholder="Province" />
-      <TextInput style={styles.input} placeholder="Division" />
-      <TextInput style={styles.input} placeholder="District" />
-      <TextInput style={styles.input} placeholder="City" />
-      <TextInput style={styles.input} placeholder="Village" />
+      {renderInput("User ID", userId, setUserId, "userId", "User ID")}
+      {renderInput("Province", province, setProvince, "province", "Province")}
+      {renderInput("Division", division, setDivision, "division", "Division")}
+      {renderInput("District", district, setDistrict, "district", "District")}
+      {renderInput("City", city, setCity, "city", "City")}
+      {renderInput("Village", village, setVillage, "village", "Village")}
 
-      <TouchableOpacity style={styles.signupButton}>
+      <TouchableOpacity style={styles.signupButton} onPress={handleSignup}>
         <Text style={styles.signupButtonText}>Sign Up</Text>
       </TouchableOpacity>
 
@@ -51,24 +149,6 @@ const SignupScreen = () => {
           <Text style={styles.loginLink}> Login</Text>
         </TouchableOpacity>
       </View>
-
-      <View style={styles.separatorContainer}>
-        <View style={styles.separator} />
-        <Text style={styles.orText}>Or</Text>
-        <View style={styles.separator} />
-      </View>
-
-      {/* Facebook Login Button */}
-      <TouchableOpacity style={styles.facebookButton}>
-        <Image source={require('../assets/icons/facebook.png')} style={styles.socialIcon} />
-        <Text style={styles.socialButtonText}>Signup with Facebook</Text>
-      </TouchableOpacity>
-
-      {/* Google Login Button */}
-      <TouchableOpacity style={styles.googleButton}>
-        <Image source={require('../assets/icons/google.png')} style={styles.socialIcon} />
-        <Text style={styles.googleButtonText}>Signup with Google</Text>
-      </TouchableOpacity>
     </ScrollView>
   );
 };
@@ -76,17 +156,24 @@ const SignupScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    alignItems: 'center',
     paddingVertical: 20,
     paddingHorizontal: 20,
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     color: 'red',
     marginBottom: 20,
-    marginTop: 20
+    textAlign: 'center'
+  },
+  label: {
+    fontSize: 14,
+    fontWeight: '600',
+    marginBottom: 5
+  },
+  required: {
+    color: 'red'
   },
   input: {
     width: '100%',
@@ -95,8 +182,13 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     borderRadius: 10,
     paddingHorizontal: 15,
-    marginBottom: 20,
+    marginBottom: 10,
     backgroundColor: '#fff'
+  },
+  errorText: {
+    color: 'red',
+    fontSize: 12,
+    marginBottom: 10
   },
   passwordContainer: {
     width: '100%',
@@ -106,7 +198,7 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     borderRadius: 10,
     paddingHorizontal: 15,
-    marginBottom: 20,
+    marginBottom: 10,
     backgroundColor: '#fff'
   },
   passwordInput: {
@@ -119,7 +211,7 @@ const styles = StyleSheet.create({
     color: '#777'
   },
   signupButton: {
-    width: '85%',
+    width: '100%',
     height: 50,
     backgroundColor: 'red',
     justifyContent: 'center',
@@ -133,65 +225,17 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   loginText: {
-    marginTop: 10,
     fontSize: 14,
   },
   loginLink: {
     color: 'red',
     fontWeight: 'bold',
-    marginTop: 9,
     marginLeft: 5
   },
-  separatorContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginVertical: 15,
-    width: '100%'
-  },
-  separator: {
-    flex: 1,
-    height: 1,
-    backgroundColor: '#ccc'
-  },
-  orText: {
-    marginHorizontal: 10,
-    color: '#888'
-  },
-  facebookButton: {
-    backgroundColor: '#1877F2',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 12,
-    borderRadius: 10,
-    width: '85%',
-    marginBottom: 15,
-  },
-  googleButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 12,
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#ddd',
-    marginTop: 10,
-    width: '85%',
-  },
-  socialIcon: {
-    width: 24,
-    height: 24,
-    marginRight: 50,
-  },
-  socialButtonText: {
-    color: 'white',
-    fontSize: 16,
-    marginRight: 50
-  },
-  googleButtonText: {
-    fontSize: 16,
-    color: 'black',
-    marginRight: 65
+  passwordNote: {
+    fontSize: 12,
+    color: '#888',
+    marginBottom: 10
   },
 });
 
