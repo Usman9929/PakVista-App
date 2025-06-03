@@ -8,11 +8,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   image: {
-    width: '100%',
-    height: '100%', // Full screen height
-    resizeMode: 'cover', // Ensure the image covers the area
-    position: 'absolute', // Position the image as a background
-  },
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
+  width: '100%',
+  height: '100%',
+  resizeMode: 'cover',
+},
+
   textContainer: {
     padding: 20,
     backgroundColor: '#fff',
@@ -187,10 +192,6 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
 });
-
-
-
-
 
 
 export default styles

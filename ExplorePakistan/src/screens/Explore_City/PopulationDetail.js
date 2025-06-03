@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, ImageBackground, StyleSheet, FlatList, TouchableOpacity, ScrollView } from 'react-native';
 import styles from './Explore_City_Style';
 
+
 const Population_Detail = [
     {
         title: 'Population Children',
@@ -47,6 +48,7 @@ const Population_Detail = [
 ];
 
 const PopulationDetail = () => {
+    
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
             <View style={styles.container}>

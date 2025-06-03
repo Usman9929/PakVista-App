@@ -220,6 +220,7 @@
         "government_contact_number": "1122",
         "police_stations": {
           "emergency_contact_id": 2,
+          "contact_number":"45342",
           "address": "Main Bazaar, Timergara",
           "operating_hours_police_stations": "24/7"
         },

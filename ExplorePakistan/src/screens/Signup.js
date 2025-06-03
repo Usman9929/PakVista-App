@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet, Alert
+  View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet, Alert, ActivityIndicator
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
@@ -8,77 +8,151 @@ import axios from 'axios';
 const SignupScreen = () => {
   const navigation = useNavigation();
 
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [userId, setUserId] = useState('');
-  const [province, setProvince] = useState('');
-  const [division, setDivision] = useState('');
-  const [district, setDistrict] = useState('');
-  const [city, setCity] = useState('');
-  const [village, setVillage] = useState('');
+  const [formData, setFormData] = useState({
+    first_name: '',
+    last_name: '',
+    username: '',
+    email: '',
+    password: '',
+    province: '',
+    division: '',
+    district: '',
+    city: '',
+    village: ''
+  });
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [errors, setErrors] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   const isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
   const isValidPassword = (password) =>
     password.length >= 8 && /\d/.test(password) && /[!@#$%^&*(),.?":{}|<>]/.test(password);
 
-  const checkExistingUser = async () => {
-    const response = await axios.get('http://192.168.43.98:3000/users');
-    return response.data.find(user =>
-      user.username === username || user.email === email
-    );
+  const handleInputChange = (field, value) => {
+    setFormData({
+      ...formData,
+      [field]: value
+    });
+    // Clear error when user types
+    if (errors[field]) {
+      setErrors({
+        ...errors,
+        [field]: null
+      });
+    }
   };
 
-  const handleSignup = async () => {
+  const validateForm = () => {
     let tempErrors = {};
+    let isValid = true;
 
-    if (!firstName) tempErrors.firstName = 'Required';
-    if (!lastName) tempErrors.lastName = 'Required';
-    if (!username) tempErrors.username = 'Required';
-    if (!email) tempErrors.email = 'Required';
-    else if (!isValidEmail(email)) tempErrors.email = 'Invalid email format';
-    if (!password) tempErrors.password = 'Required';
-    else if (!isValidPassword(password)) tempErrors.password = 'Weak password';
-    if (!userId) tempErrors.userId = 'Required';
-    if (!province) tempErrors.province = 'Required';
-    if (!division) tempErrors.division = 'Required';
-    if (!district) tempErrors.district = 'Required';
-    if (!city) tempErrors.city = 'Required';
-    if (!village) tempErrors.village = 'Required';
-
-    const existingUser = await checkExistingUser();
-    if (existingUser) {
-      if (existingUser.username === username) tempErrors.username = 'Username already exists';
-      if (existingUser.email === email) tempErrors.email = 'Email already registered';
+    if (!formData.first_name.trim()) {
+      tempErrors.first_name = 'First name is required';
+      isValid = false;
+    }
+    if (!formData.last_name.trim()) {
+      tempErrors.last_name = 'Last name is required';
+      isValid = false;
+    }
+    if (!formData.username.trim()) {
+      tempErrors.username = 'Username is required';
+      isValid = false;
+    }
+    if (!formData.email.trim()) {
+      tempErrors.email = 'Email is required';
+      isValid = false;
+    } else if (!isValidEmail(formData.email)) {
+      tempErrors.email = 'Invalid email format';
+      isValid = false;
+    }
+    if (!formData.password) {
+      tempErrors.password = 'Password is required';
+      isValid = false;
+    } else if (!isValidPassword(formData.password)) {
+      tempErrors.password = 'Password must be 8+ chars with a number and special character';
+      isValid = false;
+    }
+    if (!formData.user_id.trim()) {
+      tempErrors.user_id = 'User ID is required';
+      isValid = false;
+    }
+    if (!formData.province.trim()) {
+      tempErrors.province = 'Province is required';
+      isValid = false;
+    }
+    if (!formData.division.trim()) {
+      tempErrors.division = 'Division is required';
+      isValid = false;
+    }
+    if (!formData.district.trim()) {
+      tempErrors.district = 'District is required';
+      isValid = false;
+    }
+    if (!formData.city.trim()) {
+      tempErrors.city = 'City is required';
+      isValid = false;
+    }
+    if (!formData.village.trim()) {
+      tempErrors.village = 'Village is required';
+      isValid = false;
     }
 
     setErrors(tempErrors);
-    if (Object.keys(tempErrors).length > 0) return;
+    return isValid;
+  };
+
+  const handleSignup = async () => {
+    if (!validateForm()) return;
+
+    setIsLoading(true);
 
     try {
-      const newUser = {
-        firstName, lastName, username, email, password,
-        userId, province, division, district, city, village
-      };
+      const response = await axios.post('http://10.0.2.2:8000/register', formData, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      console.log(response)
 
-      await axios.post('http://192.168.43.98:3000/users', newUser);
-
-      Alert.alert(
-        "Success",
-        "Your account has been created successfully!",
-        [{ text: "OK", onPress: () => navigation.navigate("Login") }]
-      );
+      if (response.status === 201) {
+        Alert.alert(
+          "Success",
+          "Your account has been created successfully!",
+          [{ text: "OK", onPress: () => navigation.navigate("Login") }]
+        );
+      }
     } catch (error) {
-      console.error('Signup error:', error);
-      Alert.alert("Error", "Something went wrong. Please try again.");
+      console.error('Signup error:', error.response?.data || error.message);
+      
+      // Handle DRF validation errors
+      if (error.response?.data) {
+        const apiErrors = error.response.data;
+        let errorMessages = {};
+        
+        // Map API errors to form fields
+        for (const key in apiErrors) {
+          if (Array.isArray(apiErrors[key])) {
+            errorMessages[key] = apiErrors[key].join(' ');
+          } else {
+            errorMessages[key] = apiErrors[key];
+          }
+        }
+        
+        setErrors(errorMessages);
+        
+        // Show general error if no field-specific errors
+        if (Object.keys(errorMessages).length === 0) {
+          Alert.alert("Error", "Registration failed. Please try again.");
+        }
+      } else {
+        Alert.alert("Error", "Network error. Please check your connection.");
+      }
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  const renderInput = (label, value, setValue, key, placeholder, keyboardType = "default", secure = false) => (
+  const renderInput = (label, field, placeholder, keyboardType = "default", secure = false) => (
     <>
       <Text style={styles.label}>
         {label}<Text style={styles.required}> *</Text>
@@ -86,18 +160,15 @@ const SignupScreen = () => {
       <TextInput
         style={[
           styles.input,
-          errors[key] && { borderColor: 'red' }
+          errors[field] && { borderColor: 'red' }
         ]}
         placeholder={placeholder}
-        value={value}
-        onChangeText={(text) => {
-          setValue(text);
-          setErrors(prev => ({ ...prev, [key]: null }));
-        }}
+        value={formData[field]}
+        onChangeText={(text) => handleInputChange(field, text)}
         keyboardType={keyboardType}
         secureTextEntry={secure}
       />
-      {errors[key] && <Text style={styles.errorText}>{errors[key]}</Text>}
+      {errors[field] && <Text style={styles.errorText}>{errors[field]}</Text>}
     </>
   );
 
@@ -105,10 +176,10 @@ const SignupScreen = () => {
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>Signup</Text>
 
-      {renderInput("First Name", firstName, setFirstName, "firstName", "First Name")}
-      {renderInput("Last Name", lastName, setLastName, "lastName", "Last Name")}
-      {renderInput("Username", username, setUsername, "username", "Username")}
-      {renderInput("Email", email, setEmail, "email", "Email", "email-address")}
+      {renderInput("First Name", "first_name", "First Name")}
+      {renderInput("Last Name", "last_name", "Last Name")}
+      {renderInput("Username", "username", "Username")}
+      {renderInput("Email", "email", "Email", "email-address")}
 
       <Text style={styles.label}>Password<Text style={styles.required}> *</Text></Text>
       <View style={[
@@ -119,11 +190,8 @@ const SignupScreen = () => {
           style={styles.passwordInput}
           placeholder="Enter Your Password"
           secureTextEntry={!passwordVisible}
-          value={password}
-          onChangeText={(text) => {
-            setPassword(text);
-            setErrors(prev => ({ ...prev, password: null }));
-          }}
+          value={formData.password}
+          onChangeText={(text) => handleInputChange('password', text)}
         />
         <TouchableOpacity onPress={() => setPasswordVisible(!passwordVisible)}>
           <Text style={styles.eyeIcon}>{passwordVisible ? '👁️' : '👁️‍🗨️'}</Text>
@@ -132,15 +200,23 @@ const SignupScreen = () => {
       {errors.password && <Text style={styles.errorText}>{errors.password}</Text>}
       <Text style={styles.passwordNote}>* Must be 8+ characters, include a number and special character (! @ # $ %) etc.</Text>
 
-      {renderInput("User ID", userId, setUserId, "userId", "User ID")}
-      {renderInput("Province", province, setProvince, "province", "Province")}
-      {renderInput("Division", division, setDivision, "division", "Division")}
-      {renderInput("District", district, setDistrict, "district", "District")}
-      {renderInput("City", city, setCity, "city", "City")}
-      {renderInput("Village", village, setVillage, "village", "Village")}
+  
+      {renderInput("Province", "province", "Province")}
+      {renderInput("Division", "division", "Division")}
+      {renderInput("District", "district", "District")}
+      {renderInput("City", "city", "City")}
+      {renderInput("Village", "village", "Village")}
 
-      <TouchableOpacity style={styles.signupButton} onPress={handleSignup}>
-        <Text style={styles.signupButtonText}>Sign Up</Text>
+      <TouchableOpacity 
+        style={styles.signupButton} 
+        onPress={handleSignup}
+        disabled={isLoading}
+      >
+        {isLoading ? (
+          <ActivityIndicator color="#fff" />
+        ) : (
+          <Text style={styles.signupButtonText}>Sign Up</Text>
+        )}
       </TouchableOpacity>
 
       <View style={{ flexDirection: "row", justifyContent: "center", marginTop: 10 }}>

@@ -42,10 +42,10 @@ const RegionalInsightScreen = () => {
       {/* Grid Buttons */}
       <View style={styles.gridContainer}>
         <GuestButton title="Explore Villages" icon={require('../assets/icons/explore.png')} onPress={() => navigation.navigate('ExploreVillageScreen')} />
-        <GuestButton title="Explore City" icon={require('../assets/icons/popular_site.png')} onPress={() => navigation.navigate('ExploreCity')} />
+        <GuestButton title="Explore City" icon={require('../assets/icons/popular_site.png')} onPress={() => navigation.navigate('ExploreCity',{cityData})} />
         <GuestButton title="Region Events" icon={require('../assets/icons/reigon_event.png')} onPress={() => navigation.navigate('RegionEvents')} />
         <GuestButton title="Search" icon={require('../assets/icons/search.png')} onPress={() => navigation.navigate('SearchScreen')}/>
-        <GuestButton title="Emergency Contacts" icon={require('../assets/icons/emergency.png')} onPress={() => navigation.navigate('EmergencyContact')}/>
+        <GuestButton title="Emergency Contacts" icon={require('../assets/icons/emergency.png')} onPress={() => navigation.navigate('EmergencyContact',{cityData})}/>
         <GuestButton title="Login Sign-Up" icon={require('../assets/icons/login.png')} onPress={() => navigation.navigate('Login')} />
       </View>
 

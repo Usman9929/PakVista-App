@@ -1,36 +1,48 @@
 import React from 'react';
 import { View, Text, ImageBackground, StyleSheet, FlatList, TouchableOpacity, ScrollView } from 'react-native';
+import { useRoute } from '@react-navigation/native';
 
-const emergencyContacts = [
-    {
-        title: 'Police Station:',
-        details: [
-            { label: 'Contact Number', value: '0945-123456' },
-            { label: 'Address', value: 'Main Police Station, Timergara' },
-            { label: 'Operating Hours', value: '24/7' }
-        ]
-    },
-    {
-        title: 'Healthcare Services:',
-        details: [
-            { label: 'Contact Number', value: '0945-654321' },
-            { label: 'Address', value: 'Fire Brigade Center, Timergara City' },
-            { label: 'Operating Hours', value: '24/7' }
-        ]
-    },
-    {
-        title: 'Medical Emergency:',
-        details: [
-            { label: 'Ambulance Service', value: '1122' },
-            { label: 'Hospital Emergency Number', value: '0945-12233' },
-            { label: 'Blood Bank', value: 'Timergara Central Blood Bank' },
-            { label: 'Flood Emergency', value: '0945-334455' },
-            { label: 'Earthquake Emergency', value: '0945-223344' }
-        ]
-    }
-];
+const mapEmergencyContacts = (data) => {
+    if (!data) return [];
+
+    return [
+        {
+            title: 'Police Station:',
+            details: [
+                { label: 'Contact Number', value: data.police_stations?.contact_number || 'N/A' },
+                { label: 'address', value: data.police_stations?.address || 'N/A' },
+                { label: 'Operating Hours', value: data.police_stations?.operating_hours_police_stations || 'N/A' },
+            ],
+        },
+        {
+            title: 'Fire Station:',
+            details: [
+                { label: 'Contact Number', value: data.fire_station?.contact_number || 'N/A' },
+                { label: 'Address', value: data.fire_station?.address || 'N/A' },
+                { label: 'Operating Hours', value: data.fire_station?.operating_hours || 'N/A' },
+            ],
+        },
+        {
+            title: 'Medical Emergency:',
+            details: [
+                { label: 'Ambulance Service', value: data.medical_emergency?.ambulance_service || 'N/A' },
+                { label: 'Hospital Emergency Number', value: data.medical_emergency?.hospital_emergency_number || 'N/A' },
+                { label: 'Blood Bank', value: data.medical_emergency?.blood_bank || 'N/A' },
+                { label: 'Flood Emergency', value: data.medical_emergency?.disaster_management || 'N/A' },
+                { label: 'Earthquake Emergency', value: data.medical_emergency?.contact_for_handling_flood || 'N/A' },
+                { label: 'Earthquake Emergency', value: data.medical_emergency?.contact_for_earthquake || 'N/A' },
+            ],
+        },
+    ];
+};
 
 const EmergencyContact = () => {
+    const route = useRoute();
+    const { cityData } = route.params;
+
+    // Extract and map data
+    const emergencyContacts = mapEmergencyContacts(cityData?.Emergency_Contacts);
+
     const renderItem = ({ item }) => (
         <View style={styles.cardWrapper}>
             <View style={styles.card}>
@@ -47,31 +59,29 @@ const EmergencyContact = () => {
         </View>
     );
 
-
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
-        <View style={styles.container}>
-            {/* Header Image */}
-            <ImageBackground
-                source={require('../assets/images/background.jpg')} // Replace with your actual image path
-                style={styles.headerImage}
-            />
-
-            {/* Emergency Contacts Section */}
-            <View style={styles.content}>
-                <Text style={styles.sectionTitle}>Emergency Contact of Timergara</Text>
-                <FlatList
-                    data={emergencyContacts}
-                    renderItem={renderItem}
-                    keyExtractor={(item, index) => index.toString()}
-                    contentContainerStyle={styles.listContainer}
-                    nestedScrollEnabled={true} // Add this line
+            <View style={styles.container}>
+                <ImageBackground
+                    source={require('../assets/images/background.jpg')}
+                    style={styles.headerImage}
                 />
+                <View style={styles.content}>
+                    <Text style={styles.sectionTitle}>Emergency Contact of {cityData.city_name}</Text>
+                    <FlatList
+                        data={emergencyContacts}
+                        renderItem={renderItem}
+                        keyExtractor={(item, index) => index.toString()}
+                        contentContainerStyle={styles.listContainer}
+                        nestedScrollEnabled={true}
+                    />
+                </View>
             </View>
-        </View>
         </ScrollView>
     );
 };
+
+
 
 const styles = StyleSheet.create({
     container: {

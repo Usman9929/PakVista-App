@@ -1,61 +1,74 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StatusBar, Image, TouchableOpacity, Modal, Alert, ActivityIndicator } from 'react-native';
-import { useNavigation } from '@react-navigation/native';  // Import navigation
+import axios from 'axios';
+import {
+  View,
+  Text,
+  StatusBar,
+  Image,
+  TouchableOpacity,
+  Modal,
+  Alert,
+  ActivityIndicator,
+  ImageBackground
+} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import styles from '../styles/globalStyles';
 
 const WelcomeScreen = () => {
-  const navigation = useNavigation();  // Use navigation
+  const navigation = useNavigation();
   const [modalVisible, setModalVisible] = useState(false);
-  const [cities, setCities] = useState([]); // Store cities data
-  const [selectedCity, setSelectedCity] = useState("Select City"); // Track selected city
-  const [selectedCityData, setSelectedCityData] = useState(null); // Store selected city details
-  const [loading, setLoading] = useState(true)
+  const [cities, setCities] = useState([]);
+  const [selectedCity, setSelectedCity] = useState("Select City");
+  const [selectedCityData, setSelectedCityData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  // Fetch city data from the API
+  // ✅ Axios version of API fetch
   const getCityData = async () => {
-    const url = "http://192.168.43.98:3000/cities"; // API URL
+    const url = "http://192.168.43.98:3000/cities"; // Use DRF API route
     try {
-      let result = await fetch(url);
-      result = await result.json();
-      console.log("Fetched city data:", result); // Debugging
-      setCities(result); // Set cities data to state
+      const response = await axios.get(url); // Axios GET
+      console.log("Fetched city data:", response.data);
+      setCities(response.data);
     } catch (error) {
-      console.error("Error fetching city data:", error);
+      console.error("Error fetching city data:", error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
   useEffect(() => {
-    getCityData(); // Fetch cities when the component mounts
-    setLoading(false);
+    getCityData();
   }, []);
 
   if (loading) {
-    return <ActivityIndicator size="large" color="#0000ff"  />;
+    return <ActivityIndicator size="large" color="#0000ff" />;
   }
 
-  // Handle city selection
   const handleSelectCity = (city) => {
-    setSelectedCity(city.city_name); // Update selected city name
-    setSelectedCityData(city); // Store full city data
-    setModalVisible(false); // Close modal
+    setSelectedCity(city.City_name);
+    setSelectedCityData(city);
+    setModalVisible(false);
   };
 
-  // Handle Guest button click
   const handleGuestClick = () => {
     if (selectedCity === "Select City") {
       Alert.alert("Select City", "Please select a city before proceeding as a guest.");
     } else {
-      navigation.navigate('MainTabs', { screen: 'Regional Insight', params: { screen: 'RegionalInsight', params: { cityData: selectedCityData } } });
+      navigation.navigate('MainTabs', {
+        screen: 'Regional Insight',
+        params: {
+          screen: 'RegionalInsight',
+          params: { cityData: selectedCityData }
+        }
+      });
     }
   };
-
 
   return (
     <View style={styles.container}>
       <StatusBar barStyle="default" />
-
-      <Image
-        source={require('../assets/images/background.jpg')} // Accessing the image
+      <ImageBackground
+        source={require('../assets/images/background.jpg')}
         style={styles.image}
       />
       <View style={styles.textContainer}>
@@ -65,26 +78,20 @@ const WelcomeScreen = () => {
           Explore the heart of our cities and villages through a seamless experience. Discover essential information, tourist attractions, community services, and local updates at your fingertips. Whether you're a resident or a visitor, our app connects you with everything you need to know about the community. Start your journey to uncover the rich culture, history, and natural beauty of the region!
         </Text>
 
-        {/* Button with dynamic text */}
         <TouchableOpacity style={styles.button} onPress={() => setModalVisible(true)}>
           <Text style={styles.buttonText}>{selectedCity}</Text>
         </TouchableOpacity>
 
-        {/* Navigate to Login Screen */}
         <View style={styles.rowContainer}>
           <TouchableOpacity onPress={() => navigation.navigate('Login')}>
             <Text style={{ color: "red" }}>Login</Text>
           </TouchableOpacity>
-
           <Text style={{ padding: 5 }}>or use as</Text>
-
-          {/* Navigate to Guest Screen */}
           <TouchableOpacity onPress={handleGuestClick}>
             <Text style={{ color: "red" }}>Guest</Text>
           </TouchableOpacity>
         </View>
 
-        {/* Modal for City Selection */}
         <Modal transparent={true} visible={modalVisible} animationType="slide">
           <TouchableOpacity
             style={styles.modalOverlay}
@@ -93,18 +100,14 @@ const WelcomeScreen = () => {
           >
             <View style={styles.modalBox}>
               <Text style={styles.title}>Select Your City</Text>
-
-              {/* Map through cities array and display dynamically */}
-              {cities.map((city,index) => (
+              {cities.map((city, index) => (
                 <TouchableOpacity
                   key={city.id || index}
                   onPress={() => handleSelectCity(city)}
                 >
-                  <Text style={styles.cityOption}>{city.city_name}</Text>
+                  <Text style={styles.cityOption}>{city.City_name}</Text>
                 </TouchableOpacity>
               ))}
-
-              {/* Close Button */}
               <TouchableOpacity onPress={() => setModalVisible(false)}>
                 <Text style={{ color: 'red', marginTop: 20 }}>Close</Text>
               </TouchableOpacity>

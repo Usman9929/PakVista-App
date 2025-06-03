@@ -12,7 +12,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import styles from '../Community_Services_Screen/Community_Services_Screen_style';
 
-const policeStation = () => {
+const PoliceStation = () => {
   const navigation = useNavigation();
 
   const [contactNumber, setContactNumber] = useState('');
@@ -82,4 +82,4 @@ const policeStation = () => {
   );
 };
 
-export default policeStation;
+export default PoliceStation;

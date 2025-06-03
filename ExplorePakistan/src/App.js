@@ -44,7 +44,6 @@ import localEvents from './screens/Village Detail Screen/Updation Screen/Tourist
 import NaturalLandmark from './screens/Village Detail Screen/Updation Screen/Tourist Attraction Screen/NaturalLandmark';
 import FireStation from './screens/Village Detail Screen/Updation Screen/Emergency_conatact.js/FireStation';
 import medicalEmergency from './screens/Village Detail Screen/Updation Screen/Emergency_conatact.js/medicalEmergency';
-import policeStation from './screens/Village Detail Screen/Updation Screen/Emergency_conatact.js/policeStation';
 import PopulationAdult from './screens/Village Detail Screen/Updation Screen/population_Detail/PopulationAdult';
 import PoplutaionChildren from './screens/Village Detail Screen/Updation Screen/population_Detail/PoplutaionChildren';
 import GenderRatioRate from './screens/Village Detail Screen/Updation Screen/population_Detail/GenderRatioRate';
@@ -58,6 +57,7 @@ import Industries from './screens/Village Detail Screen/Updation Screen/Economy/
 import LanguageSpoken from './screens/Village Detail Screen/Updation Screen/Cultural Information/LanguageSpoken';
 import Cultural_LocalFestival from './screens/Village Detail Screen/Updation Screen/Cultural Information/Cultural_LocalFestival';
 import Traditions from './screens/Village Detail Screen/Updation Screen/Cultural Information/Traditions';
+import PoliceStation from './screens/Village Detail Screen/Updation Screen/Emergency_conatact.js/PoliceStation';
 
 
 const Stack = createStackNavigator();
@@ -107,7 +107,7 @@ const App = () => {
         <Stack.Screen name="NaturalLandmark" component={NaturalLandmark} />
         <Stack.Screen name="FireStation" component={FireStation} />
         <Stack.Screen name="MedicalEmergency" component={medicalEmergency} />
-        <Stack.Screen name="PoliceStation" component={policeStation} />
+        <Stack.Screen name="PoliceStation" component={PoliceStation} />
         <Stack.Screen name="GenderRatioRate" component={GenderRatioRate} />
         <Stack.Screen name="PopulationAdult" component={PopulationAdult } />
         <Stack.Screen name="PoplutaionChildren" component={PoplutaionChildren}/>
