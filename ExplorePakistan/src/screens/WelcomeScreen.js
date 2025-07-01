@@ -20,11 +20,12 @@ const WelcomeScreen = () => {
   const [cities, setCities] = useState([]);
   const [selectedCity, setSelectedCity] = useState("Select City");
   const [selectedCityData, setSelectedCityData] = useState(null);
+  const [villages, setVillages] = useState([]);
   const [loading, setLoading] = useState(true);
 
   // ✅ Axios version of API fetch
   const getCityData = async () => {
-    const url = "http://192.168.43.98:3000/cities"; // Use DRF API route
+    const url = "http://192.168.43.98:8000/cities"; // Use DRF API route
     try {
       const response = await axios.get(url); // Axios GET
       console.log("Fetched city data:", response.data);

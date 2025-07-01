@@ -473,6 +473,239 @@
           "contact_for_earthquake": "0932-789012"
         }
       }
+    },
+    {
+      "city_id": 3,
+      "city_name": "Swat",
+      "emergencyNumber": "1122",
+      "city_code": "2931",
+      "district_id": 2,
+      "city_population": "2,309,570",
+      "city_area": "5,337 square kilometers",
+      "climate_detail": "humid continental climate with cold, snowy winters and mild summers (0°C–30°C).",
+      "no_of_villages_in_city": "170",
+      "local_economy": "Tourism, agriculture, handicrafts, forestry, trade, remittances, and government jobs.",
+      "description": "Swat (Pashto: سوات, Urdu: سوات) is a lush green valley and a district in the Malakand Division of Khyber Pakhtunkhwa, Pakistan. Known as the 'Switzerland of the East', Swat is a major tourist destination with snow-capped mountains, rivers, and historical sites. It was formerly a princely state and has cultural and archaeological significance dating back to the Buddhist era. Mingora is the largest city and commercial hub of the valley.",
+      "Population_Detail": {
+        "population_code": "POP_SWT_001",
+        "village_id": "SWT_001",
+        "city_id": "3",
+        "district_id": "D_Swat",
+        "division_id": "Div_Malakand"
+      },
+      "Population_children": {
+        "population_code": "POP_SWT_001",
+        "Total": "808349",
+        "Age_range": "0-14",
+        "percentage_of_Total_population": "35%"
+      },
+      "Population_Adult": {
+        "population_code": "POP_SWT_001",
+        "Total": "1260263",
+        "Age_range": "15-64",
+        "Percentage_of_total_population": "55%"
+      },
+      "Population_elderly": {
+        "population_code": "POP_SWT_001",
+        "Total": "231957",
+        "Age_range": "65+",
+        "Percentage_of_total_population": "10%"
+      },
+      "Gender_Ratio": {
+        "population_code": "POP_SWT_001",
+        "Male": "1180000",
+        "Female": "1129570",
+        "male_to_female_ratio": "1.04:1"
+      },
+      "Population_Literacy_Rate": {
+        "population_code": "POP_SWT_001",
+        "overall_literacy_rate": "61%",
+        "male_literacy_rate": "71%",
+        "Female_literacy_rate": "50%"
+      },
+      "Geographical_Information": {
+        "geographical_information_code": "GEO_SWT_001",
+        "village_id": "SWT_001",
+        "city_id": "3",
+        "district_id": "D_Swat",
+        "division_id": "Div_Malakand"
+      },
+      "Location_Information": {
+        "geographical_information_code": "GEO_SWT_001",
+        "Coordinates": "35.2220° N, 72.4258° E",
+        "Nearest_landmark": "Malam Jabba Ski Resort",
+        "Distance_from_major_city": "247 km from Islamabad"
+      },
+      "Geo_Area": {
+        "geographical_information_code": "GEO_SWT_001",
+        "Total_Area": "5,337 sq km",
+        "Topography": "Mountainous with lush green valleys and rivers",
+        "Land_Use": "Agricultural 50%, Residential 30%, Forest 15%, Commercial 5%"
+      },
+      "Climate_Detail": {
+        "geographical_information_code": "GEO_SWT_001",
+        "Average_Temperature": "16°C",
+        "Rainfall": "1200 mm annually",
+        "Seasonal_Variations": "Snowy winters, mild summers, rainy spring and monsoon"
+      },
+      "Historical_background": {
+        "village_id": "SWT_001",
+        "city_id": "3",
+        "district_id": "D_Swat",
+        "division_id": "Div_Malakand",
+        "Founding_year": "Ancient (2nd century BCE)",
+        "Founders": "Greco-Buddhist rulers",
+        "Historical_events": "Center of Gandhara civilization, Alexander the Great’s campaign, Buddhist era",
+        "Cultural_significance": "Known for Buddhist heritage and archaeological importance",
+        "Monuments_or_landmarks": "Butkara Stupa, Udegram Buddhist Monastery",
+        "Ethnic_background": "Primarily Pashtun with Kohistani and Gujjar minorities",
+        "Famous_persons": "Malala Yousafzai (Nobel Peace Prize laureate)",
+        "Historic_sites_nearby": "Saido Sharif Museum, Shingardar Stupa",
+        "Development_over_time": "Evolved from ancient Buddhist center to modern tourism hub"
+      },
+      "Economy": {
+        "village_id": "SWT_001",
+        "city_id": "3",
+        "district_id": "D_Swat",
+        "division_id": "Div_Malakand",
+        "economy_id": "ECO_SWT_001"
+      },
+      "Farming": {
+        "economy_id": "ECO_SWT_001",
+        "major_crops": "Wheat, Maize, Rice",
+        "fruit_cultivation": "Apples, Peaches, Plums, Apricots",
+        "Live_stock": "Cattle, Goats, Sheep",
+        "Methods_used": "Terraced farming and irrigation systems"
+      },
+      "Handicrafts": {
+        "economy_id": "ECO_SWT_001",
+        "popular_crafts": "Embroidery, Wood carving, Stone carving",
+        "specialty_items": "Handcrafted jewelry, Swati embroidery",
+        "community_involvement": "Women cooperatives and small artisan businesses"
+      },
+      "Industries": {
+        "economy_id": "ECO_SWT_001",
+        "Local_factories": "Marble processing, Textile workshops",
+        "Raw_material_sources": "Local agriculture, forest produce, minerals",
+        "employment_contribution": "15% of local workforce",
+        "economic_impact": "Significant support to tourism and trade"
+      },
+      "Cultural_information": {
+        "cultural_information_id": "CUL_SWT_001",
+        "village_id": "SWT_001",
+        "city_id": "3",
+        "district_id": "D_Swat",
+        "division_id": "Div_Malakand"
+      },
+      "Local_Festival": {
+        "cultural_information_id": "CUL_SWT_001",
+        "spring_festival": "Swat Spring Festival",
+        "harvest_festival": "Fruit Blossom Festival",
+        "eid_celebrations": "Community prayers, traditional dances, and food sharing"
+      },
+      "Traditions": {
+        "cultural_information_id": "CUL_SWT_001",
+        "traditional_dress": "Pakol hats with waistcoats and embroidered dresses",
+        "hospitality": "Warm welcomes with green tea and traditional food",
+        "storytelling_Evenings": "Folk tales, music, and Pashto poetry",
+        "Wedding_ceremonies": "Attan, drum beating, and bridal customs"
+      },
+      "Language_Spoken": {
+        "cultural_information_id": "CUL_SWT_001",
+        "Primary_language": "Pashto",
+        "Secondary_Language": "Urdu",
+        "Additional_Languages": "Kohistani, English"
+      },
+      "Region_Events": {
+        "region_id": "2",
+        "region_name": "Swat",
+        "description": "Swat hosts cultural, religious, and seasonal events that reflect its unique mountain traditions.",
+        "city_id": "3"
+      },
+      "Religious_Festival": {
+        "festival_id": "4",
+        "name": "Eid ul-Adha",
+        "description": "A major Islamic festival of sacrifice observed with prayers and meat distribution.",
+        "traditions": "Animal sacrifice, family meals, and aid to the poor.",
+        "significance": "Commemorates Prophet Ibrahim's willingness to sacrifice.",
+        "date": "Varies by Islamic calendar",
+        "associated_rituals": "Qurbani (animal sacrifice), charity"
+      },
+      "Cultural_Festivals": {
+        "festival_id": "5",
+        "name": "Swat Cultural Week",
+        "locations": "Mingora, Saidu Sharif, and Kalam",
+        "description": "Celebration of Swat’s traditions through performances and exhibitions.",
+        "activities": "Attan, local music, crafts display",
+        "season": "Summer",
+        "significance": "Preserves and promotes Swati culture"
+      },
+      "Regional_Events": {
+        "event_id": "5",
+        "name": "Snow Sports Festival",
+        "region": "Malam Jabba",
+        "overview": "Winter event promoting tourism and sports",
+        "activities": "Skiing, snowboarding, local food stalls",
+        "significance": "Promotes winter tourism and economy"
+      },
+      "Folk_festival": {
+        "festival_id": "6",
+        "name": "Folk Music Gala",
+        "region": "Swat Valley",
+        "description": "Celebrates the valley's folk music heritage",
+        "activities": "Live folk performances, storytelling, and poetry",
+        "economic_impact": "Supports musicians and boosts tourism",
+        "cultural_relevance": "Preserves musical heritage"
+      },
+      "National_Events": {
+        "event_id": "6",
+        "name": "Independence Day",
+        "date": "August 14",
+        "description": "National celebration of Pakistan’s independence",
+        "celebrations": "Flag hoisting, speeches, parades",
+        "historical_significance": "Marks Pakistan's founding in 1947"
+      },
+      "Global_Event": {
+        "event_id": "7",
+        "name": "World Tourism Day",
+        "description": "Celebrates global tourism’s importance and promotes local tourist destinations.",
+        "cultural_adaptations": "Tours, hotel discounts, cultural shows",
+        "activities": "Tourism awareness walks, seminars",
+        "demographic": "Tourists and local hospitality sector"
+      },
+      "Adventure_Events": {
+        "event_id": "8",
+        "name": "Kalam Mountain Marathon",
+        "region": "Kalam Valley",
+        "activities": "Running marathon through scenic trails",
+        "tourism_impact": "Promotes eco-tourism and adventure travel",
+        "economic_contribution": "Boosts local vendors and hotels"
+      },
+      "Emergency_Contacts": {
+        "emergency_contact_id": "2",
+        "city_id": "3",
+        "government_contact_number": "1122",
+        "police_stations": {
+          "emergency_contact_id": "2",
+          "address": "Saidu Sharif, Swat",
+          "operating_hours_police_stations": "24/7"
+        },
+        "fire_station": {
+          "emergency_contact_id": "2",
+          "contact_number": "16",
+          "address": "Mingora Fire Station",
+          "operating_hours": "24/7"
+        },
+        "medical_emergency": {
+          "emergency_contact_id": "2",
+          "ambulance_service": "1122",
+          "hospital_emergency_number": "0946-123456",
+          "blood_bank": "Available at Saidu Group of Teaching Hospitals",
+          "disaster_management": "Swat District Disaster Management Authority",
+          "contact_for_handling_flood": "0946-654321",
+          "contact_for_earthquake": "0946-789012"
+        }
+      }
     }
   ],
   "village_profiles": {
@@ -740,112 +973,112 @@
         "image": "http://192.168.43.98:3000/images/timergaraImage_2.jpg",
         "name": "Koherai Malakand",
         "populationDetail": {
-          "village_id": 210,
-          "population_code": 211,
+          "village_id": 220,
+          "population_code": 221,
           "population_children": {
-            "population_code": 211,
-            "total": 3200,
+            "population_code": 221,
+            "total": 2900,
             "age_range": "0-14 years",
-            "percentage_of_total_population": "30%"
+            "percentage_of_total_population": "28%"
           },
           "population_adult": {
-            "population_code": 211,
-            "total": 6200,
+            "population_code": 221,
+            "total": 6300,
             "age_range": "15-59 years",
-            "percentage_of_total_population": "58%"
+            "percentage_of_total_population": "60%"
           },
           "population_elderly": {
-            "population_code": 211,
+            "population_code": 221,
             "total": 1300,
             "age_range": "60+ years",
             "percentage_of_total_population": "12%"
           },
           "gender_ratio_rate": {
-            "population_code": 211,
-            "Male": 5500,
-            "Female": 5200,
-            "Male_to_Female_ratio": "1.06:1"
+            "population_code": 221,
+            "Male": 5200,
+            "Female": 5300,
+            "Male_to_Female_ratio": "0.98:1"
           }
         },
         "geographicalInformation": {
-          "village_id": 210,
-          "geographical_information_id": 212,
+          "village_id": 220,
+          "geographical_information_id": 222,
           "local_information": {
-            "geographical_information_id": 212,
-            "coordinates": "34.8296° N, 71.8316° E",
-            "nearest_landmark": "Timergara Bazaar",
-            "distance_from_major_city": "3 km from Timergara city center"
+            "geographical_information_id": 222,
+            "coordinates": "35.4700° N, 71.9000° E",
+            "nearest_landmark": "Dargai Market",
+            "distance_from_major_city": "20 km from Batkhela"
           },
           "geo_area": {
-            "geographical_information_id": 212,
-            "total_area": "5.6 sq km",
-            "topography": "Mostly hilly with some plain agricultural land",
-            "land_use": "Agriculture, residential areas, small commercial spaces"
+            "geographical_information_id": 222,
+            "total_area": "6.2 sq km",
+            "topography": "Mountainous terrain with fertile valleys",
+            "land_use": "Agriculture, scattered housing, grazing areas"
           },
           "climate_detail": {
-            "geographical_information_id": 212,
-            "average_temperature": "25°C annually",
-            "rainfall": "900-1100 mm per year",
-            "seasonal_variations": "Hot summers (up to 40°C), mild winters (5-20°C), moderate rainfall in monsoon (July-August)"
+            "geographical_information_id": 222,
+            "average_temperature": "22°C annually",
+            "rainfall": "1000-1200 mm per year",
+            "seasonal_variations": "Cool winters, warm summers, and monsoon rains"
           }
         },
         "historicalBackground": {
-          "village_id": 210,
-          "founding_year": "1850",
-          "founders": "Local Pashtun tribes, primarily from the Yousafzai and Mandanr clans",
-          "historical_events": "Played a role in the resistance against British rule in the early 20th century; significant development post-1947 with road and infrastructure improvements.",
-          "cultural_significance": "Known for traditional Pashto music, poetry, and strong community ties; hosts annual cultural festivals.",
-          "monuments_or_landmarks": "An old mosque built in the early 1900s, ancient gravesites of local tribal leaders.",
-          "ethnic_background": "Predominantly Pashtun, with sub-clans like Yousafzai, Mandanr, and Mohmand.",
-          "famous_persons": "Local poets and scholars, including religious leaders who contributed to the region’s cultural heritage.",
-          "historic_sites_nearby": "Malakand Fort, Buddhist archaeological sites in Lower Dir, and the Timergara historical cemetery.",
-          "development_over_time": "Originally an agricultural settlement, it has grown into a small town with schools, markets, and modern facilities, while still retaining its cultural heritage."
+          "village_id": 220,
+          "founding_year": "1875",
+          "founders": "Tribal elders of the Utmankhel clan",
+          "historical_events": "Strategic location during British colonial campaigns; part of historic Malakand battles.",
+          "cultural_significance": "Preserves tribal values and customs, known for local poetry and traditional hospitality.",
+          "monuments_or_landmarks": "Old watchtowers and community meeting houses (Hujras).",
+          "ethnic_background": "Mainly Utmankhel Pashtuns with small representation of other tribes.",
+          "famous_persons": "Veteran tribal leaders and poets known in local history.",
+          "historic_sites_nearby": "Malakand Fort, Churchill Piquet, and Dargai battlefield memorials.",
+          "development_over_time": "Transformed from tribal hamlet to developed village with schools, roads, and mobile coverage."
         },
         "economy": {
-          "village_id": 210,
-          "economy_id": 213,
+          "village_id": 220,
+          "economy_id": 223,
           "farming": {
-            "economy_id": 213,
-            "major_crops": "Wheat, maize, vegetables",
-            "fruit_cultivation": "Apricots, peaches, walnuts",
-            "livestock": "Cattle, goats, poultry",
-            "method": "Traditional and tube well irrigation"
+            "economy_id": 223,
+            "major_crops": "Wheat, maize, tobacco",
+            "fruit_cultivation": "Plums, apricots, persimmons",
+            "livestock": "Cattle, goats, donkeys",
+            "method": "Traditional methods and rain-fed fields"
           },
           "handicrafts": {
-            "economy_id": 213,
-            "popular_crafts": "Embroidery, carpet weaving",
-            "specialty_items": "Woolen shawls, Pashtun caps",
-            "community_involvement": "Women and small artisans"
+            "economy_id": 223,
+            "popular_crafts": "Wood carving, embroidery",
+            "specialty_items": "Wooden stools, embroidered waistcoats",
+            "community_involvement": "Men for carving, women in embroidery"
           },
           "industries": {
-            "economy_id": 213,
-            "local_factories": "Flour mills, brick kilns",
-            "raw_material": "Wool, wood, clay",
-            "employment_contribution": "20% workforce",
-            "economic_impact": "Supports trade & income"
+            "economy_id": 223,
+            "local_factories": "None, mostly small workshops",
+            "raw_material": "Wood, fabric, wheat",
+            "employment_contribution": "Small-scale income support",
+            "economic_impact": "Modest but vital for local livelihood"
           }
         },
         "cultural_information": {
-          "village_id": 210,
-          "cultural_information_id": 214,
+          "village_id": 220,
+          "cultural_information_id": 224,
           "local_festival": {
-            "cultural_information_id": 214,
-            "spring_festival": "Traditional music and dance",
-            "harvest_festival": "Celebration with local food and fairs",
-            "eid_celebration": "Community gatherings, feasts, and charity"
+            "cultural_information_id": 224,
+            "spring_festival": "Tribal horse riding and music events",
+            "harvest_festival": "Celebrations with food sharing and prayers",
+            "eid_celebration": "Communal prayers and guest feasts"
           },
           "traditions": {
-            "cultural_information_id": 214,
-            "traditional_dress": "Shalwar Kameez with Pakol cap",
-            "hospitality": "Guests are honored with tea and food",
-            "storytelling_evenings": "Elderly share folk tales and history",
-            "wedding_ceremonies": "Multi-day celebrations with music and rituals"
+            "cultural_information_id": 224,
+            "traditional_dress": "White Shalwar Kameez with embroidered waistcoat",
+            "hospitality": "Tea with jaggery and dried fruits served to guests",
+            "storytelling_evenings": "Campfire gatherings with folk tales",
+            "wedding_ceremonies": "Traditional music, dowry rituals, and elders' blessings"
           },
           "language_spoken": {
-            "cultural_information_id": 214,
+            "cultural_information_id": 224,
             "primary_language": "Pashto",
             "secondary_language": "Urdu",
-            "additional_language": "English (limited use)"
+            "additional_language": "English (basic usage among youth)"
           }
         },
         "significant_people": {
@@ -994,112 +1227,112 @@
         "location": "Timergara Dir Lower (KPK)",
         "image": "http://192.168.43.98:3000/images/timergaraImage_2.jpg",
         "populationDetail": {
-          "village_id": 300,
-          "population_code": 301,
+          "village_id": 400,
+          "population_code": 401,
           "population_children": {
-            "population_code": 301,
-            "total": 3200,
+            "population_code": 401,
+            "total": 2900,
             "age_range": "0-14 years",
-            "percentage_of_total_population": "30%"
+            "percentage_of_total_population": "28%"
           },
           "population_adult": {
-            "population_code": 301,
-            "total": 6200,
+            "population_code": 401,
+            "total": 6100,
             "age_range": "15-59 years",
-            "percentage_of_total_population": "58%"
+            "percentage_of_total_population": "60%"
           },
           "population_elderly": {
-            "population_code": 301,
-            "total": 1300,
+            "population_code": 401,
+            "total": 1200,
             "age_range": "60+ years",
             "percentage_of_total_population": "12%"
           },
           "gender_ratio_rate": {
-            "population_code": 301,
-            "Male": 5500,
-            "Female": 5200,
-            "Male_to_Female_ratio": "1.06:1"
+            "population_code": 401,
+            "Male": 5100,
+            "Female": 5100,
+            "Male_to_Female_ratio": "1:1"
           }
         },
         "geographicalInformation": {
-          "village_id": 300,
-          "geographical_information_id": 302,
+          "village_id": 400,
+          "geographical_information_id": 402,
           "local_information": {
-            "geographical_information_id": 302,
-            "coordinates": "34.8296° N, 71.8316° E",
-            "nearest_landmark": "Timergara Bazaar",
-            "distance_from_major_city": "3 km from Timergara city center"
+            "geographical_information_id": 402,
+            "coordinates": "35.3670° N, 71.9366° E",
+            "nearest_landmark": "Batkhela City Center",
+            "distance_from_major_city": "10 km from Batkhela"
           },
           "geo_area": {
-            "geographical_information_id": 302,
-            "total_area": "5.6 sq km",
-            "topography": "Mostly hilly with some plain agricultural land",
-            "land_use": "Agriculture, residential areas, small commercial spaces"
+            "geographical_information_id": 402,
+            "total_area": "6.2 sq km",
+            "topography": "Mountainous with terraced fields and riverbank plains",
+            "land_use": "Agriculture, residential clusters, small scale livestock zones"
           },
           "climate_detail": {
-            "geographical_information_id": 302,
-            "average_temperature": "25°C annually",
-            "rainfall": "900-1100 mm per year",
-            "seasonal_variations": "Hot summers (up to 40°C), mild winters (5-20°C), moderate rainfall in monsoon (July-August)"
+            "geographical_information_id": 402,
+            "average_temperature": "20°C annually",
+            "rainfall": "800-1000 mm per year",
+            "seasonal_variations": "Cool winters (as low as 2°C), mild summers (up to 34°C), monsoon rains from July to September"
           }
         },
         "historicalBackground": {
-          "village_id": 302,
-          "founding_year": "1850",
-          "founders": "Local Pashtun tribes, primarily from the Yousafzai and Mandanr clans",
-          "historical_events": "Played a role in the resistance against British rule in the early 20th century; significant development post-1947 with road and infrastructure improvements.",
-          "cultural_significance": "Known for traditional Pashto music, poetry, and strong community ties; hosts annual cultural festivals.",
-          "monuments_or_landmarks": "An old mosque built in the early 1900s, ancient gravesites of local tribal leaders.",
-          "ethnic_background": "Predominantly Pashtun, with sub-clans like Yousafzai, Mandanr, and Mohmand.",
-          "famous_persons": "Local poets and scholars, including religious leaders who contributed to the region’s cultural heritage.",
-          "historic_sites_nearby": "Malakand Fort, Buddhist archaeological sites in Lower Dir, and the Timergara historical cemetery.",
-          "development_over_time": "Originally an agricultural settlement, it has grown into a small town with schools, markets, and modern facilities, while still retaining its cultural heritage."
+          "village_id": 400,
+          "founding_year": "1825",
+          "founders": "Early settlers from the Tarkani and Utmankhel tribes",
+          "historical_events": "Location served as a key passage during local tribal uprisings in British colonial era; saw infrastructure expansion post-2000 under regional development programs.",
+          "cultural_significance": "Village known for maintaining traditional jirga system and hosting folk music events during spring.",
+          "monuments_or_landmarks": "Ancient water mill (Gharhi), tribal guesthouse (Hujra), and remnants of watchtowers on nearby hills.",
+          "ethnic_background": "Primarily Pashtun (Tarkani, Utmankhel), with minor presence of Gujjars and artisans.",
+          "famous_persons": "Renowned folk musician Haji Gul Khan and social worker Malak Arshad Khan.",
+          "historic_sites_nearby": "Malakand Pass Fort, Shingardar Stupa, Churchill Piquet.",
+          "development_over_time": "Evolved from a hamlet to a developed village with paved roads, electricity, a government school, and basic healthcare."
         },
         "economy": {
-          "village_id": 300,
-          "economy_id": 303,
+          "village_id": 400,
+          "economy_id": 403,
           "farming": {
-            "economy_id": 303,
-            "major_crops": "Wheat, maize, vegetables",
-            "fruit_cultivation": "Apricots, peaches, walnuts",
-            "livestock": "Cattle, goats, poultry",
-            "method": "Traditional and tube well irrigation"
+            "economy_id": 403,
+            "major_crops": "Maize, wheat, beans",
+            "fruit_cultivation": "Pomegranates, plums, figs",
+            "livestock": "Goats, cows, donkeys",
+            "method": "Rain-fed and small canal irrigation"
           },
           "handicrafts": {
-            "economy_id": 303,
-            "popular_crafts": "Embroidery, carpet weaving",
-            "specialty_items": "Woolen shawls, Pashtun caps",
-            "community_involvement": "Women and small artisans"
+            "economy_id": 403,
+            "popular_crafts": "Wood carving, mud pottery",
+            "specialty_items": "Handmade wooden spoons, decorative pots",
+            "community_involvement": "Home-based work by women and elders"
           },
           "industries": {
-            "economy_id": 303,
-            "local_factories": "Flour mills, brick kilns",
-            "raw_material": "Wool, wood, clay",
-            "employment_contribution": "20% workforce",
-            "economic_impact": "Supports trade & income"
+            "economy_id": 403,
+            "local_factories": "None; small-scale wood and grain mills",
+            "raw_material": "Wood, mud, grains",
+            "employment_contribution": "10% workforce",
+            "economic_impact": "Supplemental to agricultural income"
           }
         },
         "cultural_information": {
-          "village_id": 300,
-          "cultural_information_id": 303,
+          "village_id": 400,
+          "cultural_information_id": 404,
           "local_festival": {
-            "cultural_information_id": 303,
-            "spring_festival": "Traditional music and dance",
-            "harvest_festival": "Celebration with local food and fairs",
-            "eid_celebration": "Community gatherings, feasts, and charity"
+            "cultural_information_id": 404,
+            "spring_festival": "Attan dance, flute music, local competitions",
+            "harvest_festival": "Wheat cutting festival with local food sharing",
+            "eid_celebration": "Prayers, guest feasts, traditional games"
           },
           "traditions": {
-            "cultural_information_id": 303,
-            "traditional_dress": "Shalwar Kameez with Pakol cap",
-            "hospitality": "Guests are honored with tea and food",
-            "storytelling_evenings": "Elderly share folk tales and history",
-            "wedding_ceremonies": "Multi-day celebrations with music and rituals"
+            "cultural_information_id": 404,
+            "traditional_dress": "Men wear white shalwar kameez with turban, women wear embroidered dresses",
+            "hospitality": "Guests are greeted with green tea (kahwa) and dry fruits",
+            "storytelling_evenings": "Evening gatherings in Hujras with poetry and tribal tales",
+            "wedding_ceremonies": "Traditional mehndi, Attan dances, food served in large gatherings"
           },
           "language_spoken": {
-            "cultural_information_id": 303,
+            "cultural_information_id": 404,
             "primary_language": "Pashto",
             "secondary_language": "Urdu",
-            "additional_language": "English (limited use)"
+            "additional_language": "Some Arabic knowledge due to religious learning"
           }
         },
         "significant_people": {
@@ -1223,6 +1456,244 @@
             "emergency_helpline": "Rescue 1122: 1122"
           }
         }
+      },
+      {
+        "village_id": 301,
+        "city_id": 2,
+        "name": "Matta",
+        "city": "Swat",
+        "location": "Matta, Swat District (KPK)",
+        "image": "http://192.168.43.98:3000/images/swat_matta.jpg",
+        "populationDetail": {
+          "village_id": 301,
+          "population_code": 601,
+          "population_children": {
+            "population_code": 601,
+            "total": 3500,
+            "age_range": "0-14 years",
+            "percentage_of_total_population": "30%"
+          },
+          "population_adult": {
+            "population_code": 601,
+            "total": 6800,
+            "age_range": "15-59 years",
+            "percentage_of_total_population": "58%"
+          },
+          "population_elderly": {
+            "population_code": 601,
+            "total": 1400,
+            "age_range": "60+ years",
+            "percentage_of_total_population": "12%"
+          },
+          "gender_ratio_rate": {
+            "population_code": 501,
+            "Male": 5900,
+            "Female": 5800,
+            "Male_to_Female_ratio": "1.02:1"
+          }
+        },
+        "geographicalInformation": {
+          "village_id": 301,
+          "geographical_information_id": 602,
+          "local_information": {
+            "geographical_information_id": 602,
+            "coordinates": "35.1214° N, 72.4038° E",
+            "nearest_landmark": "Matta Bazaar",
+            "distance_from_major_city": "35 km from Mingora"
+          },
+          "geo_area": {
+            "geographical_information_id": 502,
+            "total_area": "7.5 sq km",
+            "topography": "Valley with surrounding hills and farmland",
+            "land_use": "Agricultural lands, orchards, and residential houses"
+          },
+          "climate_detail": {
+            "geographical_information_id": 502,
+            "average_temperature": "18°C annually",
+            "rainfall": "1000-1200 mm per year",
+            "seasonal_variations": "Cold winters (0–10°C), moderate summers (up to 32°C)"
+          }
+        },
+        "historicalBackground": {
+          "village_id": 301,
+          "founding_year": "1800",
+          "founders": "Yousafzai Pashtun clans",
+          "historical_events": "Matta played a role during the Swat State era; impacted by military operations in 2009.",
+          "cultural_significance": "Known for Pashtunwali, poetry gatherings, and Sufi shrines.",
+          "monuments_or_landmarks": "Shrine of Sufi saint Akhund of Matta, old mosque built in the 19th century",
+          "ethnic_background": "Mostly Yousafzai Pashtuns with a few Kohistani settlers",
+          "famous_persons": "Malak Shahzada (freedom fighter), local poets like Faizullah Faiz",
+          "historic_sites_nearby": "Shingardar Stupa, Udegram Buddhist Site, and Saidu Sharif Museum",
+          "development_over_time": "Improved roads, access to electricity, expansion of schools and mobile networks"
+        },
+        "economy": {
+          "village_id": 301,
+          "economy_id": 503,
+          "farming": {
+            "economy_id": 503,
+            "major_crops": "Wheat, maize, vegetables",
+            "fruit_cultivation": "Apples, peaches, apricots",
+            "livestock": "Cows, goats, chickens",
+            "method": "Canal and rain-fed irrigation"
+          },
+          "handicrafts": {
+            "economy_id": 503,
+            "popular_crafts": "Wool weaving, wood crafts",
+            "specialty_items": "Wool shawls, carved furniture",
+            "community_involvement": "Involves women and local artisans"
+          },
+          "industries": {
+            "economy_id": 503,
+            "local_factories": "Small flour mills and woodworking shops",
+            "raw_material": "Grains, wood, wool",
+            "employment_contribution": "15%",
+            "economic_impact": "Boosts local employment, supplementing agriculture"
+          }
+        },
+        "cultural_information": {
+          "village_id": 301,
+          "cultural_information_id": 504,
+          "local_festival": {
+            "cultural_information_id": 504,
+            "spring_festival": "Basant-like kite flying and folk dances",
+            "harvest_festival": "Celebrated with communal cooking and music",
+            "eid_celebration": "Large gatherings, food feasts, traditional sports"
+          },
+          "traditions": {
+            "cultural_information_id": 504,
+            "traditional_dress": "Men wear pakol and kameez, women in colorful embroidered dresses",
+            "hospitality": "Guests offered kahwa, fruits, and sweets",
+            "storytelling_evenings": "Elders narrate local tales in the hujra",
+            "wedding_ceremonies": "Dhol music, Attan, and community feasts"
+          },
+          "language_spoken": {
+            "cultural_information_id": 504,
+            "primary_language": "Pashto",
+            "secondary_language": "Urdu",
+            "additional_language": "Some Arabic due to religious education"
+          }
+        },
+        "significant_people": {
+          "village_id": 301,
+          "person_id": 2,
+          "name": "Malak Ahmad Khan",
+          "biography": "Community leader and educator who founded several schools in Matta.",
+          "contribution": "Promoted education, especially for girls, and initiated water projects.",
+          "area_of_influence": "Education and social services",
+          "historical_period": "1970s to 2000s",
+          "awards_or_recognition": "Awarded by Swat District Education Office",
+          "related_events": "Established girls' high school and led a sanitation campaign"
+        },
+        "community_services": {
+          "community_id": 501,
+          "village_id": 301,
+          "education": {
+            "schools": "2 government primary, 1 private middle school",
+            "college": "Government Degree College Matta",
+            "universities": "Nearest: University of Swat in Charbagh",
+            "training_center": "Vocational center for stitching and carpentry"
+          },
+          "healthcare_facilities": {
+            "clinics": "2 basic clinics",
+            "hospitals": "Tehsil Headquarters Hospital Matta",
+            "pharmacies": "Multiple small shops",
+            "mobile_health_services": "Available via district health programs"
+          },
+          "market": {
+            "details_local_market": "Active Matta Bazaar",
+            "availability_essential_goods": "All essential goods available locally"
+          },
+          "transportations": {
+            "buses": "Buses to Mingora and nearby towns",
+            "rickshaw": "Widely used locally",
+            "bikes": "Common personal transport",
+            "suzuki": "Used for both cargo and people",
+            "major_road": "Connected via Mingora-Khwazakhela road"
+          },
+          "utilities": {
+            "water_supply": "Gravity-fed water schemes and hand pumps",
+            "electricity": "Reliable but occasional load shedding",
+            "gas_supply": "LPG cylinders; no piped gas",
+            "petrol_pump": "Located near Matta Bazaar",
+            "internet_services": "3G/4G mobile data",
+            "network": "Zong, Jazz, and Telenor with good coverage"
+          },
+          "recreational_facilities": {
+            "parks": "No formal park",
+            "playground": "Available near school",
+            "community_center": "Community meetings held in local hujras",
+            "sports_facilities": "Cricket and volleyball played locally"
+          }
+        },
+        "tourist_attractions": {
+          "village_id": 301,
+          "tourist_attraction_id": 502,
+          "natural_landmarks": {
+            "rivers": "Swat River nearby",
+            "lakes": "Close to Mahodand and Kundol lakes (accessible by travel)",
+            "mountains": "Scenic green mountains all around",
+            "forest": "Pine and cedar forests in upper Matta"
+          },
+          "cultural_historical_places": {
+            "temples": "None in Matta itself",
+            "old_building": "Traditional wooden houses and mosques",
+            "monuments": "Shrine of Sufi saint",
+            "museums": "Nearby in Saidu Sharif"
+          },
+          "local_events": {
+            "festivals": "Eid and traditional music festivals",
+            "exhibitions": "Craft exhibitions held annually",
+            "cultural_performance": "Folk music and poetry recitations"
+          }
+        },
+        "emergency_contacts": {
+          "emergency_contact_id": 503,
+          "village_id": 301,
+          "government_contact_number": "0946-720101",
+          "police_stations": {
+            "contact_number": "0946-720123",
+            "address": "Police Station Matta",
+            "operating_hours_police_stations": "24/7"
+          },
+          "fire_station": {
+            "contact_number": "0946-720140",
+            "address": "Fire Service Matta",
+            "operating_hour": "24/7"
+          },
+          "medical_emergency": {
+            "ambulance_service": "Rescue 1122",
+            "hospital_emergency_number": "0946-720150",
+            "blood_bank": "District Hospital Saidu Sharif",
+            "disaster_management": "Rescue 1122 Swat",
+            "contact_for_handling_flood": "PDMA Helpline: 1700",
+            "contact_for_earthquake": "PDMA Helpline: 1700"
+          }
+        },
+        "additional_elements": {
+          "additional_id": 504,
+          "village_id": 301,
+          "land_use_zoning": {
+            "agriculturals": "Fertile fields for fruits and grains",
+            "residential": "Traditional homes and modern brick houses",
+            "commercial_industrial": "Small shops; few mills and workshops"
+          },
+          "infrastructure_development": {
+            "planned_project": "Bridge construction over Swat River",
+            "road_construction": "New link roads under construction",
+            "housing": "Private residential plots being developed"
+          },
+          "local_business_employement": {
+            "small_business": "Retail, tailoring, grocery, woodwork",
+            "job_oppurtunities": "Farming, government jobs, small businesses",
+            "skill_develomnent": "Vocational training center for youth"
+          },
+          "public_services_contact": {
+            "contact_water_supply": "Tehsil Municipal Office: 0946-720110",
+            "contact_electricity": "PESCO Helpline: 118",
+            "contact_gas_supply": "LPG suppliers in Matta",
+            "emergency_helpline": "Rescue 1122: 1122"
+          }
+        }
       }
     ],
     "topVillages": [
@@ -1234,112 +1705,112 @@
         "image": "http://192.168.43.98:3000/images/timergaraImage_3.jpg",
         "name": "Shingrai Bala",
         "populationDetail": {
-          "village_id": 400,
-          "population_code": 401,
+          "village_id": 500,
+          "population_code": 501,
           "population_children": {
-            "population_code": 401,
-            "total": 3200,
+            "population_code": 501,
+            "total": 2900,
             "age_range": "0-14 years",
-            "percentage_of_total_population": "30%"
+            "percentage_of_total_population": "28%"
           },
           "population_adult": {
-            "population_code": 401,
-            "total": 6200,
+            "population_code": 501,
+            "total": 6400,
             "age_range": "15-59 years",
-            "percentage_of_total_population": "58%"
+            "percentage_of_total_population": "61%"
           },
           "population_elderly": {
-            "population_code": 401,
-            "total": 1300,
+            "population_code": 501,
+            "total": 1200,
             "age_range": "60+ years",
-            "percentage_of_total_population": "12%"
+            "percentage_of_total_population": "11%"
           },
           "gender_ratio_rate": {
-            "population_code": 401,
-            "Male": 5500,
+            "population_code": 501,
+            "Male": 5300,
             "Female": 5200,
-            "Male_to_Female_ratio": "1.06:1"
+            "Male_to_Female_ratio": "1.02:1"
           }
         },
         "geographicalInformation": {
-          "village_id": 400,
-          "geographical_information_id": 402,
+          "village_id": 500,
+          "geographical_information_id": 502,
           "local_information": {
-            "geographical_information_id": 402,
-            "coordinates": "34.8296° N, 71.8316° E",
-            "nearest_landmark": "Timergara Bazaar",
-            "distance_from_major_city": "3 km from Timergara city center"
+            "geographical_information_id": 502,
+            "coordinates": "34.8501° N, 71.7805° E",
+            "nearest_landmark": "Shingrai Chowk",
+            "distance_from_major_city": "5 km from Timergara city center"
           },
           "geo_area": {
-            "geographical_information_id": 402,
-            "total_area": "5.6 sq km",
-            "topography": "Mostly hilly with some plain agricultural land",
-            "land_use": "Agriculture, residential areas, small commercial spaces"
+            "geographical_information_id": 502,
+            "total_area": "6.2 sq km",
+            "topography": "Hilly terrain with green valleys and agricultural fields",
+            "land_use": "Agriculture, residential housing, and community lands"
           },
           "climate_detail": {
-            "geographical_information_id": 402,
-            "average_temperature": "25°C annually",
-            "rainfall": "900-1100 mm per year",
-            "seasonal_variations": "Hot summers (up to 40°C), mild winters (5-20°C), moderate rainfall in monsoon (July-August)"
+            "geographical_information_id": 502,
+            "average_temperature": "23°C annually",
+            "rainfall": "1000 mm per year",
+            "seasonal_variations": "Hot summers (~38°C), cool winters (~4°C), heavy monsoon rainfall"
           }
         },
         "historicalBackground": {
-          "village_id": 400,
-          "founding_year": "1850",
-          "founders": "Local Pashtun tribes, primarily from the Yousafzai and Mandanr clans",
-          "historical_events": "Played a role in the resistance against British rule in the early 20th century; significant development post-1947 with road and infrastructure improvements.",
-          "cultural_significance": "Known for traditional Pashto music, poetry, and strong community ties; hosts annual cultural festivals.",
-          "monuments_or_landmarks": "An old mosque built in the early 1900s, ancient gravesites of local tribal leaders.",
-          "ethnic_background": "Predominantly Pashtun, with sub-clans like Yousafzai, Mandanr, and Mohmand.",
-          "famous_persons": "Local poets and scholars, including religious leaders who contributed to the region’s cultural heritage.",
-          "historic_sites_nearby": "Malakand Fort, Buddhist archaeological sites in Lower Dir, and the Timergara historical cemetery.",
-          "development_over_time": "Originally an agricultural settlement, it has grown into a small town with schools, markets, and modern facilities, while still retaining its cultural heritage."
+          "village_id": 500,
+          "founding_year": "1865",
+          "founders": "Local elders from the Yousafzai clan",
+          "historical_events": "Historically part of the Malakand Agency; saw community development in the 1980s with education and road access.",
+          "cultural_significance": "Known for poetry circles, religious gatherings, and community cohesion",
+          "monuments_or_landmarks": "Old madrassa and mosque established in 1901, shrine of a respected local elder",
+          "ethnic_background": "Pashtun-majority village, Yousafzai and other related sub-clans",
+          "famous_persons": "Religious scholars and social activists from the area are known in Lower Dir",
+          "historic_sites_nearby": "Timergara graveyard, remnants of ancient Buddhist structures",
+          "development_over_time": "Grew from a small farming village into a semi-urban community with schools, clinics, and active local markets"
         },
         "economy": {
-          "village_id": 400,
-          "economy_id": 403,
+          "village_id": 500,
+          "economy_id": 503,
           "farming": {
-            "economy_id": 403,
-            "major_crops": "Wheat, maize, vegetables",
-            "fruit_cultivation": "Apricots, peaches, walnuts",
-            "livestock": "Cattle, goats, poultry",
-            "method": "Traditional and tube well irrigation"
+            "economy_id": 503,
+            "major_crops": "Wheat, maize, barley",
+            "fruit_cultivation": "Pomegranates, apples, apricots",
+            "livestock": "Cattle, goats, buffaloes",
+            "method": "Traditional, with some drip irrigation systems"
           },
           "handicrafts": {
-            "economy_id": 403,
-            "popular_crafts": "Embroidery, carpet weaving",
-            "specialty_items": "Woolen shawls, Pashtun caps",
-            "community_involvement": "Women and small artisans"
+            "economy_id": 503,
+            "popular_crafts": "Wood carving, embroidery",
+            "specialty_items": "Traditional Pashtun caps and handmade wooden utensils",
+            "community_involvement": "Youth and women from households participate"
           },
           "industries": {
-            "economy_id": 403,
-            "local_factories": "Flour mills, brick kilns",
-            "raw_material": "Wool, wood, clay",
-            "employment_contribution": "20% workforce",
-            "economic_impact": "Supports trade & income"
+            "economy_id": 503,
+            "local_factories": "Brick kilns, small wood workshops",
+            "raw_material": "Clay, timber, wool",
+            "employment_contribution": "15% of village workforce",
+            "economic_impact": "Supports domestic trade and household income"
           }
         },
         "cultural_information": {
-          "village_id": 400,
-          "cultural_information_id": 404,
+          "village_id": 500,
+          "cultural_information_id": 504,
           "local_festival": {
-            "cultural_information_id": 404,
-            "spring_festival": "Traditional music and dance",
-            "harvest_festival": "Celebration with local food and fairs",
-            "eid_celebration": "Community gatherings, feasts, and charity"
+            "cultural_information_id": 504,
+            "spring_festival": "Local fair with traditional music and food",
+            "harvest_festival": "Grain collection and feasting",
+            "eid_celebration": "Family visits, community dinners, and traditional games"
           },
           "traditions": {
-            "cultural_information_id": 404,
-            "traditional_dress": "Shalwar Kameez with Pakol cap",
-            "hospitality": "Guests are honored with tea and food",
-            "storytelling_evenings": "Elderly share folk tales and history",
-            "wedding_ceremonies": "Multi-day celebrations with music and rituals"
+            "cultural_information_id": 504,
+            "traditional_dress": "Men wear Shalwar Kameez with waistcoat and Pakol; women wear long embroidered dresses",
+            "hospitality": "Guests offered qehwa (green tea) and sweets",
+            "storytelling_evenings": "Common in winters; tales of heroes and local history shared",
+            "wedding_ceremonies": "Include Attan dance, singing, and multi-day feasts"
           },
           "language_spoken": {
-            "cultural_information_id": 404,
+            "cultural_information_id": 504,
             "primary_language": "Pashto",
             "secondary_language": "Urdu",
-            "additional_language": "English (limited use)"
+            "additional_language": "Basic English in schools"
           }
         },
         "significant_people": {
@@ -1971,6 +2442,482 @@
             "emergency_helpline": "Rescue 1122 - 1122"
           }
         }
+      },
+      {
+        "village_id": 302,
+        "city_id": 2,
+        "name": "Kalam",
+        "city": "Swat",
+        "location": "Kalam Valley, Swat District (KPK)",
+        "image": "http://192.168.43.98:3000/images/kalam_valley.jpg",
+        "populationDetail": {
+          "village_id": 302,
+          "population_code": 601,
+          "population_children": {
+            "population_code": 601,
+            "total": 2500,
+            "age_range": "0-14 years",
+            "percentage_of_total_population": "28%"
+          },
+          "population_adult": {
+            "population_code": 601,
+            "total": 5300,
+            "age_range": "15-59 years",
+            "percentage_of_total_population": "60%"
+          },
+          "population_elderly": {
+            "population_code": 601,
+            "total": 1000,
+            "age_range": "60+ years",
+            "percentage_of_total_population": "12%"
+          },
+          "gender_ratio_rate": {
+            "population_code": 601,
+            "Male": 4400,
+            "Female": 4400,
+            "Male_to_Female_ratio": "1:1"
+          }
+        },
+        "geographicalInformation": {
+          "village_id": 302,
+          "geographical_information_id": 602,
+          "local_information": {
+            "geographical_information_id": 602,
+            "coordinates": "35.4953° N, 72.5889° E",
+            "nearest_landmark": "Kalam Bazaar",
+            "distance_from_major_city": "96 km from Mingora"
+          },
+          "geo_area": {
+            "geographical_information_id": 602,
+            "total_area": "11.5 sq km",
+            "topography": "High-altitude valley surrounded by forested mountains",
+            "land_use": "Tourism, forest, agriculture, residential"
+          },
+          "climate_detail": {
+            "geographical_information_id": 602,
+            "average_temperature": "8°C annually",
+            "rainfall": "1200–1500 mm",
+            "seasonal_variations": "Heavy snow in winter, mild summer (10°C–25°C)"
+          }
+        },
+        "historicalBackground": {
+          "village_id": 302,
+          "founding_year": "Ancient settlement, formalized in early 20th century",
+          "founders": "Torwali tribes",
+          "historical_events": "Historically a tribal center; now a major tourist destination after 2000s",
+          "cultural_significance": "Folk tales, indigenous languages (Torwali), and traditional music",
+          "monuments_or_landmarks": "Old mosque near Ushu, ruins of tribal dwellings",
+          "ethnic_background": "Mostly Torwali and Pashtun population",
+          "famous_persons": "Folklore singers like Ajab Gul Torwali",
+          "historic_sites_nearby": "Old wooden houses, glacial valleys, and ancient prayer stones",
+          "development_over_time": "Rapid tourism-based infrastructure growth since 2010"
+        },
+        "economy": {
+          "village_id": 302,
+          "economy_id": 603,
+          "farming": {
+            "economy_id": 603,
+            "major_crops": "Potatoes, turnips, beans",
+            "fruit_cultivation": "Apples, walnuts, apricots",
+            "livestock": "Cattle, sheep, goats",
+            "method": "Mountain terrace farming, glacier-fed irrigation"
+          },
+          "handicrafts": {
+            "economy_id": 603,
+            "popular_crafts": "Wool products, traditional shawls",
+            "specialty_items": "Handwoven wool blankets, carved wooden goods",
+            "community_involvement": "Women in villages produce handicrafts"
+          },
+          "industries": {
+            "economy_id": 603,
+            "local_factories": "Small woodworking and wool weaving units",
+            "raw_material": "Wool, wood, fruit produce",
+            "employment_contribution": "10%",
+            "economic_impact": "Supports tourism and export to Mingora"
+          }
+        },
+        "cultural_information": {
+          "village_id": 302,
+          "cultural_information_id": 604,
+          "local_festival": {
+            "cultural_information_id": 604,
+            "spring_festival": "Tourist season opening, local fairs",
+            "harvest_festival": "Locally called 'Lashey', celebrated post-harvest",
+            "eid_celebration": "Traditional clothes, food, folk music"
+          },
+          "traditions": {
+            "cultural_information_id": 604,
+            "traditional_dress": "Men wear chugha (wool coat), women wear vibrant woven dresses",
+            "hospitality": "Guests welcomed with fruits, tea, and dry fruits",
+            "storytelling_evenings": "Folktales in Torwali shared in family gatherings",
+            "wedding_ceremonies": "Include flute, drums, Attan dance"
+          },
+          "language_spoken": {
+            "cultural_information_id": 604,
+            "primary_language": "Torwali",
+            "secondary_language": "Pashto",
+            "additional_language": "Urdu for education/tourism"
+          }
+        },
+        "significant_people": {
+          "village_id": 302,
+          "person_id": 3,
+          "name": "Muhammad Zaman",
+          "biography": "A respected environmental activist and guide for Kalam's eco-tourism movement.",
+          "contribution": "Advocated sustainable tourism, led reforestation drives, guided tourists.",
+          "area_of_influence": "Environmental preservation and tourism",
+          "historical_period": "1995–2020",
+          "awards_or_recognition": "Acknowledged by WWF Pakistan",
+          "related_events": "Started eco-tourism awareness group in 2005"
+        },
+        "community_services": {
+          "community_id": 601,
+          "village_id": 302,
+          "education": {
+            "schools": "Government High School Kalam, few private schools",
+            "college": "No college in Kalam (nearest: Matta)",
+            "universities": "University of Swat (Charbagh, 100+ km)",
+            "training_center": "Basic vocational training centers for tourism, hotel management"
+          },
+          "healthcare_facilities": {
+            "clinics": "2 local clinics",
+            "hospitals": "Basic Health Unit (BHU) Kalam",
+            "pharmacies": "4+ pharmacies in Kalam bazaar",
+            "mobile_health_services": "Rescue 1122 mobile unit occasionally visits"
+          },
+          "market": {
+            "details_local_market": "Kalam main bazaar",
+            "availability_essential_goods": "Tourist goods, groceries, daily essentials available"
+          },
+          "transportations": {
+            "buses": "Buses to Mingora via Bahrain",
+            "rickshaw": "Few rickshaws operate locally",
+            "bikes": "Popular for short distance travel",
+            "suzuki": "Main method of local tourist and goods transport",
+            "major_road": "Kalam-Bahrain Road (partially paved)"
+          },
+          "utilities": {
+            "water_supply": "Natural springs, mountain water channels",
+            "electricity": "Available with frequent outages",
+            "gas_supply": "LPG cylinders only",
+            "petrol_pump": "1 pump near Kalam entrance",
+            "internet_services": "3G/4G in bazaar area only",
+            "network": "Jazz and Telenor, limited to populated areas"
+          },
+          "recreational_facilities": {
+            "parks": "No formal park",
+            "playground": "School fields used for sports",
+            "community_center": "Mosque and local hotels host meetings",
+            "sports_facilities": "Cricket, volleyball, and polo during festivals"
+          }
+        },
+        "tourist_attractions": {
+          "village_id": 302,
+          "tourist_attraction_id": 602,
+          "natural_landmarks": {
+            "rivers": "Swat River originates from Kalam",
+            "lakes": "Mahodand Lake, Kundol Lake",
+            "mountains": "Mount Falaksar and snow-covered Hindu Kush peaks",
+            "forest": "Dense pine and deodar forests"
+          },
+          "cultural_historical_places": {
+            "temples": "None",
+            "old_building": "Wooden houses, Kalami-style architecture",
+            "monuments": "Memorials of historical tribal figures",
+            "museums": "No formal museum in Kalam"
+          },
+          "local_events": {
+            "festivals": "Kalam Festival (July–August), Folk Dance competitions",
+            "exhibitions": "Handicraft stalls during tourist season",
+            "cultural_performance": "Live Rubab, flute, Attan and Chitral dances"
+          }
+        },
+        "emergency_contacts": {
+          "emergency_contact_id": 603,
+          "village_id": 302,
+          "government_contact_number": "0946-730100",
+          "police_stations": {
+            "contact_number": "0946-730110",
+            "address": "Kalam Police Post",
+            "operating_hours_police_stations": "24/7"
+          },
+          "fire_station": {
+            "contact_number": "0946-730120",
+            "address": "Nearest in Bahrain town (30 km)",
+            "operating_hour": "24/7"
+          },
+          "medical_emergency": {
+            "ambulance_service": "Rescue 1122",
+            "hospital_emergency_number": "0946-730130",
+            "blood_bank": "Available in Saidu Sharif",
+            "disaster_management": "PDMA KPK",
+            "contact_for_handling_flood": "PDMA Helpline: 1700",
+            "contact_for_earthquake": "PDMA Helpline: 1700"
+          }
+        },
+        "additional_elements": {
+          "additional_id": 604,
+          "village_id": 302,
+          "land_use_zoning": {
+            "agriculturals": "Farming zones in side valleys like Ushu",
+            "residential": "Scattered villages and hotels",
+            "commercial_industrial": "Bazaar area and roadside hotels"
+          },
+          "infrastructure_development": {
+            "planned_project": "Paved road to Mahodand Lake",
+            "road_construction": "Bahrain-Kalam Road expansion under C&W Dept.",
+            "housing": "Eco-tourism guest houses being developed"
+          },
+          "local_business_employement": {
+            "small_business": "Hotels, tour guides, shops",
+            "job_oppurtunities": "Seasonal tourism, porters, shopkeepers",
+            "skill_develomnent": "Hotel and tourism training via NGOs"
+          },
+          "public_services_contact": {
+            "contact_water_supply": "TMA Kalam: 0946-730115",
+            "contact_electricity": "PESCO Helpline: 118",
+            "contact_gas_supply": "Local LPG dealers",
+            "emergency_helpline": "Rescue 1122: 1122"
+          }
+        }
+      },
+      {
+        "village_id": 303,
+        "city_id": 2,
+        "name": "Mahodand Lake Valley",
+        "city": "Swat",
+        "location": "Mahodand Lake, Upper Kalam, Swat District (KPK)",
+        "image": "http://192.168.43.98:3000/images/mahodand_lake.jpg",
+        "populationDetail": {
+          "village_id": 303,
+          "population_code": 701,
+          "population_children": {
+            "population_code": 701,
+            "total": 500,
+            "age_range": "0-14 years",
+            "percentage_of_total_population": "25%"
+          },
+          "population_adult": {
+            "population_code": 701,
+            "total": 1300,
+            "age_range": "15-59 years",
+            "percentage_of_total_population": "65%"
+          },
+          "population_elderly": {
+            "population_code": 701,
+            "total": 200,
+            "age_range": "60+ years",
+            "percentage_of_total_population": "10%"
+          },
+          "gender_ratio_rate": {
+            "population_code": 701,
+            "Male": 1000,
+            "Female": 1000,
+            "Male_to_Female_ratio": "1:1"
+          }
+        },
+        "geographicalInformation": {
+          "village_id": 303,
+          "geographical_information_id": 702,
+          "local_information": {
+            "geographical_information_id": 702,
+            "coordinates": "35.5897° N, 72.5031° E",
+            "nearest_landmark": "Mahodand Lake",
+            "distance_from_major_city": "40 km north of Kalam"
+          },
+          "geo_area": {
+            "geographical_information_id": 702,
+            "total_area": "6.5 sq km",
+            "topography": "High-altitude alpine valley with lakes, forests, and meadows",
+            "land_use": "Tourism, grazing, temporary summer settlements"
+          },
+          "climate_detail": {
+            "geographical_information_id": 702,
+            "average_temperature": "6°C annually",
+            "rainfall": "1000–1300 mm",
+            "seasonal_variations": "Heavy snow in winter, lush greenery in summer"
+          }
+        },
+        "historicalBackground": {
+          "village_id": 303,
+          "founding_year": "Traditionally inhabited in summers by nomads",
+          "founders": "Local tribes of Ushu/Kalam",
+          "historical_events": "Gained popularity in 2000s due to natural beauty",
+          "cultural_significance": "Hosts seasonal gatherings and folklore storytelling",
+          "monuments_or_landmarks": "Lakefront, glacier streams",
+          "ethnic_background": "Pashtun and Gujjar nomads",
+          "famous_persons": "Local guides and wildlife preservationists",
+          "historic_sites_nearby": "Glacial caves, camping valleys",
+          "development_over_time": "Evolved from hidden spot to famous tourist attraction"
+        },
+        "economy": {
+          "village_id": 303,
+          "economy_id": 703,
+          "farming": {
+            "economy_id": 703,
+            "major_crops": "Limited - some fodder in lower elevations",
+            "fruit_cultivation": "Wild berries, no formal orchards",
+            "livestock": "Sheep, goats (grazed in summer)",
+            "method": "Pastoral nomadic practices"
+          },
+          "handicrafts": {
+            "economy_id": 703,
+            "popular_crafts": "Handmade jewelry, wool items",
+            "specialty_items": "Beaded accessories for tourists",
+            "community_involvement": "Local women sell handmade souvenirs"
+          },
+          "industries": {
+            "economy_id": 703,
+            "local_factories": "None (only seasonal stalls)",
+            "raw_material": "Wool, herbs",
+            "employment_contribution": "5%",
+            "economic_impact": "Supplementary to tourism"
+          }
+        },
+        "cultural_information": {
+          "village_id": 303,
+          "cultural_information_id": 704,
+          "local_festival": {
+            "cultural_information_id": 704,
+            "spring_festival": "Opening of lake valley for tourism",
+            "harvest_festival": "Goat/sheep grazing ceremonies",
+            "eid_celebration": "Traditional Pashto folk songs and campfire meals"
+          },
+          "traditions": {
+            "cultural_information_id": 704,
+            "traditional_dress": "Woolen shawls, Peshawari caps, and embroidered waistcoats",
+            "hospitality": "Tea, trout fish, and dry fruits offered to guests",
+            "storytelling_evenings": "Local guides share lake legends",
+            "wedding_ceremonies": "Not common due to temporary habitation"
+          },
+          "language_spoken": {
+            "cultural_information_id": 704,
+            "primary_language": "Pashto",
+            "secondary_language": "Gujjari",
+            "additional_language": "Urdu for tourists"
+          }
+        },
+        "significant_people": {
+          "village_id": 303,
+          "person_id": 4,
+          "name": "Shamsher Khan",
+          "biography": "A nature guide who helped develop safe trails and preserve wildlife near Mahodand Lake.",
+          "contribution": "Trained youth in eco-tourism, helped with wildlife surveys",
+          "area_of_influence": "Tourism and environmental conservation",
+          "historical_period": "2010–2020",
+          "awards_or_recognition": "Honored by KP Tourism Department",
+          "related_events": "Introduced trout fishing ethics to tourists"
+        },
+        "community_services": {
+          "community_id": 701,
+          "village_id": 303,
+          "education": {
+            "schools": "No formal schools; children go to Kalam",
+            "college": "None",
+            "universities": "None nearby",
+            "training_center": "Seasonal guide and rescue training offered by NGOs"
+          },
+          "healthcare_facilities": {
+            "clinics": "Mobile camp clinic in tourist season",
+            "hospitals": "Nearest in Kalam",
+            "pharmacies": "None",
+            "mobile_health_services": "Rescue 1122 teams in peak season"
+          },
+          "market": {
+            "details_local_market": "Seasonal stalls near the lake",
+            "availability_essential_goods": "Basic food items, snacks, handicrafts"
+          },
+          "transportations": {
+            "buses": "Not accessible by bus",
+            "rickshaw": "None",
+            "bikes": "Motorbikes used by locals",
+            "suzuki": "4x4 jeeps from Kalam",
+            "major_road": "Rough jeep track from Kalam to Mahodand"
+          },
+          "utilities": {
+            "water_supply": "Glacial streams",
+            "electricity": "No electricity; solar panels or generators used",
+            "gas_supply": "LPG cylinders or firewood",
+            "petrol_pump": "None (carry fuel from Kalam)",
+            "internet_services": "No service",
+            "network": "No signal"
+          },
+          "recreational_facilities": {
+            "parks": "Natural valley serves as park",
+            "playground": "Open meadows used",
+            "community_center": "Tents or makeshift wooden structures",
+            "sports_facilities": "Fishing, boating, camping"
+          }
+        },
+        "tourist_attractions": {
+          "village_id": 303,
+          "tourist_attraction_id": 702,
+          "natural_landmarks": {
+            "rivers": "Ushu River and glacial streams",
+            "lakes": "Mahodand Lake (main), Saifullah Lake",
+            "mountains": "Snow-covered peaks of Hindu Kush",
+            "forest": "Alpine forest of deodar and pine"
+          },
+          "cultural_historical_places": {
+            "temples": "None",
+            "old_building": "Traditional wooden summer huts",
+            "monuments": "Tribal memorial stones",
+            "museums": "None"
+          },
+          "local_events": {
+            "festivals": "Summer tent village festival for tourists",
+            "exhibitions": "Handmade goods displayed in peak season",
+            "cultural_performance": "Live Rubab and flute under open sky"
+          }
+        },
+        "emergency_contacts": {
+          "emergency_contact_id": 703,
+          "village_id": 303,
+          "government_contact_number": "0946-730200",
+          "police_stations": {
+            "contact_number": "0946-730210",
+            "address": "Police checkpoint in Kalam (support for tourists)",
+            "operating_hours_police_stations": "24/7 in peak season"
+          },
+          "fire_station": {
+            "contact_number": "0946-730220",
+            "address": "Nearest in Kalam town",
+            "operating_hour": "24/7"
+          },
+          "medical_emergency": {
+            "ambulance_service": "Only available from Kalam",
+            "hospital_emergency_number": "0946-730230",
+            "blood_bank": "Saidu Sharif (distant)",
+            "disaster_management": "PDMA KPK",
+            "contact_for_handling_flood": "PDMA Helpline: 1700",
+            "contact_for_earthquake": "PDMA Helpline: 1700"
+          }
+        },
+        "additional_elements": {
+          "additional_id": 704,
+          "village_id": 303,
+          "land_use_zoning": {
+            "agriculturals": "Minimal; used for grazing only",
+            "residential": "Temporary huts, tents",
+            "commercial_industrial": "Seasonal tourist camps and stalls"
+          },
+          "infrastructure_development": {
+            "planned_project": "Improved road to Mahodand Lake",
+            "road_construction": "Jeep track maintenance underway",
+            "housing": "Eco-huts and glamping areas under discussion"
+          },
+          "local_business_employement": {
+            "small_business": "Food stalls, boat rentals, tent providers",
+            "job_oppurtunities": "Tour guides, porters, jeep drivers",
+            "skill_develomnent": "Tourism training camps"
+          },
+          "public_services_contact": {
+            "contact_water_supply": "TMA Kalam (for temporary camps)",
+            "contact_electricity": "Solar panel suppliers in Kalam",
+            "contact_gas_supply": "LPG retailers in Kalam",
+            "emergency_helpline": "Rescue 1122: 1122"
+          }
+        }
       }
     ],
     "touristVillages": [
@@ -2479,6 +3426,722 @@
             "contact_electricity": "Totakan Electricity Department - 0910-889900",
             "contact_gas_supply": "Sui Northern Gas Pipeline - 0910-667788",
             "emergency_helpline": "Rescue 1122 - 1122"
+          }
+        }
+      },
+      {
+        "village_id": 304,
+        "city_id": 2,
+        "name": "Malam Jabba",
+        "city": "Swat",
+        "location": "Malam Jabba Valley, Swat District (KPK)",
+        "image": "http://192.168.43.98:3000/images/malam_jabba.jpg",
+        "populationDetail": {
+          "village_id": 304,
+          "population_code": 702,
+          "population_children": {
+            "population_code": 702,
+            "total": 1000,
+            "age_range": "0-14 years",
+            "percentage_of_total_population": "24%"
+          },
+          "population_adult": {
+            "population_code": 702,
+            "total": 2800,
+            "age_range": "15-59 years",
+            "percentage_of_total_population": "68%"
+          },
+          "population_elderly": {
+            "population_code": 702,
+            "total": 300,
+            "age_range": "60+ years",
+            "percentage_of_total_population": "8%"
+          },
+          "gender_ratio_rate": {
+            "population_code": 702,
+            "Male": 2100,
+            "Female": 2000,
+            "Male_to_Female_ratio": "1.05:1"
+          }
+        },
+        "geographicalInformation": {
+          "village_id": 304,
+          "geographical_information_id": 703,
+          "local_information": {
+            "geographical_information_id": 703,
+            "coordinates": "35.3961° N, 72.5709° E",
+            "nearest_landmark": "Malam Jabba Ski Resort",
+            "distance_from_major_city": "40 km from Mingora"
+          },
+          "geo_area": {
+            "geographical_information_id": 703,
+            "total_area": "10 sq km",
+            "topography": "Mountainous terrain with pine forests and snowy peaks",
+            "land_use": "Tourism, residential, and commercial"
+          },
+          "climate_detail": {
+            "geographical_information_id": 703,
+            "average_temperature": "12°C annually",
+            "rainfall": "900–1200 mm",
+            "seasonal_variations": "Heavy snowfall in winter, mild summers"
+          }
+        },
+        "historicalBackground": {
+          "village_id": 304,
+          "founding_year": "Historically used as summer grazing land",
+          "founders": "Local Yousafzai tribes",
+          "historical_events": "Development of Pakistan's only ski resort",
+          "cultural_significance": "Known for winter sports and scenic tourism",
+          "monuments_or_landmarks": "Ski resort, chairlift, trekking trails",
+          "ethnic_background": "Pashtun (primarily Yousafzai)",
+          "famous_persons": "Local skiing champions and tourism entrepreneurs",
+          "historic_sites_nearby": "Old watchtowers, Buddhist archaeological sites",
+          "development_over_time": "From forest village to international ski destination"
+        },
+        "economy": {
+          "village_id": 304,
+          "economy_id": 704,
+          "farming": {
+            "economy_id": 704,
+            "major_crops": "Potatoes, maize",
+            "fruit_cultivation": "Apples, apricots",
+            "livestock": "Cows, goats",
+            "method": "Traditional mountain farming"
+          },
+          "handicrafts": {
+            "economy_id": 704,
+            "popular_crafts": "Woolen shawls, wood carvings",
+            "specialty_items": "Snow-themed souvenirs",
+            "community_involvement": "Families involved in local souvenir stalls"
+          },
+          "industries": {
+            "economy_id": 704,
+            "local_factories": "Small-scale food processing units",
+            "raw_material": "Fruit, wool",
+            "employment_contribution": "Moderate (15–20%)",
+            "economic_impact": "Boosted by tourism demand"
+          }
+        },
+        "cultural_information": {
+          "village_id": 304,
+          "cultural_information_id": 705,
+          "local_festival": {
+            "cultural_information_id": 705,
+            "spring_festival": "Flower Bloom Festival",
+            "harvest_festival": "Fruit Celebration Fair",
+            "eid_celebration": "Community feasts, Pashto music"
+          },
+          "traditions": {
+            "cultural_information_id": 705,
+            "traditional_dress": "Chapan coats, woolen caps",
+            "hospitality": "Traditional food, guided tours for guests",
+            "storytelling_evenings": "Tales of snow spirits and hunting adventures",
+            "wedding_ceremonies": "Traditional Pashtun customs with music and dance"
+          },
+          "language_spoken": {
+            "cultural_information_id": 705,
+            "primary_language": "Pashto",
+            "secondary_language": "Urdu",
+            "additional_language": "English (for tourists)"
+          }
+        },
+        "significant_people": {
+          "village_id": 304,
+          "person_id": 5,
+          "name": "Zar Wali Khan",
+          "biography": "A ski instructor who trained local youth and promoted winter sports in Malam Jabba.",
+          "contribution": "Built local ski school and helped attract national competitions",
+          "area_of_influence": "Winter sports and youth development",
+          "historical_period": "2005–2020",
+          "awards_or_recognition": "Recognized by Winter Sports Federation of Pakistan",
+          "related_events": "Hosted national ski championship with his team"
+        },
+        "community_services": {
+          "community_id": 702,
+          "village_id": 304,
+          "education": {
+            "schools": "3 primary schools, 1 high school",
+            "college": "Government Degree College in Manglawar (nearby)",
+            "universities": "University of Swat (distant)",
+            "training_center": "Ski training academy in winter"
+          },
+          "healthcare_facilities": {
+            "clinics": "2 private clinics",
+            "hospitals": "Closest hospital in Mingora",
+            "pharmacies": "Available locally",
+            "mobile_health_services": "Periodic health camps by Rescue 1122"
+          },
+          "market": {
+            "details_local_market": "Daily-use items, restaurants, and tourist stalls",
+            "availability_essential_goods": "Easily available",
+            "availability_luxury_items": "Limited"
+          },
+          "transportations": {
+            "buses": "Minibuses to Mingora",
+            "rickshaw": "Available for local routes",
+            "bikes": "Common among youth",
+            "suzuki": "Used for cargo and family transport",
+            "major_road": "Well-paved road from Manglawar"
+          },
+          "utilities": {
+            "water_supply": "Gravity-fed spring water",
+            "electricity": "WAPDA with backup generators",
+            "gas_supply": "LPG cylinders and gas pipeline under progress",
+            "petrol_pump": "One small fuel station",
+            "internet_services": "4G available",
+            "network": "Zong, Telenor, Jazz"
+          },
+          "recreational_facilities": {
+            "parks": "Resort grounds serve as public parks",
+            "playground": "School grounds used",
+            "community_center": "Tourism info center also serves locals",
+            "sports_facilities": "Skiing, snowboarding, hiking trails"
+          }
+        },
+        "tourist_attractions": {
+          "village_id": 304,
+          "tourist_attraction_id": 703,
+          "natural_landmarks": {
+            "rivers": "Nearby streams and glacial meltwater",
+            "lakes": "Small natural ponds in nearby meadows",
+            "mountains": "Snowy peaks surrounding Malam Jabba",
+            "forest": "Thick pine and deodar forest"
+          },
+          "cultural_historical_places": {
+            "temples": "Ancient Buddhist relics in nearby hills",
+            "old_building": "Colonial-era rest house",
+            "monuments": "Ski tower landmark",
+            "museums": "None in village; museum in Mingora"
+          },
+          "local_events": {
+            "festivals": "Winter Snow Festival",
+            "exhibitions": "Ski equipment expo, local art display",
+            "cultural_performance": "Pashto music concerts during tourism season"
+          }
+        },
+        "emergency_contacts": {
+          "emergency_contact_id": 704,
+          "village_id": 304,
+          "government_contact_number": "0946-722210",
+          "police_stations": {
+            "contact_number": "0946-722211",
+            "address": "Malam Jabba Police Post",
+            "operating_hours_police_stations": "24/7"
+          },
+          "fire_station": {
+            "contact_number": "0946-722220",
+            "address": "Fire & Rescue post at resort",
+            "operating_hour": "24/7"
+          },
+          "medical_emergency": {
+            "ambulance_service": "Rescue 1122 stationed seasonally",
+            "hospital_emergency_number": "0946-722230",
+            "blood_bank": "Mingora",
+            "disaster_management": "PDMA Swat",
+            "contact_for_handling_flood": "PDMA Helpline: 1700",
+            "contact_for_earthquake": "PDMA Helpline: 1700"
+          }
+        },
+        "additional_elements": {
+          "additional_id": 705,
+          "village_id": 304,
+          "land_use_zoning": {
+            "agriculturals": "On valley edges",
+            "residential": "Permanent and seasonal homes",
+            "commercial_industrial": "Tourism and hospitality zones"
+          },
+          "infrastructure_development": {
+            "planned_project": "Chairlift expansion and winter resort expansion",
+            "road_construction": "Ongoing widening of Malam Jabba road",
+            "housing": "Eco-lodges and small hotels increasing"
+          },
+          "local_business_employement": {
+            "small_business": "Hotels, food stalls, skiing gear shops",
+            "job_oppurtunities": "Hotel staff, ski instructors, tour guides",
+            "skill_develomnent": "Winter tourism training by Tourism Corp KP"
+          },
+          "public_services_contact": {
+            "contact_water_supply": "Public Health Engineering Swat",
+            "contact_electricity": "PESCO",
+            "contact_gas_supply": "LPG suppliers in Mingora",
+            "emergency_helpline": "Rescue 1122: 1122"
+          }
+        }
+      },
+      {
+        "village_id": 305,
+        "city_id": 2,
+        "name": "Saidu Sharif",
+        "city": "Swat",
+        "location": "Saidu Sharif, Swat District (KPK)",
+        "image": "http://192.168.43.98:3000/images/saidu_sharif.jpg",
+        "populationDetail": {
+          "village_id": 305,
+          "population_code": 703,
+          "population_children": {
+            "population_code": 703,
+            "total": 12000,
+            "age_range": "0-14 years",
+            "percentage_of_total_population": "28%"
+          },
+          "population_adult": {
+            "population_code": 703,
+            "total": 27000,
+            "age_range": "15-59 years",
+            "percentage_of_total_population": "64%"
+          },
+          "population_elderly": {
+            "population_code": 703,
+            "total": 3000,
+            "age_range": "60+ years",
+            "percentage_of_total_population": "8%"
+          },
+          "gender_ratio_rate": {
+            "population_code": 703,
+            "Male": 21000,
+            "Female": 21000,
+            "Male_to_Female_ratio": "1:1"
+          }
+        },
+        "geographicalInformation": {
+          "village_id": 305,
+          "geographical_information_id": 704,
+          "local_information": {
+            "geographical_information_id": 704,
+            "coordinates": "35.2956° N, 72.4921° E",
+            "nearest_landmark": "Swat Museum",
+            "distance_from_major_city": "0 km (Main administrative city of Swat)"
+          },
+          "geo_area": {
+            "geographical_information_id": 704,
+            "total_area": "15 sq km",
+            "topography": "Valley plain with surrounding hills",
+            "land_use": "Administrative, residential, educational"
+          },
+          "climate_detail": {
+            "geographical_information_id": 704,
+            "average_temperature": "18°C",
+            "rainfall": "850 mm",
+            "seasonal_variations": "Cool winters, warm summers"
+          }
+        },
+        "historicalBackground": {
+          "village_id": 305,
+          "founding_year": "Established during Wadudia Dynasty rule (early 20th century)",
+          "founders": "Miangul Abdul Wadud (Wali of Swat)",
+          "historical_events": "Served as capital of former Swat State",
+          "cultural_significance": "Cultural, political, and educational hub",
+          "monuments_or_landmarks": "Royal Palace, Swat Museum",
+          "ethnic_background": "Pashtun (mainly Yousafzai)",
+          "famous_persons": "Miangul Jahanzeb (last Wali of Swat)",
+          "historic_sites_nearby": "Butkara Stupa, Udegram Buddhist Ruins",
+          "development_over_time": "Transformed into a major town with modern facilities"
+        },
+        "economy": {
+          "village_id": 305,
+          "economy_id": 705,
+          "farming": {
+            "economy_id": 705,
+            "major_crops": "Wheat, maize, vegetables",
+            "fruit_cultivation": "Apples, peaches",
+            "livestock": "Cattle, poultry",
+            "method": "Traditional + modern farming techniques"
+          },
+          "handicrafts": {
+            "economy_id": 705,
+            "popular_crafts": "Embroidery, hand-woven cloth",
+            "specialty_items": "Pashto caps, carved wood items",
+            "community_involvement": "Sold through local bazaars"
+          },
+          "industries": {
+            "economy_id": 705,
+            "local_factories": "Ice factories, packaging units",
+            "raw_material": "Agricultural products",
+            "employment_contribution": "Moderate",
+            "economic_impact": "Strengthens urban employment"
+          }
+        },
+        "cultural_information": {
+          "village_id": 305,
+          "cultural_information_id": 706,
+          "local_festival": {
+            "cultural_information_id": 706,
+            "spring_festival": "Nowruz",
+            "harvest_festival": "Swat Cultural Mela",
+            "eid_celebration": "Grand celebrations in Wali's Mosque"
+          },
+          "traditions": {
+            "cultural_information_id": 706,
+            "traditional_dress": "Shalwar Kameez, Peshawari chappal",
+            "hospitality": "Guesthouses and local homes welcome visitors",
+            "storytelling_evenings": "Poetry and music events",
+            "wedding_ceremonies": "Family gatherings with music and mehndi"
+          },
+          "language_spoken": {
+            "cultural_information_id": 706,
+            "primary_language": "Pashto",
+            "secondary_language": "Urdu",
+            "additional_language": "English (especially in schools)"
+          }
+        },
+        "significant_people": {
+          "village_id": 305,
+          "person_id": 6,
+          "name": "Miangul Jahanzeb",
+          "biography": "The last ruler (Wali) of Swat State, established modern infrastructure including schools and hospitals.",
+          "contribution": "Laid foundation for education and healthcare in Swat",
+          "area_of_influence": "Governance and public welfare",
+          "historical_period": "1949–1969",
+          "awards_or_recognition": "Respected figure in Pakistan's princely history",
+          "related_events": "Swat State merger into Pakistan in 1969"
+        },
+        "community_services": {
+          "community_id": 703,
+          "village_id": 305,
+          "education": {
+            "schools": "Many public & private schools",
+            "college": "Govt. Degree College Saidu Sharif",
+            "universities": "University of Swat",
+            "training_center": "Technical Training Institute"
+          },
+          "healthcare_facilities": {
+            "clinics": "Multiple private clinics",
+            "hospitals": "Saidu Group of Teaching Hospitals",
+            "pharmacies": "Wide availability",
+            "mobile_health_services": "Health camps and outreach programs"
+          },
+          "market": {
+            "details_local_market": "Busy bazaars for clothing, groceries, electronics",
+            "availability_essential_goods": "Easily accessible",
+            "availability_luxury_items": "Available in some shops"
+          },
+          "transportations": {
+            "buses": "Regular intercity buses",
+            "rickshaw": "Common transport method",
+            "bikes": "Frequently used",
+            "suzuki": "Shared rides to nearby towns",
+            "major_road": "Main GT road to Mingora"
+          },
+          "utilities": {
+            "water_supply": "Municipal water system",
+            "electricity": "WAPDA, occasional load-shedding",
+            "gas_supply": "Piped gas and LPG",
+            "petrol_pump": "Multiple petrol stations",
+            "internet_services": "Broadband and 4G available",
+            "network": "Zong, Jazz, Telenor, Ufone"
+          },
+          "recreational_facilities": {
+            "parks": "Children’s Park, Swat Museum Grounds",
+            "playground": "Cricket and football grounds",
+            "community_center": "Town Hall and civic buildings",
+            "sports_facilities": "Indoor gym, cricket academy"
+          }
+        },
+        "tourist_attractions": {
+          "village_id": 305,
+          "tourist_attraction_id": 704,
+          "natural_landmarks": {
+            "rivers": "Swat River flows nearby",
+            "lakes": "Close to Fizagat Park",
+            "mountains": "Foothills of Hindu Kush",
+            "forest": "Green hills surrounding Saidu"
+          },
+          "cultural_historical_places": {
+            "temples": "Archaeological Buddhist remains nearby",
+            "old_building": "Wali's Palace",
+            "monuments": "Miangul Jahanzeb statue, historic buildings",
+            "museums": "Swat Museum with Buddhist artifacts"
+          },
+          "local_events": {
+            "festivals": "Swat Spring Festival",
+            "exhibitions": "Cultural and school exhibitions",
+            "cultural_performance": "Pashto music, dance, poetry events"
+          }
+        },
+        "emergency_contacts": {
+          "emergency_contact_id": 705,
+          "village_id": 305,
+          "government_contact_number": "0946-720001",
+          "police_stations": {
+            "contact_number": "0946-720002",
+            "address": "Saidu Sharif Police Station",
+            "operating_hours_police_stations": "24/7"
+          },
+          "fire_station": {
+            "contact_number": "0946-720003",
+            "address": "Civil Defense Fire Brigade Saidu",
+            "operating_hour": "24/7"
+          },
+          "medical_emergency": {
+            "ambulance_service": "Saidu Teaching Hospital Ambulance Service",
+            "hospital_emergency_number": "0946-720004",
+            "blood_bank": "Available at Saidu Teaching Hospital",
+            "disaster_management": "District Emergency Office Swat",
+            "contact_for_handling_flood": "PDMA Helpline: 1700",
+            "contact_for_earthquake": "PDMA Helpline: 1700"
+          }
+        },
+        "additional_elements": {
+          "additional_id": 706,
+          "village_id": 305,
+          "land_use_zoning": {
+            "agriculturals": "Outskirts of city",
+            "residential": "Urban and suburban residential colonies",
+            "commercial_industrial": "Main bazaar and administrative blocks"
+          },
+          "infrastructure_development": {
+            "planned_project": "Smart traffic control system, waste management improvements",
+            "road_construction": "Upgrading city roads",
+            "housing": "Modern housing societies under construction"
+          },
+          "local_business_employement": {
+            "small_business": "Shops, clinics, coaching centers",
+            "job_oppurtunities": "Education, administration, tourism",
+            "skill_develomnent": "Vocational centers and computer institutes"
+          },
+          "public_services_contact": {
+            "contact_water_supply": "Tehsil Municipal Administration",
+            "contact_electricity": "PESCO",
+            "contact_gas_supply": "SNGPL",
+            "emergency_helpline": "Rescue 1122: 1122"
+          }
+        }
+      },
+      {
+        "village_id": 306,
+        "city_id": 1,
+        "name": "Madyan",
+        "city": "Swat",
+        "location": "Madyan, Swat Valley, Khyber Pakhtunkhwa, Pakistan",
+        "image": "http://192.168.43.98:3000/images/swat_madyan.jpg",
+        "populationDetail": {
+          "village_id": 306,
+          "population_code": 406,
+          "population_children": {
+            "population_code": 406,
+            "total": 3200,
+            "age_range": "0-14 years",
+            "percentage_of_total_population": "26%"
+          },
+          "population_adult": {
+            "population_code": 406,
+            "total": 7300,
+            "age_range": "15-59 years",
+            "percentage_of_total_population": "60%"
+          },
+          "population_elderly": {
+            "population_code": 406,
+            "total": 1700,
+            "age_range": "60+ years",
+            "percentage_of_total_population": "14%"
+          },
+          "gender_ratio_rate": {
+            "population_code": 406,
+            "Male": 6000,
+            "Female": 6200,
+            "Male_to_Female_ratio": "1:1.03"
+          }
+        },
+        "geographicalInformation": {
+          "village_id": 306,
+          "geographical_information_id": 406,
+          "local_information": {
+            "geographical_information_id": 406,
+            "coordinates": "35.1342° N, 72.5500° E",
+            "nearest_landmark": "Swat River Viewpoint",
+            "distance_from_major_city": "55 km from Mingora"
+          },
+          "geo_area": {
+            "geographical_information_id": 406,
+            "total_area": "9 sq km",
+            "topography": "Mountainous terrain along Swat River",
+            "land_use": "Tourism, residential, agriculture, local commerce"
+          },
+          "climate_detail": {
+            "geographical_information_id": 406,
+            "average_temperature": "18°C annually",
+            "rainfall": "850-1100 mm per year",
+            "seasonal_variations": "Cold winters (as low as -2°C), pleasant summers (up to 30°C)"
+          }
+        },
+        "historicalBackground": {
+          "village_id": 306,
+          "founding_year": "Ancient trade post, revitalized in early 20th century",
+          "founders": "Tribal communities of Yusufzai Pashtuns",
+          "historical_events": "Famous bazaar developed during colonial era; known as a summer resort for travelers.",
+          "cultural_significance": "Popular for handicrafts, woolen shawls, and trout fishing",
+          "monuments_or_landmarks": "Historic wooden houses, riverside mosque",
+          "ethnic_background": "Primarily Pashtun, with some Kohistani presence",
+          "famous_persons": "Craftswoman Bibi Gul known for traditional shawl weaving",
+          "historic_sites_nearby": "Udegram Buddhist ruins, Bahrain bridge",
+          "development_over_time": "From small riverside village to tourist hotspot with hotels, bazaar, and trout farms"
+        },
+        "economy": {
+          "village_id": 306,
+          "economy_id": 406,
+          "farming": {
+            "economy_id": 406,
+            "major_crops": "Maize, potatoes, vegetables",
+            "fruit_cultivation": "Apples, apricots, peaches",
+            "livestock": "Cows, goats, poultry",
+            "method": "Terrace farming and river-fed irrigation"
+          },
+          "handicrafts": {
+            "economy_id": 406,
+            "popular_crafts": "Shawl weaving, wood carving",
+            "specialty_items": "Wool shawls, wooden souvenirs",
+            "community_involvement": "Women-led cooperatives and home-based workshops"
+          },
+          "industries": {
+            "economy_id": 406,
+            "local_factories": "Small-scale trout farms and wool processing",
+            "raw_material": "Wool, wood, fish",
+            "employment_contribution": "20% workforce",
+            "economic_impact": "Strong tourist-driven economic boost"
+          }
+        },
+        "cultural_information": {
+          "village_id": 306,
+          "cultural_information_id": 406,
+          "local_festival": {
+            "cultural_information_id": 406,
+            "spring_festival": "Local fair with folk dances and trout cooking contests",
+            "harvest_festival": "Celebrated with family feasts and music",
+            "eid_celebration": "Community prayers and hospitality traditions"
+          },
+          "traditions": {
+            "cultural_information_id": 406,
+            "traditional_dress": "Woolen shawls, white shalwar kameez, embroidered dresses",
+            "hospitality": "Welcoming guests with dried fruits and kahwa",
+            "storytelling_evenings": "Narration of fishing tales and Sufi stories by elders",
+            "wedding_ceremonies": "Traditional Attan dances, music, and communal meals"
+          },
+          "language_spoken": {
+            "cultural_information_id": 406,
+            "primary_language": "Pashto",
+            "secondary_language": "Urdu",
+            "additional_language": "Kohistani, English among younger generation"
+          }
+        },
+        "significant_people": {
+          "village_id": 306,
+          "person_id": 6,
+          "name": "Gul Rahman Khan",
+          "biography": "Trout farm innovator and eco-tourism promoter in Madyan",
+          "contribution": "Popularized trout farming and homestays in the valley",
+          "area_of_influence": "Agriculture, tourism, environmental sustainability",
+          "historical_period": "Early 2000s to present",
+          "awards_or_recognition": "Recognized by Swat Tourism Authority for rural tourism development",
+          "related_events": "Initiated Madyan Trout Festival and awareness drives"
+        },
+        "community_services": {
+          "community_id": 406,
+          "village_id": 306,
+          "education": {
+            "schools": "2 government primary schools, 1 private high school",
+            "college": "Government Degree College in nearby Bahrain",
+            "universities": "University of Swat (at Charbagh, accessible within 40 km)",
+            "training_center": "Informal training in hotel management and handicrafts"
+          },
+          "healthcare_facilities": {
+            "clinics": "1 government dispensary",
+            "hospitals": "Nearest hospital in Bahrain",
+            "pharmacies": "Few local medical stores",
+            "mobile_health_services": "Occasional outreach by NGOs"
+          },
+          "market": {
+            "details_local_market": "Madyan Bazaar with shops, eateries, and craft vendors",
+            "availability_essential_goods": "All basic goods available including tourism supplies"
+          },
+          "transportations": {
+            "buses": "Van services to Mingora and Kalam",
+            "rickshaw": "Auto-rickshaws and jeeps for short trips",
+            "bikes": "Common transport for locals",
+            "suzuki": "Used for goods and group travel",
+            "major_road": "Connected to Bahrain and Kalam via Swat River Road"
+          },
+          "utilities": {
+            "water_supply": "River water and gravity-fed schemes",
+            "electricity": "Hydroelectric power available",
+            "gas_supply": "LPG cylinders in use",
+            "petrol_pump": "Petrol available in small roadside shops",
+            "internet_services": "3G/4G mobile internet with moderate coverage",
+            "network": "All major networks with varying strength"
+          },
+          "recreational_facilities": {
+            "parks": "No formal park, but riverside sitting areas",
+            "playground": "Open field for football and cricket",
+            "community_center": "No structured center, gatherings at local hotels or mosques",
+            "sports_facilities": "Cricket, volleyball played in open fields"
+          }
+        },
+        "tourist_attractions": {
+          "village_id": 306,
+          "tourist_attraction_id": 406,
+          "natural_landmarks": {
+            "rivers": "Swat River runs through the valley",
+            "lakes": "No lake in Madyan; Mahodand nearby",
+            "mountains": "Surrounded by snow-capped peaks and pine forests",
+            "forest": "Dense alpine forest nearby"
+          },
+          "cultural_historical_places": {
+            "temples": "No formal temples; old wooden mosques",
+            "old_building": "Colonial-era buildings, wooden inns",
+            "monuments": "None officially declared",
+            "museums": "Swat Museum in Saidu Sharif nearby"
+          },
+          "local_events": {
+            "festivals": "Trout Festival in summer, Eid fairs",
+            "exhibitions": "Handicrafts displayed in hotels and shops",
+            "cultural_performance": "Pashto folk music and Attan dance in evenings"
+          }
+        },
+        "emergency_contacts": {
+          "emergency_contact_id": 406,
+          "village_id": 306,
+          "government_contact_number": "0946-720011",
+          "police_stations": {
+            "contact_number": "0946-720122",
+            "address": "Police Post Madyan",
+            "operating_hours_police_stations": "24/7"
+          },
+          "fire_station": {
+            "contact_number": "Rescue 1122 Swat",
+            "address": "Rescue Office Bahrain",
+            "operating_hour": "24/7"
+          },
+          "medical_emergency": {
+            "ambulance_service": "Rescue 1122",
+            "hospital_emergency_number": "0946-720014",
+            "blood_bank": "District Hospital Mingora",
+            "disaster_management": "Rescue 1122 Mingora",
+            "contact_for_handling_flood": "PDMA Helpline: 1700",
+            "contact_for_earthquake": "PDMA Helpline: 1700"
+          }
+        },
+        "additional_elements": {
+          "additional_id": 406,
+          "village_id": 306,
+          "land_use_zoning": {
+            "agriculturals": "Terrace farming and fish farming areas",
+            "residential": "Houses along slopes and riverside",
+            "commercial_industrial": "Hotels, shops, no heavy industry"
+          },
+          "infrastructure_development": {
+            "planned_project": "Tourism rest houses and road repairs",
+            "road_construction": "Upgrading Madyan–Kalam road",
+            "housing": "Private home construction in scenic areas"
+          },
+          "local_business_employement": {
+            "small_business": "Souvenir shops, food stalls, trout hotels",
+            "job_oppurtunities": "Tourism, retail, transport, food service",
+            "skill_develomnent": "Informal training in fishing, guiding, and hospitality"
+          },
+          "public_services_contact": {
+            "contact_water_supply": "Tehsil Municipal Office Bahrain: 0946-720011",
+            "contact_electricity": "PESCO Helpline: 118",
+            "contact_gas_supply": "Local LPG Dealers in Madyan Bazaar",
+            "emergency_helpline": "Rescue 1122: 1122"
           }
         }
       }

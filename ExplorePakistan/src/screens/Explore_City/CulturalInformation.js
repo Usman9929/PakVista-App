@@ -1,46 +1,87 @@
-import React from 'react';
-import { View, Text, ImageBackground, StyleSheet, FlatList, TouchableOpacity, ScrollView } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, ScrollView, TouchableOpacity, ActivityIndicator } from 'react-native';
+import axios from 'axios';
 import styles from './Explore_City_Style';
 
-const Cultural_Information = [
-  {
-    title: 'Local Festival',
-    details: [
-      { label: "Spring Festival", value: "Jashn-e-Bahar" },
-      { label: 'Harvest Festival', value: 'Spring Harvest Festival' },
-      { label: 'Eid Celebrations"', value: "Grand communal feasts and cultural dances" },
-    ],
-  },
-  {
-    title: 'Traditions',
-    details: [
-      { label: "Traditional Dress", value: "Shalwar Kameez with embroidered waistcoats" },
-      { label: "Hospitality", value: "Guests offered green tea and dried fruits" },
-      { label: "Storytelling Evenings", value: "Folk tales and Pashto poetry sessions" },
-      { label: "Wedding Ceremonies", value: "Traditional music and Attan dance performances" },
-    ],
-  },
-  {
-    title: 'Language_Spoken',
-    details: [
-      { label: "Primary Language", value: "Pashto" },
-      { label: "Secondary Language", value: "Urdu" },
-      { label: "Additional Languages", value: "English, Punjabi" }
-    ]
-  },
-];
-
 const CulturalInformation = () => {
+  const [culturalData, setCulturalData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const endpoints = [
+    'http://192.168.43.98:8000/local_festival/',
+    'http://192.168.43.98:8000/traditions/',
+    'http://192.168.43.98:8000/language_spoken/',
+  ];
+
+  useEffect(() => {
+    fetchCulturalData();
+  }, []);
+
+  const fetchCulturalData = async () => {
+    try {
+      const responses = await Promise.all(endpoints.map(url => axios.get(url)));
+      const data = responses.map((res, index) => {
+        const apiData = res.data[0]; // Assuming each returns a single object in an array
+        if (!apiData) return { title: '', details: [] };
+
+        switch (index) {
+          case 0:
+            return {
+              title: 'Local Festival',
+              details: [
+                { label: 'Spring Festival', value: apiData.spring_festival },
+                { label: 'Harvest Festival', value: apiData.harvest_festival },
+                { label: 'Eid Celebrations', value: apiData.eid_celebrations },
+              ]
+            };
+          case 1:
+            return {
+              title: 'Traditions',
+              details: [
+                { label: 'Traditional Dress', value: apiData.traditional_dress },
+                { label: 'Hospitality', value: apiData.hospitality },
+                { label: 'Storytelling Evenings', value: apiData.storytelling_evenings },
+                { label: 'Wedding Ceremonies', value: apiData.wedding_ceremonies },
+              ]
+            };
+          case 2:
+            return {
+              title: 'Languages Spoken',
+              details: [
+                { label: 'Primary Language', value: apiData.primary_language },
+                { label: 'Secondary Language', value: apiData.secondary_language },
+                { label: 'Additional Languages', value: apiData.additional_languages },
+              ]
+            };
+          default:
+            return { title: '', details: [] };
+        }
+      });
+
+      setCulturalData(data);
+    } catch (error) {
+      console.error('Error fetching cultural data:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <View style={styles.loaderContainer}>
+        <ActivityIndicator size="large" color="#0000ff" />
+      </View>
+    );
+  }
+
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
-
-        {/* Emergency Contacts Section */}
         <View style={styles.content}>
           <Text style={styles.sectionTitle}>Cultural Background</Text>
 
           <View style={{ marginBottom: 60 }}>
-            {Cultural_Information.map((item, index) => (
+            {culturalData.map((item, index) => (
               <View key={index} style={styles.cardWrapper}>
                 <View style={styles.card}>
                   <Text style={styles.cardTitle}>{item.title}</Text>
@@ -61,7 +102,5 @@ const CulturalInformation = () => {
     </ScrollView>
   );
 };
-
-
 
 export default CulturalInformation;
