@@ -4,6 +4,7 @@ import {
   StyleSheet, Image
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginScreen = () => {
   const navigation = useNavigation();
@@ -16,34 +17,37 @@ const LoginScreen = () => {
     setError('');
 
     if (!identifier || !password) {
-      setError('Please enter your username or email and password.');
+      setError('Please enter your email and password.');
       return;
     }
 
     try {
-      // Fetch all users from the server
-      const response = await fetch(`http://192.168.43.98:3000/users`);
-      const users = await response.json();
+      const response = await fetch("http://192.168.43.98:8000/api/token/", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: identifier,
+          password: password
+        })
+      });
 
-      // Check for a user where identifier matches username or email, and password matches
-      const user = users.find(
-        (u) =>
-          (u.username === identifier || u.email === identifier) &&
-          u.password === password
-      );
+      const data = await response.json();
 
-      if (user) {
-        // Login successful
-        navigation.navigate('ExploreScreen');
+      if (response.ok) {
+        await AsyncStorage.setItem('access', data.access);
+        await AsyncStorage.setItem('refresh', data.refresh);
+
+        navigation.navigate('NewsFeed'); // Redirect to NewsFeed screen
       } else {
-        setError('Incorrect username/email or password.');
+        setError(data.detail || 'Login failed. Please check credentials.');
       }
     } catch (err) {
-      setError('Unable to connect to the server.');
-      console.error(err);
+      console.error('Login error:', err);
+      setError('Unable to connect to server.');
     }
   };
-
 
   return (
     <View style={styles.container}>
@@ -52,7 +56,7 @@ const LoginScreen = () => {
 
       <View style={styles.inputContainer}>
         <TextInput
-          placeholder="Enter Your Username / Email"
+          placeholder="Enter Your Email"
           placeholderTextColor="#888"
           style={styles.input}
           value={identifier}
@@ -95,22 +99,6 @@ const LoginScreen = () => {
           <Text style={styles.signupButton}> Signup</Text>
         </TouchableOpacity>
       </View>
-
-      <View style={styles.dividerContainer}>
-        <View style={styles.divider} />
-        <Text style={styles.orText}>Or</Text>
-        <View style={styles.divider} />
-      </View>
-
-      <TouchableOpacity style={styles.facebookButton}>
-        <Image source={require('../assets/icons/facebook.png')} style={styles.socialIcon} />
-        <Text style={styles.socialButtonText}>Login with Facebook</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.googleButton}>
-        <Image source={require('../assets/icons/google.png')} style={styles.socialIcon} />
-        <Text style={styles.googleButtonText}>Login with Google</Text>
-      </TouchableOpacity>
     </View>
   );
 };
@@ -186,57 +174,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#e63946',
     fontWeight: 'bold',
-  },
-  dividerContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginVertical: 20,
-    width: '100%',
-  },
-  divider: {
-    flex: 1,
-    height: 1,
-    backgroundColor: '#ddd',
-  },
-  orText: {
-    marginHorizontal: 10,
-    color: '#666',
-  },
-  facebookButton: {
-    backgroundColor: '#1877F2',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 12,
-    borderRadius: 10,
-    width: '85%',
-    marginBottom: 15,
-  },
-  googleButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 12,
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#ddd',
-    marginTop: 10,
-    width: '85%',
-  },
-  socialIcon: {
-    width: 24,
-    height: 24,
-    marginRight: 50,
-  },
-  socialButtonText: {
-    color: 'white',
-    fontSize: 16,
-    marginRight: 50,
-  },
-  googleButtonText: {
-    fontSize: 16,
-    color: 'black',
-    marginRight: 65,
   },
   eyeIcon: {
     position: 'absolute',

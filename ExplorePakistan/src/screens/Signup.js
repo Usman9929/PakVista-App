@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+// Fully Updated SignupScreen.js using @react-native-picker/picker
+import React, { useEffect, useState } from 'react';
 import {
   View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet, Alert, ActivityIndicator
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { Picker } from '@react-native-picker/picker';
 import axios from 'axios';
+import { useNavigation } from '@react-navigation/native';
+
+const API = "http://192.168.43.98:8000";
 
 const SignupScreen = () => {
   const navigation = useNavigation();
@@ -14,86 +18,115 @@ const SignupScreen = () => {
     username: '',
     email: '',
     password: '',
+    confirm_password: '',
+    user_type: '',
     province: '',
     division: '',
     district: '',
     city: '',
     village: ''
   });
-  const [passwordVisible, setPasswordVisible] = useState(false);
+
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
+
+  const [provinces, setProvinces] = useState([]);
+  const [divisions, setDivisions] = useState([]);
+  const [districts, setDistricts] = useState([]);
+  const [cities, setCities] = useState([]);
+  const [villages, setVillages] = useState([]);
+
+  useEffect(() => {
+    axios.get(`${API}/provinces/`).then(res => setProvinces(res.data));
+  }, []);
+
+  useEffect(() => {
+    if (formData.province) {
+      axios
+        .get(`${API}/divisions/?Province_id=${formData.province}`)
+        .then(res => {
+          setDivisions(res.data);
+        })
+        .catch(err => {
+          console.error('Failed to load divisions:', err);
+          setDivisions([]);
+        });
+    } else {
+      setDivisions([]);
+    }
+  }, [formData.province]);
+
+
+  useEffect(() => {
+    if (formData.division) {
+      axios
+        .get(`${API}/districts/?Division=${formData.division}`)
+        .then(res => setDistricts(res.data))
+        .catch(err => {
+          console.error("Failed to load districts:", err);
+          setDistricts([]);
+        });
+    } else {
+      setDistricts([]);
+    }
+  }, [formData.division]);
+
+
+  useEffect(() => {
+    if (formData.district) {
+      axios.get(`${API}/cities/`)
+        .then(res => {
+          const filtered = res.data.filter(
+            city => city.District === parseInt(formData.district)
+          );
+          setCities(filtered);
+        });
+
+    } else {
+      setCities([]);
+    }
+  }, [formData.district]);
+
+
+  useEffect(() => {
+    if (formData.city) {
+      axios.get(`${API}/village-profile/?city=${formData.city}`)
+        .then(res => setVillages(res.data));
+    } else setVillages([]);
+  }, [formData.city]);
+
+
+  const handleInputChange = (field, value) => {
+    setFormData({ ...formData, [field]: value });
+    if (errors[field]) {
+      setErrors({ ...errors, [field]: null });
+    }
+  };
 
   const isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
   const isValidPassword = (password) =>
-    password.length >= 8 && /\d/.test(password) && /[!@#$%^&*(),.?":{}|<>]/.test(password);
-
-  const handleInputChange = (field, value) => {
-    setFormData({
-      ...formData,
-      [field]: value
-    });
-    // Clear error when user types
-    if (errors[field]) {
-      setErrors({
-        ...errors,
-        [field]: null
-      });
-    }
-  };
+    password.length >= 8 && /\d/.test(password) && /[!@#$%^&*]/.test(password);
 
   const validateForm = () => {
     let tempErrors = {};
     let isValid = true;
 
-    if (!formData.first_name.trim()) {
-      tempErrors.first_name = 'First name is required';
-      isValid = false;
-    }
-    if (!formData.last_name.trim()) {
-      tempErrors.last_name = 'Last name is required';
-      isValid = false;
-    }
-    if (!formData.username.trim()) {
-      tempErrors.username = 'Username is required';
-      isValid = false;
-    }
-    if (!formData.email.trim()) {
-      tempErrors.email = 'Email is required';
-      isValid = false;
-    } else if (!isValidEmail(formData.email)) {
+    const requiredFields = ['first_name', 'last_name', 'username', 'email', 'password', 'province', 'division', 'district', 'city', 'village'];
+    requiredFields.forEach(field => {
+      if (!formData[field]) {
+        tempErrors[field] = 'This field is required';
+        isValid = false;
+      }
+    });
+
+    if (!isValidEmail(formData.email)) {
       tempErrors.email = 'Invalid email format';
       isValid = false;
     }
-    if (!formData.password) {
-      tempErrors.password = 'Password is required';
-      isValid = false;
-    } else if (!isValidPassword(formData.password)) {
-      tempErrors.password = 'Password must be 8+ chars with a number and special character';
-      isValid = false;
-    }
-    if (!formData.user_id.trim()) {
-      tempErrors.user_id = 'User ID is required';
-      isValid = false;
-    }
-    if (!formData.province.trim()) {
-      tempErrors.province = 'Province is required';
-      isValid = false;
-    }
-    if (!formData.division.trim()) {
-      tempErrors.division = 'Division is required';
-      isValid = false;
-    }
-    if (!formData.district.trim()) {
-      tempErrors.district = 'District is required';
-      isValid = false;
-    }
-    if (!formData.city.trim()) {
-      tempErrors.city = 'City is required';
-      isValid = false;
-    }
-    if (!formData.village.trim()) {
-      tempErrors.village = 'Village is required';
+
+    if (!isValidPassword(formData.password)) {
+      tempErrors.password = 'Must be 8+ chars with number & special char';
       isValid = false;
     }
 
@@ -105,122 +138,124 @@ const SignupScreen = () => {
     if (!validateForm()) return;
 
     setIsLoading(true);
-
     try {
-      const response = await axios.post('http://10.0.2.2:8000/register', formData, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      console.log(response)
-
+      const response = await axios.post(`${API}/register`, formData);
       if (response.status === 201) {
-        Alert.alert(
-          "Success",
-          "Your account has been created successfully!",
-          [{ text: "OK", onPress: () => navigation.navigate("Login") }]
-        );
+        Alert.alert("Success", "Account created successfully", [
+          { text: "OK", onPress: () => navigation.navigate("Login") }
+        ]);
       }
     } catch (error) {
-      console.error('Signup error:', error.response?.data || error.message);
-      
-      // Handle DRF validation errors
-      if (error.response?.data) {
-        const apiErrors = error.response.data;
-        let errorMessages = {};
-        
-        // Map API errors to form fields
-        for (const key in apiErrors) {
-          if (Array.isArray(apiErrors[key])) {
-            errorMessages[key] = apiErrors[key].join(' ');
-          } else {
-            errorMessages[key] = apiErrors[key];
-          }
-        }
-        
-        setErrors(errorMessages);
-        
-        // Show general error if no field-specific errors
-        if (Object.keys(errorMessages).length === 0) {
-          Alert.alert("Error", "Registration failed. Please try again.");
-        }
-      } else {
-        Alert.alert("Error", "Network error. Please check your connection.");
-      }
+      const apiErrors = error.response?.data || {};
+      let errorMessages = {};
+      Object.keys(apiErrors).forEach(key => {
+        errorMessages[key] = Array.isArray(apiErrors[key]) ? apiErrors[key].join(" ") : apiErrors[key];
+      });
+      setErrors(errorMessages);
     } finally {
       setIsLoading(false);
     }
   };
 
-  const renderInput = (label, field, placeholder, keyboardType = "default", secure = false) => (
+  const renderInput = (label, field, placeholder, keyboardType = "default") => (
     <>
-      <Text style={styles.label}>
-        {label}<Text style={styles.required}> *</Text>
-      </Text>
+      <Text style={styles.label}>{label}<Text style={styles.required}> *</Text></Text>
       <TextInput
-        style={[
-          styles.input,
-          errors[field] && { borderColor: 'red' }
-        ]}
+        style={[styles.input, errors[field] && { borderColor: 'red' }]}
         placeholder={placeholder}
+        keyboardType={keyboardType}
         value={formData[field]}
         onChangeText={(text) => handleInputChange(field, text)}
-        keyboardType={keyboardType}
-        secureTextEntry={secure}
       />
       {errors[field] && <Text style={styles.errorText}>{errors[field]}</Text>}
     </>
   );
 
+  const renderPicker = (label, field, items, labelKey, valueKey) => (
+    <>
+      <Text style={styles.label}>{label} <Text style={styles.required}>*</Text></Text>
+      <View style={styles.pickerWrapper}>
+        <Picker
+          selectedValue={formData[field]}
+          onValueChange={(value) => handleInputChange(field, value)}
+          style={styles.picker}
+        >
+          <Picker.Item label={`Select ${label}`} value="" />
+          {items.map((item, index) => {
+            const label = item[labelKey];
+            const value = item[valueKey];
+
+            if (!label || value === undefined || value === null) return null;
+
+            return (
+              <Picker.Item
+                key={`${field}-${value}`} // safely stringified
+                label={label}
+                value={value}
+              />
+            );
+          })}
+        </Picker>
+      </View>
+      {errors[field] && <Text style={styles.errorText}>{errors[field]}</Text>}
+    </>
+  );
+
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>Signup</Text>
 
-      {renderInput("First Name", "first_name", "First Name")}
-      {renderInput("Last Name", "last_name", "Last Name")}
-      {renderInput("Username", "username", "Username")}
-      {renderInput("Email", "email", "Email", "email-address")}
+      {renderInput("First Name", "first_name", "Enter your first name")}
+      {renderInput("Last Name", "last_name", "Enter your last name")}
+      {renderInput("Username", "username", "Choose a username")}
+      {renderInput("Email", "email", "Enter your email", "email-address")}
 
-      <Text style={styles.label}>Password<Text style={styles.required}> *</Text></Text>
-      <View style={[
-        styles.passwordContainer,
-        errors.password && { borderColor: 'red' }
-      ]}>
+      <Text style={styles.label}>Password <Text style={styles.required}>*</Text></Text>
+      <View style={[styles.passwordContainer, errors.password && { borderColor: 'red' }]}>
         <TextInput
           style={styles.passwordInput}
-          placeholder="Enter Your Password"
+          placeholder="Enter your password"
           secureTextEntry={!passwordVisible}
           value={formData.password}
           onChangeText={(text) => handleInputChange('password', text)}
         />
         <TouchableOpacity onPress={() => setPasswordVisible(!passwordVisible)}>
-          <Text style={styles.eyeIcon}>{passwordVisible ? '👁️' : '👁️‍🗨️'}</Text>
+          <Text style={styles.eyeIcon}>{passwordVisible ? '🙈' : '👁️'}</Text>
         </TouchableOpacity>
       </View>
       {errors.password && <Text style={styles.errorText}>{errors.password}</Text>}
-      <Text style={styles.passwordNote}>* Must be 8+ characters, include a number and special character (! @ # $ %) etc.</Text>
+      <Text style={styles.label}>Confirm Password <Text style={styles.required}>*</Text></Text>
+      <View style={[styles.passwordContainer, errors.confirm_password && { borderColor: 'red' }]}>
+        <TextInput
+          style={styles.passwordInput}
+          placeholder="Confirm your password"
+          secureTextEntry={!passwordVisible}
+          value={formData.confirm_password}
+          onChangeText={(text) => handleInputChange('confirm_password', text)}
+        />
+      </View>
+      {errors.confirm_password && <Text style={styles.errorText}>{errors.confirm_password}</Text>}
 
-  
-      {renderInput("Province", "province", "Province")}
-      {renderInput("Division", "division", "Division")}
-      {renderInput("District", "district", "District")}
-      {renderInput("City", "city", "City")}
-      {renderInput("Village", "village", "Village")}
 
-      <TouchableOpacity 
-        style={styles.signupButton} 
-        onPress={handleSignup}
-        disabled={isLoading}
-      >
-        {isLoading ? (
-          <ActivityIndicator color="#fff" />
-        ) : (
-          <Text style={styles.signupButtonText}>Sign Up</Text>
-        )}
+      {renderPicker("Province", "province", provinces, 'provinces_name', 'provinces_id')}
+      {renderPicker("Division", "division", divisions, 'Division_name', 'Division_id')}
+      {renderPicker("District", "district", districts, 'District_name', 'District_id')}
+      {renderPicker("City", "city", cities, 'City_name', 'City_id')}
+      {renderPicker("Village", "village", villages, 'village_name', 'village_id')}
+      {renderPicker("User Type", "user_type", [
+        { label: "Regular", value: "Regular" },
+        { label: "Vendor", value: "Vendor" },
+        { label: "Moderator", value: "Moderator" }
+      ], 'label', 'value')}
+
+
+      <TouchableOpacity style={styles.signupButton} onPress={handleSignup} disabled={isLoading}>
+        {isLoading ? <ActivityIndicator color="#fff" /> : <Text style={styles.signupButtonText}>Sign Up</Text>}
       </TouchableOpacity>
 
-      <View style={{ flexDirection: "row", justifyContent: "center", marginTop: 10 }}>
-        <Text style={styles.loginText}>Already have an account?</Text>
+      <View style={styles.loginContainer}>
+        <Text>Already have an account?</Text>
         <TouchableOpacity onPress={() => navigation.navigate("Login")}>
           <Text style={styles.loginLink}> Login</Text>
         </TouchableOpacity>
@@ -230,89 +265,32 @@ const SignupScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-    paddingVertical: 20,
-    paddingHorizontal: 20,
-    backgroundColor: '#fff',
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: 'red',
-    marginBottom: 20,
-    textAlign: 'center'
-  },
-  label: {
-    fontSize: 14,
-    fontWeight: '600',
-    marginBottom: 5
-  },
-  required: {
-    color: 'red'
-  },
+  container: { flexGrow: 1, padding: 20, backgroundColor: '#fff' },
+  title: { fontSize: 24, fontWeight: 'bold', color: 'red', textAlign: 'center', marginBottom: 20 },
+  label: { fontWeight: '600', marginBottom: 5 },
+  required: { color: 'red' },
   input: {
-    width: '100%',
-    height: 50,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 10,
-    paddingHorizontal: 15,
-    marginBottom: 10,
-    backgroundColor: '#fff'
+    borderWidth: 1, borderColor: '#ccc', borderRadius: 8,
+    paddingHorizontal: 10, height: 50, marginBottom: 10
   },
-  errorText: {
-    color: 'red',
-    fontSize: 12,
+  pickerWrapper: {
+    borderWidth: 1, borderColor: '#ccc', borderRadius: 8,
     marginBottom: 10
   },
   passwordContainer: {
-    width: '100%',
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 10,
-    paddingHorizontal: 15,
-    marginBottom: 10,
-    backgroundColor: '#fff'
+    borderWidth: 1, borderColor: '#ccc', borderRadius: 8,
+    flexDirection: 'row', alignItems: 'center', paddingHorizontal: 10, marginBottom: 10
   },
-  passwordInput: {
-    flex: 1,
-    height: 50
-  },
-  eyeIcon: {
-    fontSize: 20,
-    marginLeft: 10,
-    color: '#777'
-  },
+  passwordInput: { flex: 1, height: 50 },
+  eyeIcon: { fontSize: 20, marginLeft: 10 },
+  errorText: { color: 'red', fontSize: 12, marginBottom: 5 },
   signupButton: {
-    width: '100%',
-    height: 50,
-    backgroundColor: 'red',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 10,
-    marginTop: 10
+    backgroundColor: 'red', padding: 15,
+    borderRadius: 8, alignItems: 'center', marginTop: 10
   },
-  signupButtonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: 'bold'
-  },
-  loginText: {
-    fontSize: 14,
-  },
-  loginLink: {
-    color: 'red',
-    fontWeight: 'bold',
-    marginLeft: 5
-  },
-  passwordNote: {
-    fontSize: 12,
-    color: '#888',
-    marginBottom: 10
-  },
+  signupButtonText: { color: '#fff', fontWeight: 'bold' },
+  loginContainer: { flexDirection: 'row', justifyContent: 'center', marginTop: 10 },
+  loginLink: { color: 'red', fontWeight: 'bold', marginLeft: 5 }
 });
 
 export default SignupScreen;
