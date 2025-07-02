@@ -5,7 +5,7 @@ import styles from './Explore_City_Style';
 import { useNavigation } from '@react-navigation/native';
 
 const PopulationDetail = () => {
-    const navigation = useNavigation();
+  const navigation = useNavigation();
   const [populationData, setPopulationData] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -110,9 +110,23 @@ const PopulationDetail = () => {
                       <Text style={styles.bold}>{detail.label}:</Text> {detail.value}
                     </Text>
                   ))}
-                  <TouchableOpacity style={styles.addButton} onPress={() => navigation.navigate('PopulationChildren')}>
+                  <TouchableOpacity
+                    style={styles.addButton}
+                    onPress={() => {
+                      if (item.title === 'Population Children') {
+                        navigation.navigate('PopulationChildren');
+                      } else if (item.title === 'Population Adult') {
+                        navigation.navigate('PopulationAdult');
+                      } else if (item.title === 'Population Elderly') {
+                        navigation.navigate('PopulationElderly');
+                      }else if (item.title === 'Gender Ratio') {
+                        navigation.navigate('GenderRatioRate');
+                      }
+                    }}
+                  >
                     <Text style={styles.addButtonText}>Add</Text>
                   </TouchableOpacity>
+
                 </View>
               </View>
             ))}

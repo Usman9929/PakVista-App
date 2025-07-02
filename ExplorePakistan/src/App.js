@@ -58,7 +58,7 @@ import LanguageSpoken from './screens/Village Detail Screen/Updation Screen/Cult
 import Cultural_LocalFestival from './screens/Village Detail Screen/Updation Screen/Cultural Information/Cultural_LocalFestival';
 import Traditions from './screens/Village Detail Screen/Updation Screen/Cultural Information/Traditions';
 import PoliceStation from './screens/Village Detail Screen/Updation Screen/Emergency_conatact.js/PoliceStation';
-import PopulationChildren from './screens/Explore_City/PopulationDetail/PopulationChildren';
+import PopulationElderly from './screens/Explore_City/PopulationDetail/PopulationElderly';
 
 
 const Stack = createStackNavigator();
@@ -123,6 +123,7 @@ const App = () => {
         <Stack.Screen name="Traditions" component={Traditions}/>
         <Stack.Screen name="LanguagSpoken" component={LanguageSpoken}/>
         <Stack.Screen name="PopulationChildren" component={PoplutaionChildren} />
+        <Stack.Screen name="PopulationElderly" component={PopulationElderly} />
         <Stack.Screen
           name="RegionalInsight"
           component={RegionalInsightScreen}

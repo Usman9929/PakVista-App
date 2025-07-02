@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, ActivityIndicator } from 'react-native';
 import axios from 'axios';
 import styles from './Explore_City_Style';
+import { useNavigation } from '@react-navigation/native';
 
 const CulturalInformation = () => {
+   const navigation = useNavigation();
   const [culturalData, setCulturalData] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -90,7 +92,18 @@ const CulturalInformation = () => {
                       <Text style={styles.bold}>{detail.label}:</Text> {detail.value}
                     </Text>
                   ))}
-                  <TouchableOpacity style={styles.addButton}>
+                  <TouchableOpacity
+                    style={styles.addButton}
+                    onPress={() => {
+                      if (item.title === 'Local Festival') {
+                        navigation.navigate('Cultural_LocalFestival');
+                      } else if (item.title === 'Traditions') {
+                        navigation.navigate('Traditions');
+                      } else if (item.title === 'Languages Spoken') {
+                        navigation.navigate('LanguagSpoken');
+                      } 
+                    }}
+                  >
                     <Text style={styles.addButtonText}>Add</Text>
                   </TouchableOpacity>
                 </View>

@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, ActivityIndicator } from 'react-native';
 import axios from 'axios';
 import styles from './Explore_City_Style';
+import { useNavigation } from '@react-navigation/native';
 
 const GeographicalInfo = () => {
+  const navigation = useNavigation()
   const [geoData, setGeoData] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -89,7 +91,18 @@ const GeographicalInfo = () => {
                       <Text style={styles.bold}>{detail.label}:</Text> {detail.value}
                     </Text>
                   ))}
-                  <TouchableOpacity style={styles.addButton}>
+                  <TouchableOpacity
+                    style={styles.addButton}
+                    onPress={() => {
+                      if (item.title === 'Location Information') {
+                        navigation.navigate('LocalInformation');
+                      } else if (item.title === 'Geo Area') {
+                        navigation.navigate('GeoArea');
+                      } else if (item.title === 'Climate Detail') {
+                        navigation.navigate('ClimateDetail');
+                      }
+                    }}
+                  >
                     <Text style={styles.addButtonText}>Add</Text>
                   </TouchableOpacity>
                 </View>

@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, ActivityIndicator } from 'react-native';
 import axios from 'axios';
 import styles from './Explore_City_Style';
+import { useNavigation } from '@react-navigation/native';
 
 const Economy = () => {
+  const navigation = useNavigation();
   const [economyData, setEconomyData] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -91,7 +93,18 @@ const Economy = () => {
                       <Text style={styles.bold}>{detail.label}:</Text> {detail.value}
                     </Text>
                   ))}
-                  <TouchableOpacity style={styles.addButton}>
+                 <TouchableOpacity
+                    style={styles.addButton}
+                    onPress={() => {
+                      if (item.title === 'Farming') {
+                        navigation.navigate('Farming');
+                      } else if (item.title === 'Handicrafts') {
+                        navigation.navigate('HandiCrafts');
+                      } else if (item.title === 'Industries') {
+                        navigation.navigate('Industries');
+                      } 
+                    }}
+                  >
                     <Text style={styles.addButtonText}>Add</Text>
                   </TouchableOpacity>
                 </View>
