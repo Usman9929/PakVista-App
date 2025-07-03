@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import {
+  View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, ActivityIndicator
+} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
+
+const API = "http://192.168.43.98:8000"; // Replace with your backend IP
 
 const ProfileScreen = () => {
   const [expandedSections, setExpandedSections] = useState({
     savedVillages: false,
     recentActivities: false,
   });
+  const [profile, setProfile] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const toggleSection = (section) => {
     setExpandedSections(prev => ({
@@ -14,24 +22,55 @@ const ProfileScreen = () => {
     }));
   };
 
+  useEffect(() => {
+    fetchUserProfile();
+  }, []);
+
+  const fetchUserProfile = async () => {
+    try {
+      const token = await AsyncStorage.getItem('accessToken');
+      const response = await axios.get(`${API}/userprofile/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (response.data.length > 0) {
+        setProfile(response.data[0]);
+      }
+    } catch (error) {
+      console.error("Failed to fetch profile:", error.response?.data || error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return <ActivityIndicator size="large" color="red" style={{ flex: 1, justifyContent: 'center' }} />;
+  }
+
   return (
     <View style={styles.container}>
-      {/* Profile Header */}
       <View style={styles.profileHeader}>
-        <Image source={require('../assets/images/profile_1.jpg')} style={styles.profileImage} />
+        <Image
+          source={
+            profile?.profile_image
+              ? { uri: `${API}${profile.profile_image}` }
+              : require('../assets/images/profile_1.jpg')
+          }
+          style={styles.profileImage}
+        />
         <View style={styles.profileTextContainer}>
-          <Text style={styles.profileName}>Ziyab Shahzada</Text>
-          <Text style={styles.profileUsername}>ziyab_8929</Text>
-          <Text style={styles.profileDetail}>Villager of Koharai Malakand</Text>
-          <Text style={styles.profileDetail}>shahzada@gmail.com</Text>
+          <Text style={styles.profileName}>{profile?.user || 'User'}</Text>
+          <Text style={styles.profileUsername}>{profile?.user?.username || '---'}</Text>
+          <Text style={styles.profileDetail}>{profile?.bio || 'No bio available'}</Text>
+          <Text style={styles.profileDetail}>{profile?.user?.email || '---'}</Text>
         </View>
       </View>
 
       <View style={styles.divider} />
 
-      {/* Preferences Section */}
       <ScrollView style={styles.preferencesContainer}>
-        {/* Personalized Data & Preferences */}
         <TouchableOpacity style={styles.preferenceItem} onPress={() => toggleSection('savedVillages')}>
           <View style={styles.preferenceLeft}>
             <Image source={require('../assets/icons/controller.png')} style={styles.preferenceIcon} />
@@ -48,7 +87,6 @@ const ProfileScreen = () => {
           </>
         )}
 
-        {/* User Action */}
         <TouchableOpacity style={styles.preferenceItem} onPress={() => toggleSection('recentActivities')}>
           <View style={styles.preferenceLeft}>
             <Image source={require('../assets/icons/user.png')} style={styles.preferenceIcon} />
@@ -83,86 +121,7 @@ const PreferenceItem = ({ title, icon }) => (
 );
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  profileHeader: {
-    flexDirection: 'row',
-    padding: 20,
-    alignItems: 'center',
-  },
-  profileImage: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
-    marginRight: 15,
-  },
-  profileTextContainer: {
-    flex: 1,
-  },
-  profileName: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 2,
-  },
-  profileUsername: {
-    fontSize: 16,
-    color: '#333',
-    marginBottom: 2,
-  },
-  profileDetail: {
-    fontSize: 14,
-    color: '#666',
-    marginBottom: 2,
-  },
-  divider: {
-    height: 1,
-    backgroundColor: '#e0e0e0',
-    marginHorizontal: 20,
-  },
-  preferencesContainer: {
-    flex: 1,
-    paddingHorizontal: 20,
-    paddingTop: 15,
-  },
-  sectionTitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#333',
-    marginLeft: 10,
-  },
-  preferenceItem: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingVertical: 15,
-    borderBottomWidth: 1,
-    borderBottomColor: '#f0f0f0',
-  },
-  preferenceLeft: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  preferenceText: {
-    fontSize: 16,
-    color: '#333',
-    marginLeft: 20,
-  },
-  preferenceIcon: {
-    width: 24,
-    height: 24,
-    tintColor: '#666',
-  },
-  arrowIcon: {
-    width: 20,
-    height: 20,
-    tintColor: '#666',
-    transform: [{ rotate: '0deg' }],
-  },
-  arrowIconExpanded: {
-    transform: [{ rotate: '90deg' }],
-  },
+  // ... (keep all your previous styles unchanged)
 });
 
 export default ProfileScreen;

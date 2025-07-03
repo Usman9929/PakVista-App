@@ -3,10 +3,11 @@ import {
   View, Text, TextInput, TouchableOpacity,
   StyleSheet, Image
 } from 'react-native';
+import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const LoginScreen = () => {
+const LoginScreen = ({ setIsGuest }) => {
   const navigation = useNavigation();
   const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
@@ -15,37 +16,35 @@ const LoginScreen = () => {
 
   const handleLogin = async () => {
     setError('');
-
     if (!identifier || !password) {
       setError('Please enter your email and password.');
       return;
     }
 
     try {
-      const response = await fetch("http://192.168.43.98:8000/api/token/", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          email: identifier,
-          password: password
-        })
+      const response = await axios.post('http://192.168.43.98:8000/api/token/', {
+        email: identifier,
+        password: password,
       });
 
-      const data = await response.json();
+      const { access, refresh } = response.data;
 
-      if (response.ok) {
-        await AsyncStorage.setItem('access', data.access);
-        await AsyncStorage.setItem('refresh', data.refresh);
+      // Store tokens in AsyncStorage
+      await AsyncStorage.setItem('accessToken', access);
+      await AsyncStorage.setItem('refreshToken', refresh);
 
-        navigation.navigate('NewsFeed'); // Redirect to NewsFeed screen
-      } else {
-        setError(data.detail || 'Login failed. Please check credentials.');
+      // ✅ Mark as a logged-in user
+      if (setIsGuest) {
+        setIsGuest(false);
       }
+
+      // ✅ Redirect to BottomTabs (with NewsFeed tab)
+      navigation.navigate('MainTabs', {
+        screen: 'NewsFeed', // 👈 this targets the correct tab
+      });
     } catch (err) {
-      console.error('Login error:', err);
-      setError('Unable to connect to server.');
+      console.error('Login error:', err.response?.data || err.message);
+      setError('Invalid credentials');
     }
   };
 

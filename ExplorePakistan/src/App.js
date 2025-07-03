@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState, createContext } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+// Screens
 import WelcomeScreen from './screens/WelcomeScreen';
 import LoginScreen from './screens/LoginScreen';
-import RegionalInsightScreen from './screens/RegionalInsightScreen';
-import ExploreScreen from './screens/ExploreScreen';
-import BottomTabs from './navigation/BottomTab';
 import SignupScreen from './screens/Signup';
+import BottomTabs from './navigation/BottomTab';
 import ExploreVillageScreen from './screens/ExploreVillageScreen';
 import RegionEvents from './screens/RegionEvents';
 import EmergencyContact from './screens/EmergencyContact';
@@ -44,6 +45,7 @@ import localEvents from './screens/Village Detail Screen/Updation Screen/Tourist
 import NaturalLandmark from './screens/Village Detail Screen/Updation Screen/Tourist Attraction Screen/NaturalLandmark';
 import FireStation from './screens/Village Detail Screen/Updation Screen/Emergency_conatact.js/FireStation';
 import medicalEmergency from './screens/Village Detail Screen/Updation Screen/Emergency_conatact.js/medicalEmergency';
+import PoliceStation from './screens/Village Detail Screen/Updation Screen/Emergency_conatact.js/PoliceStation';
 import PopulationAdult from './screens/Village Detail Screen/Updation Screen/population_Detail/PopulationAdult';
 import PoplutaionChildren from './screens/Village Detail Screen/Updation Screen/population_Detail/PoplutaionChildren';
 import GenderRatioRate from './screens/Village Detail Screen/Updation Screen/population_Detail/GenderRatioRate';
@@ -57,82 +59,110 @@ import Industries from './screens/Village Detail Screen/Updation Screen/Economy/
 import LanguageSpoken from './screens/Village Detail Screen/Updation Screen/Cultural Information/LanguageSpoken';
 import Cultural_LocalFestival from './screens/Village Detail Screen/Updation Screen/Cultural Information/Cultural_LocalFestival';
 import Traditions from './screens/Village Detail Screen/Updation Screen/Cultural Information/Traditions';
-import PoliceStation from './screens/Village Detail Screen/Updation Screen/Emergency_conatact.js/PoliceStation';
 import PopulationElderly from './screens/Explore_City/PopulationDetail/PopulationElderly';
 import NewsFeedScreen from './screens/NewsFeedScreen';
+
+// Create context for city data
+export const CityContext = createContext();
 
 const Stack = createStackNavigator();
 
 const App = () => {
+  const [isGuest, setIsGuest] = useState(null);
+  const [cityData, setCityData] = useState(null);
+
+  useEffect(() => {
+    const checkToken = async () => {
+      try {
+        const token = await AsyncStorage.getItem('accessToken');
+        setIsGuest(!token); // if no token → guest
+      } catch (error) {
+        console.error("Token check failed:", error);
+        setIsGuest(true);
+      }
+    };
+    checkToken();
+  }, []);
+
+  if (isGuest === null) return null;
+
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Welcome" component={WelcomeScreen} />
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Signup" component={SignupScreen} />
-        <Stack.Screen name="ExploreScreen" component={ExploreScreen} />
-        <Stack.Screen name="ExploreVillageScreen" component={ExploreVillageScreen} />
-        <Stack.Screen name="RegionEvents" component={RegionEvents} />
-        <Stack.Screen name="EmergencyContact" component={EmergencyContact} />
-        <Stack.Screen name="SearchScreen" component={SearchScreen} />
-        <Stack.Screen name="VillageDetail" component={VillageDetail} />
-        <Stack.Screen name="ReligousFestivalScreen" component={ReligousFestivalScreen} />
-        <Stack.Screen name="CulturalandSeasonalFestival" component={CulturalandSeasonalFestival} />
-        <Stack.Screen name="RegionalEventsEthnicFestivals" component={RegionalEventsEthnicFestivals} />
-        <Stack.Screen name="FolkandTraditionalCelebration" component={FolkandTraditionalCelebration} />
-        <Stack.Screen name="NationalObservances" component={NationalObservances} />
-        <Stack.Screen name="InternationalllyInspiredEvents" component={InternationalllyInspiredEvents} />
-        <Stack.Screen name="AdventureAndSportsEvents" component={AdventureAndSportsEvents} />
-        <Stack.Screen name="About" component={About} />
-        <Stack.Screen name="Photo" component={Photo} />
-        <Stack.Screen name="Economy" component={Economy} />
-        <Stack.Screen name="AdditionalElement" component={AdditionalElement} />
-        <Stack.Screen name="CommunityServices" component={CommunityServices} />
-        <Stack.Screen name="CulturalInformation" component={CulturalInformation} />
-        <Stack.Screen name="VillageEmergencyContact" component={VillageEmergencyContact} />
-        <Stack.Screen name="GeographicalInfo" component={GeographicalInfo} />
-        <Stack.Screen name="HistoricalBackground" component={HistoricalBackground} />
-        <Stack.Screen name="PopulationDetail" component={PopulationDetail} />
-        <Stack.Screen name="TouristAttraction" component={TouristAttraction} />
-        <Stack.Screen name="SignificantPeaple" component={SignificantPeaple} options={{ title: 'Significant People' }} />
-        <Stack.Screen name="ProfileDetail" component={ProfileDetail} options={{ title: 'Profile Details' }} />
-        <Stack.Screen name="ExploreCity" component={TopTabNavigator} />
-        <Stack.Screen name="EducationAddButton" component={EducationAddButton} />
-        <Stack.Screen name="HealthCare" component={HealthCare} />
-        <Stack.Screen name="Market" component={Market} />
-        <Stack.Screen name="Recreational" component={Recreational} />
-        <Stack.Screen name="Transportation" component={Transportation} />
-        <Stack.Screen name="Utilities" component={Utilities} />
-        <Stack.Screen name="CulturalandHistorical" component={CulturalandHistorical} />
-        <Stack.Screen name="localEvents" component={localEvents} />
-        <Stack.Screen name="NaturalLandmark" component={NaturalLandmark} />
-        <Stack.Screen name="FireStation" component={FireStation} />
-        <Stack.Screen name="MedicalEmergency" component={medicalEmergency} />
-        <Stack.Screen name="PoliceStation" component={PoliceStation} />
-        <Stack.Screen name="GenderRatioRate" component={GenderRatioRate} />
-        <Stack.Screen name="PopulationAdult" component={PopulationAdult } />
-        <Stack.Screen name="PoplutaionChildren" component={PoplutaionChildren}/>
-        <Stack.Screen name="ClimateDetail" component={ClimateDetail}/>
-        <Stack.Screen name="GeoArea" component={GeoArea}/>
-        <Stack.Screen name="LocalInformation" component={LocalInformation}/>
-        <Stack.Screen name="LocalFestival" component={LocalFestival}/>
-        <Stack.Screen name="Farming" component={Farming}/>
-        <Stack.Screen name="HandiCrafts" component={HandiCrafts}/>
-        <Stack.Screen name="Industries" component={Industries}/>
-        <Stack.Screen name="Cultural_LocalFestival" component={Cultural_LocalFestival}/>
-        <Stack.Screen name="Traditions" component={Traditions}/>
-        <Stack.Screen name="LanguagSpoken" component={LanguageSpoken}/>
-        <Stack.Screen name="PopulationChildren" component={PoplutaionChildren} />
-        <Stack.Screen name="PopulationElderly" component={PopulationElderly} />
-        <Stack.Screen name="NewsFeed" component={NewsFeedScreen} />
-        <Stack.Screen
-          name="RegionalInsight"
-          component={RegionalInsightScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen name="MainTabs" component={BottomTabs} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <CityContext.Provider value={{ cityData, setCityData }}>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Welcome">
+            {(props) => <WelcomeScreen {...props} setIsGuest={setIsGuest} />}
+          </Stack.Screen>
+          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="Signup" component={SignupScreen} />
+          <Stack.Screen name="MainTabs">
+            {(props) => (
+              <BottomTabs
+                {...props}
+                isGuest={isGuest}
+                cityData={cityData}        // ✅ Pass to BottomTabs
+              />
+            )}
+          </Stack.Screen>
+
+
+          {/* All routes */}
+          <Stack.Screen name="ExploreVillageScreen" component={ExploreVillageScreen} />
+          <Stack.Screen name="RegionEvents" component={RegionEvents} />
+          <Stack.Screen name="EmergencyContact" component={EmergencyContact} />
+          <Stack.Screen name="SearchScreen" component={SearchScreen} />
+          <Stack.Screen name="VillageDetail" component={VillageDetail} />
+          <Stack.Screen name="ReligousFestivalScreen" component={ReligousFestivalScreen} />
+          <Stack.Screen name="CulturalandSeasonalFestival" component={CulturalandSeasonalFestival} />
+          <Stack.Screen name="RegionalEventsEthnicFestivals" component={RegionalEventsEthnicFestivals} />
+          <Stack.Screen name="FolkandTraditionalCelebration" component={FolkandTraditionalCelebration} />
+          <Stack.Screen name="NationalObservances" component={NationalObservances} />
+          <Stack.Screen name="InternationalllyInspiredEvents" component={InternationalllyInspiredEvents} />
+          <Stack.Screen name="AdventureAndSportsEvents" component={AdventureAndSportsEvents} />
+          <Stack.Screen name="About" component={About} />
+          <Stack.Screen name="Photo" component={Photo} />
+          <Stack.Screen name="Economy" component={Economy} />
+          <Stack.Screen name="AdditionalElement" component={AdditionalElement} />
+          <Stack.Screen name="CommunityServices" component={CommunityServices} />
+          <Stack.Screen name="CulturalInformation" component={CulturalInformation} />
+          <Stack.Screen name="VillageEmergencyContact" component={VillageEmergencyContact} />
+          <Stack.Screen name="GeographicalInfo" component={GeographicalInfo} />
+          <Stack.Screen name="HistoricalBackground" component={HistoricalBackground} />
+          <Stack.Screen name="PopulationDetail" component={PopulationDetail} />
+          <Stack.Screen name="TouristAttraction" component={TouristAttraction} />
+          <Stack.Screen name="SignificantPeaple" component={SignificantPeaple} />
+          <Stack.Screen name="ProfileDetail" component={ProfileDetail} />
+          <Stack.Screen name="ExploreCity" component={TopTabNavigator} />
+          <Stack.Screen name="EducationAddButton" component={EducationAddButton} />
+          <Stack.Screen name="HealthCare" component={HealthCare} />
+          <Stack.Screen name="Market" component={Market} />
+          <Stack.Screen name="Recreational" component={Recreational} />
+          <Stack.Screen name="Transportation" component={Transportation} />
+          <Stack.Screen name="Utilities" component={Utilities} />
+          <Stack.Screen name="CulturalandHistorical" component={CulturalandHistorical} />
+          <Stack.Screen name="localEvents" component={localEvents} />
+          <Stack.Screen name="NaturalLandmark" component={NaturalLandmark} />
+          <Stack.Screen name="FireStation" component={FireStation} />
+          <Stack.Screen name="MedicalEmergency" component={medicalEmergency} />
+          <Stack.Screen name="PoliceStation" component={PoliceStation} />
+          <Stack.Screen name="GenderRatioRate" component={GenderRatioRate} />
+          <Stack.Screen name="PopulationAdult" component={PopulationAdult} />
+          <Stack.Screen name="PoplutaionChildren" component={PoplutaionChildren} />
+          <Stack.Screen name="ClimateDetail" component={ClimateDetail} />
+          <Stack.Screen name="GeoArea" component={GeoArea} />
+          <Stack.Screen name="LocalInformation" component={LocalInformation} />
+          <Stack.Screen name="LocalFestival" component={LocalFestival} />
+          <Stack.Screen name="Farming" component={Farming} />
+          <Stack.Screen name="HandiCrafts" component={HandiCrafts} />
+          <Stack.Screen name="Industries" component={Industries} />
+          <Stack.Screen name="Cultural_LocalFestival" component={Cultural_LocalFestival} />
+          <Stack.Screen name="Traditions" component={Traditions} />
+          <Stack.Screen name="LanguagSpoken" component={LanguageSpoken} />
+          <Stack.Screen name="PopulationElderly" component={PopulationElderly} />
+          <Stack.Screen name="NewsFeed" component={NewsFeedScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </CityContext.Provider >
   );
 };
 

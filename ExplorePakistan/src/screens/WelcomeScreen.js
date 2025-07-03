@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import {
   View,
@@ -13,22 +13,23 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import styles from '../styles/globalStyles';
+import { CityContext } from '../App'; // ✅ Import context
 
-const WelcomeScreen = () => {
+const WelcomeScreen = ({ setIsGuest }) => {
   const navigation = useNavigation();
+  const { setCityData } = useContext(CityContext); // ✅ Access setCityData
+
   const [modalVisible, setModalVisible] = useState(false);
   const [cities, setCities] = useState([]);
   const [selectedCity, setSelectedCity] = useState("Select City");
   const [selectedCityData, setSelectedCityData] = useState(null);
-  const [villages, setVillages] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // ✅ Axios version of API fetch
+  // ✅ Fetch all cities
   const getCityData = async () => {
-    const url = "http://192.168.43.98:8000/cities"; // Use DRF API route
+    const url = "http://192.168.43.98:8000/cities";
     try {
-      const response = await axios.get(url); // Axios GET
-      console.log("Fetched city data:", response.data);
+      const response = await axios.get(url);
       setCities(response.data);
     } catch (error) {
       console.error("Error fetching city data:", error.message);
@@ -41,10 +42,6 @@ const WelcomeScreen = () => {
     getCityData();
   }, []);
 
-  if (loading) {
-    return <ActivityIndicator size="large" color="#0000ff" />;
-  }
-
   const handleSelectCity = (city) => {
     setSelectedCity(city.City_name);
     setSelectedCityData(city);
@@ -55,15 +52,15 @@ const WelcomeScreen = () => {
     if (selectedCity === "Select City") {
       Alert.alert("Select City", "Please select a city before proceeding as a guest.");
     } else {
-      navigation.navigate('MainTabs', {
-        screen: 'Regional Insight',
-        params: {
-          screen: 'RegionalInsight',
-          params: { cityData: selectedCityData }
-        }
-      });
+      setIsGuest(true); // ✅ Mark user as guest
+      setCityData(selectedCityData); // ✅ Save city to context
+      navigation.navigate('MainTabs');
     }
   };
+
+  if (loading) {
+    return <ActivityIndicator size="large" color="#0000ff" />;
+  }
 
   return (
     <View style={styles.container}>
@@ -73,10 +70,10 @@ const WelcomeScreen = () => {
         style={styles.image}
       />
       <View style={styles.textContainer}>
-        <Text style={styles.title}>Welcome to </Text>
+        <Text style={styles.title}>Welcome to</Text>
         <Text style={styles.nametitle}>Explore Pakistan!</Text>
         <Text style={styles.description}>
-          Explore the heart of our cities and villages through a seamless experience. Discover essential information, tourist attractions, community services, and local updates at your fingertips. Whether you're a resident or a visitor, our app connects you with everything you need to know about the community. Start your journey to uncover the rich culture, history, and natural beauty of the region!
+          Explore cities and villages with real-time info. Discover community services, tourist attractions, and local culture. Start your journey today!
         </Text>
 
         <TouchableOpacity style={styles.button} onPress={() => setModalVisible(true)}>
@@ -93,6 +90,7 @@ const WelcomeScreen = () => {
           </TouchableOpacity>
         </View>
 
+        {/* Modal for city selection */}
         <Modal transparent={true} visible={modalVisible} animationType="slide">
           <TouchableOpacity
             style={styles.modalOverlay}

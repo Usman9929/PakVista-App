@@ -2,35 +2,36 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Image, StyleSheet } from 'react-native';
 
-// Import Screens
+// Screens
 import ExploreScreen from '../screens/ExploreScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 import ProfileScreen from '../screens/ProfileScreen';
-import RegionalStackNavigator from "./StackNavigator"; // Import the stack navigator
+import RegionalStackNavigator from './StackNavigator';
+import NewsFeedScreen from '../screens/NewsFeedScreen';
 
-
-// Import Custom Icons
+// Icons
 import RegionalIcon from '../assets/icons/insights.png';
 import ExploreIcon from '../assets/icons/explore1.png';
 import NotificationIcon from '../assets/icons/notification.png';
 import ProfileIcon from '../assets/icons/profile.png';
-
-
+import NewsFeedIcon from '../assets/icons/home.png';
 
 const Tab = createBottomTabNavigator();
 
-const BottomTabs = () => {
+const BottomTabs = ({ isGuest, cityData }) => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarShowLabel: true,
         tabBarStyle: styles.tabBarStyle,
-        tabBarLabelStyle: styles.tabBarLabel,  // ✅ Apply to all labels
-        tabBarActiveTintColor: '#e63946',  // ✅ Active label color
-        tabBarInactiveTintColor: 'gray',  // ✅ Inactive label color
+        tabBarLabelStyle: styles.tabBarLabel,
+        tabBarActiveTintColor: '#e63946',
+        tabBarInactiveTintColor: 'gray',
         tabBarIcon: ({ focused }) => {
           let iconSource;
-          if (route.name === 'Regional Insight') {
+          if (route.name === 'NewsFeed') {
+            iconSource = NewsFeedIcon;
+          } else if (route.name === 'Regional Insight') {
             iconSource = RegionalIcon;
           } else if (route.name === 'Explore') {
             iconSource = ExploreIcon;
@@ -39,20 +40,29 @@ const BottomTabs = () => {
           } else if (route.name === 'Profile') {
             iconSource = ProfileIcon;
           }
+
           return (
             <Image
               source={iconSource}
-              style={[
-                styles.icon,
-                focused && styles.focusedIcon,
-              ]}
+              style={[styles.icon, focused && styles.focusedIcon]}
             />
           );
         },
-        headerShown: false,  // Hide header for all screens
+        headerShown: false,
       })}
     >
-      <Tab.Screen name="Regional Insight" component={RegionalStackNavigator} options={{ tabBarLabel: "Regional Insights" }} />
+      <Tab.Screen
+        name="NewsFeed"
+        component={NewsFeedScreen}
+        options={{ tabBarLabel: 'News Feed' }}
+      />
+
+      <Tab.Screen
+        name="Regional Insight"
+        children={() => <RegionalStackNavigator cityData={cityData} />}
+        options={{ tabBarLabel: 'Regional Insights' }}
+      />
+
       <Tab.Screen name="Explore" component={ExploreScreen} />
       <Tab.Screen name="Notification" component={NotificationScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
@@ -75,17 +85,17 @@ const styles = StyleSheet.create({
   tabBarLabel: {
     fontSize: 10,
     fontWeight: 'bold',
-    marginTop:8
+    marginTop: 8,
   },
   icon: {
-    width: 30,  // ✅ Increased icon size for all tabs
+    width: 30,
     height: 30,
     tintColor: 'gray',
     resizeMode: 'contain',
-    marginTop:8
+    marginTop: 8,
   },
   focusedIcon: {
-    tintColor: '#e63946',  // ✅ Change icon color when focused
+    tintColor: '#e63946',
   },
 });
 

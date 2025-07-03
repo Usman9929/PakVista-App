@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
   View,
   Text,
@@ -9,8 +9,9 @@ import {
   RefreshControl
 } from 'react-native';
 import styles from '../styles/globalStyles';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
+import { CityContext } from '../App'; // ✅ Import context
 
 const headerImages = [
   require('../assets/images/timergaraImage_1.jpg'),
@@ -23,9 +24,8 @@ const headerImages = [
 ];
 
 const RegionalInsightScreen = () => {
-  const route = useRoute();
-  const { cityData } = route.params;
   const navigation = useNavigation();
+  const { cityData } = useContext(CityContext); // ✅ Use context
 
   const [allVillages, setAllVillages] = useState([]);
   const [loadingVillages, setLoadingVillages] = useState(true);
@@ -33,6 +33,7 @@ const RegionalInsightScreen = () => {
   const [refreshing, setRefreshing] = useState(false);
 
   const fetchVillages = async () => {
+    if (!cityData?.City_id) return;
     try {
       const response = await axios.get(`http://192.168.43.98:8000/village-profile/`, {
         params: {
@@ -40,7 +41,7 @@ const RegionalInsightScreen = () => {
         }
       });
 
-      const approvedVillages = response.data.filter(village => village.is_approved);
+      const approvedVillages = response.data.filter(v => v.is_approved);
       setAllVillages(approvedVillages);
     } catch (error) {
       console.error('Error fetching villages:', error.message);
@@ -61,8 +62,9 @@ const RegionalInsightScreen = () => {
     }, 3000);
 
     fetchVillages();
+
     return () => clearInterval(interval);
-  }, [cityData.City_id]);
+  }, [cityData?.City_id]);
 
   const handleVillagePress = (village) => {
     navigation.navigate('VillageDetail', {
@@ -71,14 +73,21 @@ const RegionalInsightScreen = () => {
     });
   };
 
+  if (!cityData) {
+    return (
+      <View style={styles.container}>
+        <Text style={{ color: 'red', textAlign: 'center', marginTop: 20 }}>
+          City data is not available. Please go back and select a city again.
+        </Text>
+      </View>
+    );
+  }
+
   return (
     <ScrollView
       style={styles.guestcontainer}
       refreshControl={
-        <RefreshControl
-          refreshing={refreshing}
-          onRefresh={onRefresh}
-        />
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }
     >
       {/* Header Image */}
@@ -95,7 +104,9 @@ const RegionalInsightScreen = () => {
         <GuestButton
           title="Explore Villages"
           icon={require('../assets/icons/explore.png')}
-          onPress={() => navigation.navigate('ExploreVillageScreen', { cityId: cityData.City_id })}
+          onPress={() =>
+            navigation.navigate('ExploreVillageScreen', { cityId: cityData.City_id })
+          }
         />
         <GuestButton
           title="Explore City"

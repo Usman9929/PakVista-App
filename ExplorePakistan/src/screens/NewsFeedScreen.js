@@ -4,18 +4,16 @@ import {
   FlatList, StyleSheet, ActivityIndicator
 } from 'react-native';
 import axios from 'axios';
-import { launchImageLibrary } from 'react-native-image-picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useNavigation } from '@react-navigation/native';
+import { launchImageLibrary } from 'react-native-image-picker';
 
-const API = "http://192.168.43.98:8000";
+const API = "http://192.168.43.98:8000"; // your Django backend IP
 
 const NewsFeedScreen = () => {
   const [posts, setPosts] = useState([]);
   const [postContent, setPostContent] = useState('');
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
-  const navigation = useNavigation();
 
   useEffect(() => {
     fetchPosts();
@@ -23,38 +21,39 @@ const NewsFeedScreen = () => {
 
   const fetchPosts = async () => {
     try {
-      const res = await axios.get(`${API}/home-feed/`);
+      const res = await axios.get(`${API}/homefeed/`);
       setPosts(res.data);
     } catch (err) {
-      console.error("Error fetching posts", err);
+      console.error("Error fetching posts:", err.message);
     }
   };
 
-  const handleImagePick = async () => {
+  const handleImagePick = () => {
     const options = {
       mediaType: 'photo',
       quality: 1,
     };
 
     launchImageLibrary(options, (response) => {
-      if (response.didCancel) {
-        console.log("User cancelled image picker");
-      } else if (response.errorCode) {
-        console.log("ImagePicker Error:", response.errorMessage);
-      } else {
-        setImage(response.assets[0].uri);
+      if (response.didCancel) return;
+      if (response.errorCode) {
+        console.error('ImagePicker Error:', response.errorMessage);
+        return;
       }
+      const uri = response.assets[0].uri;
+      setImage(uri);
     });
   };
 
   const handlePostSubmit = async () => {
     if (!postContent.trim()) return;
 
-    const token = await AsyncStorage.getItem('token'); // Make sure it's saved during login
+    const token = await AsyncStorage.getItem('accessToken'); // ✅ correct key
 
     const formData = new FormData();
     formData.append('title', postContent);
     formData.append('content', postContent);
+
     if (image) {
       const filename = image.split('/').pop();
       const fileType = filename.split('.').pop();
@@ -67,7 +66,7 @@ const NewsFeedScreen = () => {
 
     setLoading(true);
     try {
-      await axios.post(`${API}/home-feed/`, formData, {
+      await axios.post(`${API}/homefeed/`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
@@ -77,15 +76,16 @@ const NewsFeedScreen = () => {
       setImage(null);
       fetchPosts();
     } catch (error) {
-      console.error("Post failed", error.response?.data || error.message);
+      console.error("Post failed:", error.response?.data || error.message);
     } finally {
       setLoading(false);
     }
   };
 
+
   const renderPost = ({ item }) => (
     <View style={styles.postCard}>
-      <Text style={styles.username}>{item.user?.username || 'Unknown'}</Text>
+      <Text style={styles.username}>{item.user_name || 'Unknown User'}</Text>
       <Text style={styles.content}>{item.content}</Text>
       {item.image && (
         <Image source={{ uri: `${API}${item.image}` }} style={styles.postImage} />
@@ -118,7 +118,9 @@ const NewsFeedScreen = () => {
               <Text>📷 Add Image</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={handlePostSubmit} style={styles.postButton}>
-              {loading ? <ActivityIndicator color="#fff" /> : <Text style={styles.postButtonText}>Post</Text>}
+              {loading
+                ? <ActivityIndicator color="#fff" />
+                : <Text style={styles.postButtonText}>Post</Text>}
             </TouchableOpacity>
           </View>
         </View>
