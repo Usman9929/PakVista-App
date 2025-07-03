@@ -21,7 +21,7 @@ const NewsFeedScreen = () => {
 
   const fetchPosts = async () => {
     try {
-      const res = await axios.get(`${API}/homefeed/`);
+      const res = await axios.get(`${API}/api/homefeed/`);
       setPosts(res.data);
     } catch (err) {
       console.error("Error fetching posts:", err.message);
@@ -66,7 +66,7 @@ const NewsFeedScreen = () => {
 
     setLoading(true);
     try {
-      await axios.post(`${API}/homefeed/`, formData, {
+      await axios.post(`${API}/api/homefeed/`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,

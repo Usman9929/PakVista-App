@@ -7,7 +7,7 @@ import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const LoginScreen = ({ setIsGuest }) => {
+const LoginScreen = ({ setIsGuest, setCityData }) => {
   const navigation = useNavigation();
   const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
@@ -22,31 +22,47 @@ const LoginScreen = ({ setIsGuest }) => {
     }
 
     try {
+      // 1. Login
       const response = await axios.post('http://192.168.43.98:8000/api/token/', {
         email: identifier,
         password: password,
       });
 
       const { access, refresh } = response.data;
-
-      // Store tokens in AsyncStorage
       await AsyncStorage.setItem('accessToken', access);
       await AsyncStorage.setItem('refreshToken', refresh);
 
-      // ✅ Mark as a logged-in user
-      if (setIsGuest) {
-        setIsGuest(false);
+      // 2. Get user info (to fetch their city)
+      const userRes = await axios.get('http://192.168.43.98:8000/api/user/', {
+        headers: { Authorization: `Bearer ${access}` }
+      });
+
+      const userCityId = userRes.data.city;
+
+      if (!userCityId) {
+        setError('City not found in user data.');
+        return;
       }
 
-      // ✅ Redirect to BottomTabs (with NewsFeed tab)
-      navigation.navigate('MainTabs', {
-        screen: 'NewsFeed', // 👈 this targets the correct tab
+      // 3. Fetch full city data
+      const cityRes = await axios.get(`http://192.168.43.98:8000/cities/${userCityId}`);
+
+      // 4. Update global app state
+      setIsGuest(false);
+      setCityData(cityRes.data);
+
+      // 5. Reset navigation to MainTabs (starting at NewsFeed)
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'MainTabs' }],
       });
+
     } catch (err) {
       console.error('Login error:', err.response?.data || err.message);
-      setError('Invalid credentials');
+      setError('Invalid credentials or user data.');
     }
   };
+
 
   return (
     <View style={styles.container}>
@@ -104,6 +120,7 @@ const LoginScreen = ({ setIsGuest }) => {
 
 export default LoginScreen;
 
+// Styles (unchanged)
 const styles = StyleSheet.create({
   container: {
     flex: 1,

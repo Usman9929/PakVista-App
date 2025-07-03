@@ -29,37 +29,25 @@ const BottomTabs = ({ isGuest, cityData }) => {
         tabBarInactiveTintColor: 'gray',
         tabBarIcon: ({ focused }) => {
           let iconSource;
-          if (route.name === 'NewsFeed') {
-            iconSource = NewsFeedIcon;
-          } else if (route.name === 'Regional Insight') {
-            iconSource = RegionalIcon;
-          } else if (route.name === 'Explore') {
-            iconSource = ExploreIcon;
-          } else if (route.name === 'Notification') {
-            iconSource = NotificationIcon;
-          } else if (route.name === 'Profile') {
-            iconSource = ProfileIcon;
-          }
+          if (route.name === 'NewsFeed') iconSource = NewsFeedIcon;
+          else if (route.name === 'Regional Insight') iconSource = RegionalIcon;
+          else if (route.name === 'Explore') iconSource = ExploreIcon;
+          else if (route.name === 'Notification') iconSource = NotificationIcon;
+          else if (route.name === 'Profile') iconSource = ProfileIcon;
 
-          return (
-            <Image
-              source={iconSource}
-              style={[styles.icon, focused && styles.focusedIcon]}
-            />
-          );
+          return <Image source={iconSource} style={[styles.icon, focused && styles.focusedIcon]} />;
         },
         headerShown: false,
       })}
     >
-      <Tab.Screen
-        name="NewsFeed"
-        component={NewsFeedScreen}
-        options={{ tabBarLabel: 'News Feed' }}
-      />
+      {!isGuest && (
+        <Tab.Screen name="NewsFeed" component={NewsFeedScreen} options={{ tabBarLabel: 'News Feed' }} />
+      )}
 
       <Tab.Screen
         name="Regional Insight"
-        children={() => <RegionalStackNavigator cityData={cityData} />}
+        component={RegionalStackNavigator}
+        initialParams={{ cityData }} // Pass city data to Regional
         options={{ tabBarLabel: 'Regional Insights' }}
       />
 
@@ -69,6 +57,7 @@ const BottomTabs = ({ isGuest, cityData }) => {
     </Tab.Navigator>
   );
 };
+
 
 const styles = StyleSheet.create({
   tabBarStyle: {

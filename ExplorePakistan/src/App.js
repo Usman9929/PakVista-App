@@ -93,7 +93,15 @@ const App = () => {
           <Stack.Screen name="Welcome">
             {(props) => <WelcomeScreen {...props} setIsGuest={setIsGuest} />}
           </Stack.Screen>
-          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="Login">
+            {(props) => (
+              <LoginScreen
+                {...props}
+                setIsGuest={setIsGuest}
+                setCityData={setCityData}
+              />
+            )}
+          </Stack.Screen>
           <Stack.Screen name="Signup" component={SignupScreen} />
           <Stack.Screen name="MainTabs">
             {(props) => (

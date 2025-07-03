@@ -139,7 +139,7 @@ const SignupScreen = () => {
 
     setIsLoading(true);
     try {
-      const response = await axios.post(`${API}/register`, formData);
+      const response = await axios.post(`${API}/api/register/`, formData); // 👈 updated
       if (response.status === 201) {
         Alert.alert("Success", "Account created successfully", [
           { text: "OK", onPress: () => navigation.navigate("Login") }
@@ -156,6 +156,7 @@ const SignupScreen = () => {
       setIsLoading(false);
     }
   };
+
 
   const renderInput = (label, field, placeholder, keyboardType = "default") => (
     <>
