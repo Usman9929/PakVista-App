@@ -8,15 +8,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   image: {
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  right: 0,
-  bottom: 0,
-  width: '100%',
-  height: '100%',
-  resizeMode: 'cover',
-},
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+  },
 
   textContainer: {
     padding: 20,
@@ -91,9 +91,6 @@ const styles = StyleSheet.create({
     borderBottomColor: '#ccc',
   },
 
-
-
-
   // Regional Screen stle
   guestcontainer: {
     flex: 1,
@@ -115,35 +112,66 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#333',
   },
+  guetsubtitle: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#333',
+    marginLeft: 15,
+    marginBottom: 20
+  },
   guestdescription: {
     fontSize: 15,
     color: '#666',
     marginTop: 10,
     marginBottom: 10
   },
-  gridContainer: {
+  gridRow: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    gap: 10,
+    justifyContent: 'space-between',
+    marginBottom: 12,
+  },
+  gridButtonPrimary: {
+    backgroundColor: '#3498db',
+  },
+  gridButtonPrimaryText: {
+    color: '#fff',
+  },
+  gridContainer: {
+  padding: 10,
+  marginBottom: 15,
+},
+  gridButtonSecondary: {
+    backgroundColor: '#2ecc71',
+  },
+  gridButtonTertiary: {
+    backgroundColor: '#9b59b6',
+  },
+  gridButtonAccent: {
+    backgroundColor: '#e74c3c',
+  },
+  gridButtonWarning: {
+    backgroundColor: '#f39c12',
+  },
+  gridButtonNeutral: {
+    backgroundColor: '#34495e',
   },
   guestbutton: {
-    backgroundColor: '#E74C3C', // Red color like the design
-    width: 110,
-    height: 110,
-    borderRadius: 10,
-    justifyContent: 'center',
+    width: '48%',
+    borderRadius: 12,
+    padding: 16,
     alignItems: 'center',
-    margin: 5,
-    paddingLeft: 10,
-    paddingRight: 10,
+    justifyContent: 'center',
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
   },
   guestbuttonText: {
-    color: 'white',
-    fontSize: 12,
-    fontWeight: 'bold',
-    marginTop: 8,
+    fontSize: 14,
+    fontWeight: '600',
     textAlign: 'center',
+    color: '#fff',
   },
   touristAttraction: {
     padding: 15,
@@ -156,8 +184,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
   },
-  lastcontainer:{
-    marginBottom:40
+  lastcontainer: {
+    marginBottom: 40
   },
   touristImage: {
     width: 80,
@@ -186,10 +214,19 @@ const styles = StyleSheet.create({
   navItem: {
     alignItems: 'center',
   },
+  iconContainer: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: 'rgba(255,255,255,0.3)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 8,
+  },
   icon: {
-    width: 48, // Adjust icon size based on your image
-    height: 48,
-    resizeMode: 'contain',
+    width: 24,
+    height: 24,
+    tintColor: '#fff',
   },
 });
 

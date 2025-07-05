@@ -1,290 +1,401 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, Image, FlatList, TouchableOpacity, StyleSheet, ScrollView, ActivityIndicator } from "react-native";
-import { useNavigation } from '@react-navigation/native';
-import { fetchVillages } from "../services/api";
+import React, { useEffect, useState } from 'react';
+import {
+  View,
+  Text,
+  ScrollView,
+  Image,
+  TouchableOpacity,
+  ActivityIndicator,
+  RefreshControl,
+  FlatList,
+  Dimensions,
+  StyleSheet
+} from 'react-native';
+import { useRoute, useNavigation } from '@react-navigation/native';
+import axios from 'axios';
 
+const { width } = Dimensions.get('window');
+const cardWidth = width * 0.75;
+const BASE_URL = 'http://192.168.43.98:8000';
 
-
-const VillageCard = ({ item, navigation }) => (
-  <TouchableOpacity
-    style={styles.villageCard}
-    onPress={() => navigation.navigate('VillageDetail', { village: item })}
-  >
-    <Image source={typeof item.image === "string" ? { uri: item.image } : item.image} style={styles.villageImage} />
-    <Text style={styles.villageTitle}>{item.name}</Text>
-    <View style={styles.locationContainer}>
-      <Image source={require("../assets/icons/location.png")} style={{ width: 16, height: 16 }} />
-      <Text style={styles.villageLocation}>{item.location}</Text>
-    </View>
-  </TouchableOpacity>
-);
-const TouristVillageCard = ({ item, navigation }) => (
-  <TouchableOpacity
-    style={styles.touristVillageCard}
-    onPress={() => navigation.navigate('VillageDetail', { village: item })}
-  >
-    <Image
-      source={typeof item.image === "string" ? { uri: item.image } : item.image}
-      style={styles.touristVillageImage}
-    />
-    <View style={styles.touristVillageInfo}>
-      <Text style={styles.touristVillageTitle}>{item.name}</Text>
-      <View style={styles.touristVillageLocationContainer}>
-        <Image
-          source={require("../assets/icons/location.png")}
-          style={styles.locationIcon}
-        />
-        <Text style={styles.touristVillageLocation}>{item.location}</Text>
-      </View>
-    </View>
-  </TouchableOpacity>
+// Custom icon components
+const LocationIcon = () => (
+  <Image
+    source={require('../assets/icons/location.png')}
+    style={{ width: 14, height: 14, tintColor: '#e74c3c' }}
+  />
 );
 
+const PeopleIcon = () => (
+  <Image
+    source={require('../assets/icons/people.png')}
+    style={{ width: 12, height: 12, tintColor: '#666' }}
+  />
+);
+
+const ClimateIcon = () => (
+  <Image
+    source={require('../assets/icons/cloudy.png')}
+    style={{ width: 12, height: 12, tintColor: '#666' }}
+  />
+);
+
+const BackIcon = () => (
+  <Image
+    source={require('../assets/icons/left-arrow.png')}
+    style={{ width: 24, height: 24, tintColor: '#333' }}
+  />
+);
 
 const ExploreVillageScreen = () => {
-  const navigation = useNavigation(); // Get navigation object
-  const [general_villages, setVillages] = useState([]);
-  const [topVillages, setTopVillages] = useState([]);  // State for top villages
-  const [touristVillages, setTouristVillages] = useState([]); // State for tourist villages
-  const [loading, setLoading] = useState(true);
+  const route = useRoute();
+  const navigation = useNavigation();
+
+  const { cityId, cityName = '', villages: passedVillages = [] } = route?.params || {};
+
+  const [villages, setVillages] = useState(passedVillages);
+  const [loading, setLoading] = useState(passedVillages.length === 0);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const fetchVillages = async () => {
+    try {
+      const response = await axios.get(`${BASE_URL}/village-profile/`, {
+        params: { city: cityId },
+      });
+      const approved = response.data.filter(v => v.is_approved);
+      setVillages(approved);
+    } catch (error) {
+      console.error('Error fetching villages:', error.message);
+    } finally {
+      setLoading(false);
+      setRefreshing(false);
+    }
+  };
 
   useEffect(() => {
-    const getVillages = async () => {
-      const { general_villages, topVillages, touristVillages } = await fetchVillages();
-      setVillages(general_villages);
-      setTopVillages(topVillages);
-      setTouristVillages(touristVillages);
-      setLoading(false);
-    };
+    if (passedVillages.length === 0) fetchVillages();
+  }, [cityId]);
 
-    getVillages();
-  }, []);
+  const onRefresh = () => {
+    setRefreshing(true);
+    fetchVillages();
+  };
 
-  if (loading) {
-    return <ActivityIndicator size="large" color="#0000ff" />;
-  }
+  const handleVillagePress = (village) => {
+    navigation.navigate('VillageDetail', { villageData: village });
+  };
 
-  return (
+  const renderVillageCard = ({ item }) => {
+    const imageUrl = item.Image?.startsWith('http')
+      ? item.Image
+      : `${BASE_URL}${item.Image || '/media/village_images/default.jpg'}`;
 
-    <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
-      <View style={styles.container}>
-        <View style={styles.header}>
-          <View style={{ flex: 1, alignItems: "center", marginTop: 30 }}>
-            <Text style={styles.headerTitle}>Villages</Text>
+    return (
+      <TouchableOpacity
+        style={styles.villageCard}
+        onPress={() => handleVillagePress(item)}
+      >
+        <Image
+          source={{ uri: imageUrl }}
+          style={styles.villageImage}
+          resizeMode="cover"
+        />
+        <View style={styles.villageContent}>
+          <Text style={styles.villageName} numberOfLines={1}>
+            {item.village_name}
+          </Text>
+          <View style={styles.locationContainer}>
+            <LocationIcon />
+            <Text style={styles.locationText} numberOfLines={1}>
+              {cityName}
+            </Text>
           </View>
-          <View>
-            <TouchableOpacity
-              style={styles.loginButton}
-              onPress={() => navigation.navigate('Login')} // Navigate to Login screen
-            >
-              <Text style={styles.loginText}>Login</Text>
-            </TouchableOpacity>
+          <View style={styles.detailsContainer}>
+            <View style={styles.detailItem}>
+              <PeopleIcon />
+              <Text style={styles.detailText}>{item.population || 'N/A'}</Text>
+            </View>
+            <View style={styles.detailItem}>
+              <ClimateIcon />
+              <Text style={styles.detailText}>{item.climate || 'N/A'}</Text>
+            </View>
           </View>
         </View>
+      </TouchableOpacity>
+    );
+  };
 
+  return (
+    <View style={styles.container}>
+      {/* Header */}
+      <View style={styles.header}>
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => navigation.goBack()}
+        >
+          <BackIcon />
+        </TouchableOpacity>
+        <Text style={styles.headerTitle}>Villages in {cityName}</Text>
+        <TouchableOpacity
+          style={styles.loginButton}
+          onPress={() => navigation.navigate('Login')}
+        >
+          <Text style={styles.loginButtonText}>Login</Text>
+        </TouchableOpacity>
+      </View>
 
-        {/* General Villages */}
-        <Text style={styles.sectionTitle}>Wonderful Timergara</Text>
-        <Text style={styles.subTitle}>Let's Explore Together</Text>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.villageList}>
-          {general_villages.map((item) => (
-            <VillageCard key={item.id?.toString() || Math.random().toString()} item={item} navigation={navigation} />
-          ))}
-        </ScrollView>
+      <ScrollView
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+        showsVerticalScrollIndicator={false}
+      >
+        {/* Hero Section */}
+        <View style={styles.heroSection}>
+          <Text style={styles.heroTitle}>Discover {cityName}</Text>
+          <Text style={styles.heroSubtitle}>Explore the hidden gems of this region</Text>
+        </View>
 
+        {/* Featured Villages */}
+        <View style={styles.sectionContainer}>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionTitle}>Featured Villages</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('AllVillagesScreen', { cityName, villages })}>
+              <Text style={styles.seeAllText}>See All</Text>
+            </TouchableOpacity>
+          </View>
+
+          {loading ? (
+            <ActivityIndicator size="large" color="#3498db" style={styles.loader} />
+          ) : villages.length > 0 ? (
+            <FlatList
+              data={villages.slice(0,)}
+              horizontal
+              keyExtractor={(item) => item.village_code}
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={styles.listContent}
+              renderItem={renderVillageCard}
+            />
+          ) : (
+            <View style={styles.emptyState}>
+              <Text style={styles.emptyStateText}>No villages found</Text>
+            </View>
+          )}
+        </View>
 
         {/* Top Villages */}
-        {topVillages && topVillages.length > 0 ? (
-          <>
-            <View style={styles.topVillageHeader}>
-              <Text style={styles.sectionTitle}>Top Village</Text>
-              <TouchableOpacity>
-                <Text style={styles.viewAll}>View All</Text>
+        {villages.length > 5 && (
+          <View style={styles.sectionContainer}>
+            <View style={styles.sectionHeader}>
+              <Text style={styles.sectionTitle}>Popular Villages</Text>
+              <TouchableOpacity onPress={() => navigation.navigate('AllVillagesScreen', { cityName, villages })}>
+                <Text style={styles.seeAllText}>See All</Text>
               </TouchableOpacity>
             </View>
             <FlatList
-              style={{ marginLeft: -12 }}
-              data={topVillages}
-              keyExtractor={(item) => item?.id?.toString() || Math.random().toString()}
-              renderItem={({ item }) => <VillageCard key={item.id?.toString()} item={item} navigation={navigation} />}
-              horizontal={true}
+              data={villages.slice(3, 8)}
+              horizontal
+              keyExtractor={(item) => item.village_code + '_top'}
               showsHorizontalScrollIndicator={false}
-              contentContainerStyle={{ paddingHorizontal: 10 }}
+              contentContainerStyle={styles.listContent}
+              renderItem={renderVillageCard}
             />
-          </>
-        ) : (
-          <Text style={styles.noDataText}>No villages available</Text>
+          </View>
         )}
 
-
-        {/* Tourist Villages */}
-        <Text style={styles.sectionTitle}>Tourist Attraction</Text>
-        <View style={{ marginBottom: 60 }}>
-          {touristVillages.map((item) => (
-            <TouristVillageCard key={item.id?.toString() || Math.random().toString()} item={item} navigation={navigation} />
-          ))}
-        </View>
-      </View>
-    </ScrollView>
+        {/* All Villages Grid */}
+        {villages.length > 0 && (
+          <View style={styles.sectionSubContainer}>
+            <Text style={styles.sectionSubHeadingTitle}>All Villages</Text>
+            <View style={styles.gridContainer}>
+              {villages.slice(0, 6).map((village) => (
+                <TouchableOpacity
+                  key={village.village_code}
+                  style={styles.gridItem}
+                  onPress={() => handleVillagePress(village)}
+                >
+                  <Image
+                    source={{ uri: village.Image?.startsWith('http') ? village.Image : `${BASE_URL}${village.Image || '/media/village_images/default.jpg'}` }}
+                    style={styles.gridImage}
+                  />
+                  <Text style={styles.gridText} numberOfLines={1}>{village.village_name}</Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+          </View>
+        )}
+      </ScrollView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F8F8F8",
-    padding: 16,
+    backgroundColor: '#f8f9fa',
   },
   header: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: 16,
-    alignItems: "center"
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 16,
+    backgroundColor: '#fff',
+    borderBottomWidth: 1,
+    borderBottomColor: '#eee',
+  },
+  backButton: {
+    padding: 4,
   },
   headerTitle: {
-    fontSize: 24,
-    fontWeight: "bold",
-    textAlign: "center",
-    marginLeft: 80,
-    color: "gray",
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#333',
   },
   loginButton: {
-    backgroundColor: "red",
+    backgroundColor: '#3498db',
+    paddingHorizontal: 12,
     paddingVertical: 6,
-    paddingHorizontal: 16,
-    borderRadius: 15,
-    marginRight: 10,
-    marginBottom: 30
+    borderRadius: 20,
   },
-  loginText: {
-    color: "#FFF",
-    fontSize: 16,
+  loginButtonText: {
+    color: '#fff',
+    fontSize: 14,
+    fontWeight: '500',
   },
-
-  sectionTitle: {
-    fontSize: 25,
-    fontWeight: "bold",
-    marginVertical: 8,
-    marginTop: 20
+  heroSection: {
+    padding: 24,
+    backgroundColor: '#3498db',
+    marginBottom: 16,
   },
-  subTitle: {
+  sectionSubHeadingTitle: {
     fontSize: 20,
-    color: "gray",
-    marginBottom: 12
-  },
-
-  villageList: {
-    alignItems: "center"
-  },
-  villageCard: {
-    backgroundColor: "#FFF",
-    borderRadius: 15,
-    padding: 5,
-    marginLeft: 5,
-    marginRight: 12, // Ensure space between cards
-    width: 260,// Set a fixed width for consistency
-    height: 250,
-    alignItems: "center",
-    paddingBottom: 20,
-    shadowColor: "#000",       // Shadow color
-    shadowOffset: { width: 0, height: 3 }, // Shadow direction
-    shadowOpacity: 0.2,        // Adjust transparency (0-1)
-    shadowRadius: 10,           // Blur effect
-
-    // 🔹 REQUIRED FOR ANDROID (because shadow properties work only on iOS)
-    elevation: 8,              // Android shadow effect
+    fontWeight: 'bold',
+    color: '#333',
+    marginLeft: 20,
     marginBottom: 20
   },
+  heroTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#fff',
+    marginBottom: 4,
+  },
+  heroSubtitle: {
+    fontSize: 16,
+    color: 'rgba(255,255,255,0.8)',
+  },
+  sectionContainer: {
+    marginBottom: 20,
 
-  villageImage: {
-    width: "100%",
-    height: "80%",
+  },
+  sectionHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    marginBottom: 12,
+  },
+  sectionTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+  sectionSubContainer: {
+    marginBottom:60
+  },
+  seeAllText: {
+    color: '#3498db',
+    fontWeight: '500',
+  },
+  listContent: {
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+  },
+  villageCard: {
+    width: cardWidth,
+    backgroundColor: '#fff',
     borderRadius: 12,
-  },
-  villageTitle: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginTop: 6,
-    textAlign: "left",  // Ensures left alignment
-    alignSelf: "flex-start", // Aligns the text to the start of the container
-    marginRight: 0, // Remove the right margin if not needed
-    marginLeft: 10
-  },
-
-  villageLocation: {
-    fontSize: 14,
-    color: "gray",
-    marginTop: 2,
-    marginLeft: 5,
-    textAlign: "left",  // Ensures left alignment
-    alignSelf: "flex-start", // Aligns the text to the start of the container
-    marginRight: 0 // Remove the right margin if not needed
-  },
-
-  topVillageHeader: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  viewAll: {
-    color: "red",
-    fontSize: 14
-  },
-
-  topVillageList: {
-    marginTop: 4,
-  },
-
-  locationContainer: {
-    flexDirection: "row",  // Aligns icon and text in a row
-    alignItems: "center",  // Ensures vertical alignment
-    marginTop: 2,          // Adjust spacing as needed
-    alignSelf: "flex-start",
-    marginLeft: 10
-  },
-  touristVillageCard: {
-    backgroundColor: "#fff",
-    borderRadius: 12,
-    shadowColor: "#000",
+    marginRight: 16,
+    overflow: 'hidden',
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
-    shadowOffset: { width: 0, height: 2 },
-    elevation: 3,
-    marginVertical: 8,
-    flexDirection: "row",
-    alignItems: "center",
+  },
+  villageImage: {
+    width: '100%',
+    height: 160,
+    backgroundColor: '#eee',
+  },
+  villageContent: {
     padding: 12,
   },
-  touristVillageImage: {
-    width: 100,
-    height: 90,
-    borderRadius: 10,
-    marginRight: 12,
-  },
-  touristVillageInfo: {
-    flex: 1,
-  },
-  touristVillageTitle: {
+  villageName: {
     fontSize: 16,
-    fontWeight: "bold",
-    color: "#333",
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 8,
   },
-  touristVillageLocationContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginTop: 4,
+  locationContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 8,
   },
-  locationIcon: {
-    width: 16,
-    height: 16,
-    marginRight: 6,
-    tintColor: "#f04a4a", // Modern red color for location pin
+  locationText: {
+    fontSize: 12,
+    color: '#666',
+    marginLeft: 4,
   },
-  touristVillageLocation: {
+  detailsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 8,
+  },
+  detailItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  detailText: {
+    fontSize: 12,
+    color: '#666',
+    marginLeft: 4,
+  },
+  gridContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+  },
+  gridItem: {
+    width: '48%',
+    marginBottom: 16,
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    overflow: 'hidden',
+    elevation: 1,
+  },
+  gridImage: {
+    width: '100%',
+    height: 100,
+    backgroundColor: '#eee',
+  },
+  gridText: {
+    padding: 8,
     fontSize: 14,
-    color: "#777",
-    fontStyle: "italic",
+    color: '#333',
+    textAlign: 'center',
+  },
+  loader: {
+    marginVertical: 32,
+  },
+  emptyState: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 32,
+  },
+  emptyStateText: {
+    fontSize: 16,
+    color: '#999',
+    marginTop: 16,
   },
 });
 

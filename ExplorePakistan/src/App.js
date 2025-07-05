@@ -61,6 +61,7 @@ import Cultural_LocalFestival from './screens/Village Detail Screen/Updation Scr
 import Traditions from './screens/Village Detail Screen/Updation Screen/Cultural Information/Traditions';
 import PopulationElderly from './screens/Explore_City/PopulationDetail/PopulationElderly';
 import NewsFeedScreen from './screens/NewsFeedScreen';
+import AllVillagesScreen from './screens/Village Detail Screen/AllVillagesScreen';
 
 // Create context for city data
 export const CityContext = createContext();
@@ -168,6 +169,7 @@ const App = () => {
           <Stack.Screen name="LanguagSpoken" component={LanguageSpoken} />
           <Stack.Screen name="PopulationElderly" component={PopulationElderly} />
           <Stack.Screen name="NewsFeed" component={NewsFeedScreen} />
+          <Stack.Screen name="AllVillagesScreen" component={AllVillagesScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </CityContext.Provider >

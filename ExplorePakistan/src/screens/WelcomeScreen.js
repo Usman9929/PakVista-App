@@ -66,16 +66,15 @@ const WelcomeScreen = ({ setIsGuest }) => {
     <View style={styles.container}>
       <StatusBar barStyle="default" />
       <ImageBackground
-        source={require('../assets/images/background.jpg')}
+        source={require('../assets/images/matta.jpg')}
         style={styles.image}
       />
       <View style={styles.textContainer}>
         <Text style={styles.title}>Welcome to</Text>
         <Text style={styles.nametitle}>Explore Pakistan!</Text>
         <Text style={styles.description}>
-          Explore cities and villages with real-time info. Discover community services, tourist attractions, and local culture. Start your journey today!
+          Explore the heart of our cities and villages through a seamless experience. Discover essential information, tourist attractions, community services, and local updates at your fingertips. Whether you're a resident or a visitor, our app connects you with everything you need to know about the community. Start your journey to uncover the rich culture, history, and natural beauty of the region!
         </Text>
-
         <TouchableOpacity style={styles.button} onPress={() => setModalVisible(true)}>
           <Text style={styles.buttonText}>{selectedCity}</Text>
         </TouchableOpacity>
