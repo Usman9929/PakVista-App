@@ -1,111 +1,80 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, ScrollView, TouchableOpacity, ActivityIndicator } from 'react-native';
+import axios from 'axios';
 import styles from './VillageDetailScreenStyle';
 import { useNavigation } from '@react-navigation/native';
 
-const Community_Services = [
-  {
-    title: 'Education:',
-    details: [
-      { label: "schools", value: "2 primary schools, 1 high school" },
-      { label: "college", value: "1 government college" },
-      { label: "Universities", value: "None" },
-      { label: "Training Center", value: "Vocational training center for youth" }
-    ]
-  },
-  {
-    title: 'Health Care Facilities:',
-    details: [
-      { label: "Clinics", value: "2 small clinics" },
-      { label: "Hospitals", value: "1 government hospital" },
-      { label: "Pharmacies", value: "3 local pharmacies" },
-      { label: "Mobile Health Services", value: "Occasional medical camps" }
-    ]
-  },
-  {
-    title: 'Market:',
-    details: [
-      { label: "Details Local Market", value: "Main bazaar with grocery, clothing, and hardware shops" },
-      { label: "Availability Essential Goods", value: "Easily available in local markets" }
-    ]
-  },
-  {
-    title: 'Transportations:',
-    details: [
-      { label: "Buses", value: "Available for intercity travel" },
-      { label: "Rickshaw", value: "Common for short distances" },
-      { label: "Bikes", value: "Widely used by locals" },
-      { label: "Suzuki", value: "Used for goods and passenger transport" },
-      { label: "Major Road", value: "Connected to main city roads" }
-    ]
-  },
-  {
-    title: 'Utilities:',
-    details: [
-      { label: "Water Supply", value: "Tube wells and municipal supply" },
-      { label: "Electricity", value: "Available with occasional power outages" },
-      { label: "Gas Supply", value: "Limited; mostly LPG cylinders used" },
-      { label: "Petrol Pump", value: "1 petrol station" },
-      { label: "Internet Services", value: "4G coverage available" },
-      { label: "Network", value: "All major mobile networks available" }
-    ]
-  },
-  {
-    title: 'Recreational Facilities:',
-    details: [
-      { label: "Parks", value: "1 small park" },
-      { label: "Playground", value: "Football and cricket ground" },
-      { label: "Community Center", value: "Multipurpose hall for events" },
-      { label: "Sports Facilities", value: "Local cricket and football clubs" }
-    ]
-  }
-];
-
-
-
-const CommunityServices = () => {
+const CommunityServices = ({ route }) => {
+  const { villageData } = route.params;
   const navigation = useNavigation();
+  const [communityData, setCommunityData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const handleAddPress = (serviceTitle) => {
-    switch (serviceTitle) {
-      case 'Education:':
-        navigation.navigate('EducationAddButton');
-        break;
-      case 'Health Care Facilities:':
-        navigation.navigate('HealthCare');
-        break;
-      case 'Market:':
-        navigation.navigate('Market');
-        break;
-      case 'Transportations:':
-        navigation.navigate('Transportation');
-        break;
-      case 'Utilities:':
-        navigation.navigate('Utilities');
-        break;
-      case 'Recreational Facilities:':
-        navigation.navigate('Recreational');
-        break;
-      default:
-        console.warn('No screen defined for this service');
+  useEffect(() => {
+    axios.get(`http://192.168.43.98:8000/community_services/?village_id=${villageData.village_id}`)
+      .then(response => {
+        setCommunityData(response.data[0]); // Only one record per village
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error("Error fetching community data:", error);
+        setLoading(false);
+      });
+  }, [villageData]);
+
+  const handleAddPress = (section) => {
+    const map = {
+      'Education': 'EducationAddButton',
+      'Health Care Facilities': 'HealthCare',
+      'Market': 'Market',
+      'Transportations': 'Transportation',
+      'Utilities': 'Utilities',
+      'Recreational Facilities': 'Recreational',
+    };
+    if (map[section]) {
+      navigation.navigate(map[section], { villageId: villageData.village_id });
     }
   };
+
+  if (loading) {
+    return <ActivityIndicator size="large" color="#000" style={{ flex: 1 }} />;
+  }
+
+  if (!communityData) {
+    return <Text>No data available</Text>;
+  }
+
+  const sections = [
+    { title: 'Education', data: communityData.education?.[0] },
+    { title: 'Health Care Facilities', data: communityData.healthcare_facilities?.[0] },
+    { title: 'Market', data: communityData.market?.[0] },
+    { title: 'Transportations', data: communityData.transportations?.[0] },
+    { title: 'Utilities', data: communityData.utilities?.[0] },
+    { title: 'Recreational Facilities', data: communityData.recreational_facilities?.[0] },
+  ];
+
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
       <View style={styles.content}>
         <Text style={styles.sectionTitle}>Community Services</Text>
-
         <View style={{ marginBottom: 60 }}>
-          {Community_Services.map((item, index) => (
+          {sections.map((item, index) => (
             <View key={index} style={styles.cardWrapper}>
               <View style={styles.card}>
                 <Text style={styles.cardTitle}>{item.title}</Text>
-                {item.details.map((detail, i) => (
-                  <Text key={i} style={styles.cardText}>
-                    <Text style={styles.bold}>{detail.label}:</Text> {detail.value}
-                  </Text>
-                ))}
-                <TouchableOpacity style={styles.addButton}  onPress={() => handleAddPress(item.title)}>
+                {item.data ? (
+                  Object.entries(item.data).map(([key, value]) => {
+                    if (['id', 'submitted_by', 'is_approved', 'community_id'].includes(key)) return null;
+                    return (
+                      <Text key={key} style={styles.cardText}>
+                        <Text style={styles.bold}>{key.replace(/_/g, ' ')}:</Text> {value || 'N/A'}
+                      </Text>
+                    );
+                  })
+                ) : (
+                  <Text style={styles.cardText}>No Data</Text>
+                )}
+                <TouchableOpacity style={styles.addButton} onPress={() => handleAddPress(item.title)}>
                   <Text style={styles.addButtonText}>Add</Text>
                 </TouchableOpacity>
               </View>
@@ -113,10 +82,8 @@ const CommunityServices = () => {
           ))}
         </View>
       </View>
-    </ScrollView >
+    </ScrollView>
   );
 };
-
-
 
 export default CommunityServices;
